@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const db = require('../config/db');
 const admin = require('firebase-admin');
+const axios = require('axios');
 
 
 // TEACHER SIGNUP
@@ -46,19 +47,40 @@ router.post('/signup', async (req, res) => {
 // TEACHER SIGNIN
 // POST
 // ROUTE : /api/teacher/signin
+router.post('/signin', async (req, res) => {
+    const { email, password } = req.body;
+    
+    try {
+      const response = await axios.post(
+          "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key="+ process.env.API_KEY,
+          {
+            email,
+            password,
+            returnSecureToken: true
+          }
+      );
+      
+      const {idToken} = response.data;
 
-// router.post('/signin', async (req, res) => {
-//     const { email, password } = req.body;
-  
-//     try {
-//       const userRecord = await admin.auth().getUserByEmail(email);
-  
-//       res.status(200).json(userRecord);
-//     } catch (error) {
-//       console.error('Error signing in:', error);
-//       res.status(401).json({ error: 'Invalid credentials' });
-//     }
-//   });
+      const userAccount = await admin.auth().getUserByEmail(email);
+      //console.log(response)
+
+      return res.status(200).send({ 
+        status: "Success", 
+        msg: "User logged in successfully",
+        user: {
+          userID: userAccount.uid,
+          userName: userAccount.displayName,
+          email: userAccount.email,
+          idToken
+        }
+    });
+
+    } catch (error) {
+      console.error('Error signing in:', error);
+      res.status(401).json({ error: 'Invalid credentials' });
+    }
+  });
 
 
 
