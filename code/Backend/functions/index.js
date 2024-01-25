@@ -10,8 +10,8 @@ const app = express();
 app.use(cors({origin:true}));
 
 // Load routes
-const historyTakingQesRoutes = require('./routes/historyTakingQesRoutes');
-app.use('/api/historyTakingQes', historyTakingQesRoutes);
+const historyTakingQestionBankRoutes = require('./routes/historyTakingQestionBankRoutes');
+app.use('/api/historyTakingQestionBank', historyTakingQestionBankRoutes);
 
 const teacher = require('./routes/teacherRoutes');
 app.use('/api/teacher', teacher);
