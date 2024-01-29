@@ -7,6 +7,8 @@ const cors = require('cors')
 const dotenv = require('dotenv').config({path:'./config/.env'})
 
 const app = express();
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(cors({origin:true}));
 
 // Load routes
@@ -16,10 +18,7 @@ app.use('/api/historyTakingQestionBank', historyTakingQestionBankRoutes);
 const teacher = require('./routes/teacherRoutes');
 app.use('/api/teacher', teacher);
 
-
-
-
-
-
+const dentalComplaintCasesRoutes = require('./routes/dentalComplaintCasesRoutes');
+app.use('/api/dentalComplaintCases', dentalComplaintCasesRoutes);
 
 exports.app = functions.https.onRequest(app);
