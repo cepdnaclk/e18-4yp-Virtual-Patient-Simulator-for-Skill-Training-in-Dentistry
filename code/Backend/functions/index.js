@@ -15,6 +15,9 @@ app.use(cors({origin:true}));
 const historyTakingQestionBankRoutes = require('./routes/historyTakingQestionBankRoutes');
 app.use('/api/historyTakingQestionBank', historyTakingQestionBankRoutes);
 
+const historyTakingQestionsByStudentRoutes = require('./routes/historyTakingQestionsByStudentRoutes');
+app.use('/api/historyTakingQestionsByStudent', historyTakingQestionsByStudentRoutes);
+
 const teacher = require('./routes/teacherRoutes');
 app.use('/api/teacher', teacher);
 
