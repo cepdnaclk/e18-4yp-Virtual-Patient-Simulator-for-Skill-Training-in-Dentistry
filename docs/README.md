@@ -26,6 +26,7 @@ title:
 
 #### Table of content
 
+<!--
 1. [Abstract](#abstract)
 2. [Related works](#related-works)
 3. [Methodology](#methodology)
@@ -34,6 +35,13 @@ title:
 6. [Conclusion](#conclusion)
 7. [Publications](#publications)
 8. [Links](#links)
+-->
+
+1. [Abstract](#abstract)
+2. [Related works](#related-works)
+3. [Conclusion](#conclusion)
+4. [Publications](#publications)
+5. [Links](#links)
 
 ---
 
@@ -46,17 +54,25 @@ This is a sample image, to show how to add images to your page. To learn more op
 
 ## Abstract
 
-## Related works
+## Related Works
 
+<!--
 ## Methodology
+-->
 
+<!--
 ## Experiment Setup and Implementation
+-->
 
+<!--
 ## Results and Analysis
+-->
 
 ## Conclusion
 
-This research project has aimed to enhance an existing virtual patient simulator for dental education by introducing custom patient case creation with the automation of the 3D model and integrating haptic feedback with the simulator. The enhancements are expected to significantly improve the learning experience for dental students by providing a diverse range of patient cases and a more immersive and realistic simulation environment. The ability to automate patient cases and the 3D model guided by tutors’ input using a web front-end will increase the diversity and complexity of cases available for student learning and it will allow for a more personalized and realistic simulation experience. This custom case creation feature will allow for the inclusion of rare dental conditions, thereby enriching the learning content. Furthermore, the integration of a haptic device will provide tactile feedback, enhancing the realism of the simulations and mirroring the complexities of actual clinical practice. In addition to these technical enhancements, the project will evaluate the effectiveness of the enhanced simulator from both the students’ and tutors’ perspectives. This evaluation will provide valuable insights into the simulator’s strengths and areas for improvement, as well as its impact on student learning and satisfaction. It will also inform future development efforts
+This research project has aimed to enhance an existing virtual patient simulator for dental education by introducing custom patient case creation with the automation of the 3D model and integrating haptic feedback with the simulator. The enhancements are expected to significantly improve the learning experience for dental students by providing a diverse range of patient cases and a more immersive and realistic simulation environment. The ability to automate patient cases and the 3D model guided by tutors’ input using a web front-end will increase the diversity and complexity of cases available for student learning and it will allow for a more personalized and realistic simulation experience.
+
+This custom case creation feature will allow for the inclusion of rare dental conditions, thereby enriching the learning content. Furthermore, the integration of a haptic device will provide tactile feedback, enhancing the realism of the simulations and mirroring the complexities of actual clinical practice. In addition to these technical enhancements, the project will evaluate the effectiveness of the enhanced simulator from both the students’ and tutors’ perspectives. This evaluation will provide valuable insights into the simulator’s strengths and areas for improvement, as well as its impact on student learning and satisfaction. It will also inform future development efforts
 and best practices for using virtual patient simulators in dental education.
 
 In conclusion, the proposed enhancements to the virtual patient simulator promise to significantly improve dental education by providing a diverse range of patient cases and a more immersive and realistic learning experience. The literature reviewed underscores the potential benefits of such simulators in dental education and supports the need for continued research and development in this area. This project represents a significant step towards leveraging technology to enhance dental education, and it is anticipated that the findings will contribute to the ongoing evolution of teaching methodologies in the field.
