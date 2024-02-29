@@ -9,18 +9,20 @@ title:
 
 [comment]: # "This is the standard layout for the project, but you can clean this and use your own template"
 
-# Project Title
+# Virtual Patient Simulator for Skill Training in Dentistry
 
 #### Team
 
-- eNumber, Name, [email](mailto:name@email.com)
-- eNumber, Name, [email](mailto:name@email.com)
-- eNumber, Name, [email](mailto:name@email.com)
+- E/18/013, R.Abilash, [email](mailto:e18013@eng.pdn.ac.lk)
+- E/18/115, A.Gowsigan, [email](mailto:e18115@eng.pdn.ac.lk)
+- E/18/203, K.G.A.S.Madhusanka, [email](mailto:e18203@eng.pdn.ac.lk)
 
 #### Supervisors
 
-- Name, [email](mailto:name@eng.pdn.ac.lk)
-- Name, [email](mailto:name@eng.pdn.ac.lk)
+- Prof. Roshan G. Ragel, [email](mailto:roshanr@eng.pdn.ac.lk)
+- Dr. Upul Jayasinghe, [email](mailto:upuljm@eng.pdn.ac.lk)
+- Dr. D Leuke Bandara, [email](mailto:dhanulb@dental.pdn.ac.lk)
+- Dr. Titus Jayarathna, [email](mailto:titus@eng.pdn.ac.lk)
 
 #### Table of content
 
@@ -65,11 +67,8 @@ This is a sample image, to show how to add images to your page. To learn more op
 
 
 ## Links
-
-[//]: # ( NOTE: EDIT THIS LINKS WITH YOUR REPO DETAILS )
-
-- [Project Repository](https://github.com/cepdnaclk/repository-name)
-- [Project Page](https://cepdnaclk.github.io/repository-name)
+- [Project Repository](https://github.com/cepdnaclk/e18-4yp-Virtual-Patient-Simulator-for-Skill-Training-in-Dentistry)
+- [Project Page](https://cepdnaclk.github.io/e18-4yp-Virtual-Patient-Simulator-for-Skill-Training-in-Dentistry)
 - [Department of Computer Engineering](http://www.ce.pdn.ac.lk/)
 - [University of Peradeniya](https://eng.pdn.ac.lk/)
 
