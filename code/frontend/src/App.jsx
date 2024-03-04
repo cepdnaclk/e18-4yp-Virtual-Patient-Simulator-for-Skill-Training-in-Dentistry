@@ -1,5 +1,12 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import {TeacherLogin, Home, BasicCaseDetails, HistoryQuestions,PeriodontalScreeningQuestions} from "./pages/Pages.jsx";
+import {
+    TeacherLogin,
+    Home,
+    BasicCaseDetails,
+    HistoryQuestions,
+    PeriodontalScreeningQuestions,
+    StudentLogin, ShowCases, HistoryTaking, ExaminationGuideline
+} from "./pages/Pages.jsx";
 import MainLayout from "./layout/MainLayout.jsx";
 import "./styles/global.scss";
 import StepperComponent from "./layout/stepper/StepperComponent.jsx";
@@ -13,6 +20,10 @@ const App = () => {
         {
             path: "/teacherLogin",
             element: <TeacherLogin />,
+        },
+        {
+            path: "/studentLogin",
+            element: <StudentLogin />,
         },
 
         {
@@ -30,6 +41,19 @@ const App = () => {
                 {
                     path: "/periodontalScreeningQuestions",
                     element: <PeriodontalScreeningQuestions />,
+                },
+                    //student pages//
+                {
+                    path: "/showCases",
+                    element: <ShowCases/>,
+                },
+                {
+                    path: "/historyTaking",
+                    element: <HistoryTaking/>,
+                },
+                {
+                    path: "/examinationGuideline",
+                    element: <ExaminationGuideline/>,
                 }
             ],
         },

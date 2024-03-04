@@ -1,0 +1,11 @@
+.showCasesContainer {
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+
+  .MuiCard-root {
+    max-width: 345px; // Adjust card width as needed
+  }
+}
