@@ -1,7 +1,5 @@
-import {useRef, useState} from 'react';
+import {useEffect, useRef, useState} from 'react';
 import {
-    Card,
-    CardContent,
     Typography,
     TextField,
     Button,
@@ -9,13 +7,15 @@ import {
     MenuItem,
     FormControl,
     InputLabel,
-    DialogTitle, Dialog, DialogContent, DialogActions, Grid, CircularProgress
+    Grid
 } from '@mui/material';
 
 import {AddMainType} from "../../components/Components.jsx";
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import './BasicCaseDetails.scss';
+import axios from "axios";
+import config from "../../config.js";
 
 const BasicCaseDetails = () => {
     const [image, setImage] = useState(null);
@@ -27,44 +27,46 @@ const BasicCaseDetails = () => {
     const [uploadProgress, setUploadProgress] = useState(0);
     const [selectedFile, setSelectedFile] = useState(null);
     const fileInputRef = useRef(null);
+    const [mainTypes, setMainTypes] = useState([]);
+
+    useEffect(() => {
+        const url = `${config.apiBaseUrl}dentalComplaintCases/getAllDentalComplaintMainTypes`;
+        axios.get(url)
+            .then(response => {
+                setMainTypes(response.data.mainTypeNames);
+            })
+            .catch(error => {
+                console.error('Error fetching main types:', error);
+            });
+    }, []);
+
+    const handleFileChange = (event) => {
+        const files = event.target.files;
+        if (files.length > 0) {
+            const file = files[0];
+            setImage(URL.createObjectURL(file)); // For displaying the image preview
+            setSelectedFile(file); // Setting the file
+        }
+    };
 
 
     const handleImageChange = (event) => {
         const file = event.target.files[0];
-        const reader = new FileReader();
-        reader.onloadend = () => {
-            setImage(reader.result);
-        };
-        reader.readAsDataURL(file);
-    };
-
-    const handleFileChange = (event) => {
-        const file = event.target.files[0];
         if (file) {
-            setSelectedFile(file);
-            // Simulate file upload progress
-            // Replace this with actual upload logic
-            setUploadProgress(30); // Placeholder for initial progress
+            setImage(URL.createObjectURL(file)); // for displaying the preview
+            setSelectedFile(file); // setting the file
         }
     };
 
-    const handleDrop = (files) => {
-        // You would typically handle file upload here, and update progress
-        // For this example, let's assume a single file and simulate progress
-        const file = files[0];
-        handleImageChange({ target: { files: [file] } }); // Reuse your existing method
-
-        // Simulate file upload progress
-        const progressInterval = setInterval(() => {
-            setUploadProgress((oldProgress) => {
-                if (oldProgress === 100) {
-                    clearInterval(progressInterval);
-                    return 100;
-                }
-                return Math.min(oldProgress + 10, 100);
-            });
-        }, 500);
+    const handleDrop = (event) => {
+        event.preventDefault(); // Prevent default behavior (Prevent file from being opened)
+        const file = event.dataTransfer.files[0]; // Access files
+        if (file) {
+            setImage(URL.createObjectURL(file)); // for displaying the preview
+            setSelectedFile(file); // setting the file
+        }
     };
+
 
     const handleCancelUpload = () => {
         // Reset the file input and clear related states
@@ -90,10 +92,49 @@ const BasicCaseDetails = () => {
         setCaseScenario(event.target.value);
     };
 
-    const handleSubmit = () => {
-        // You will need to implement form submission logic here
-        console.log('Form submitted', {image, complaintType, caseScenario});
+    const handleSubmit = async (event) => {
+        event.preventDefault(); // Prevent the default form submission behavior
+
+        // List to hold missing field names
+        let missingFields = [];
+
+        // Check for each required field and add the name of the field if it's missing
+        if (!mainType) missingFields.push("Main Type");
+        if (!complaintType) missingFields.push("Complaint Type");
+        if (!caseScenario) missingFields.push("Case Scenario");
+        if (!selectedFile) missingFields.push("Image");
+
+        // If there are any missing fields, show an alert and return
+        if (missingFields.length > 0) {
+            alert(`Please complete all required fields: ${missingFields.join(', ')}.`);
+            return;
+        }
+
+        // Create a FormData object to build up the data to send
+        const formData = new FormData();
+        formData.append('mainTypeName', mainType);
+        formData.append('complaintTypeName', complaintType);
+        formData.append('caseScenario', caseScenario);
+        formData.append('file', selectedFile);
+
+        // Construct the API URL
+        const url = `${config.apiBaseUrl}dentalComplaintCases/createCase`;
+
+        // Use axios to send a POST request
+        try {
+            const response = await axios.post(url, formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            });
+            console.log('Case created successfully:', response.data);
+            // Handle further actions here, such as clearing the form or redirecting the user
+        } catch (error) {
+            console.error('Error creating case:', error.response ? error.response.data : error);
+        }
     };
+
+
 
     const handleClickOpen = () => {
         setOpenDialog(true);
@@ -104,8 +145,22 @@ const BasicCaseDetails = () => {
     };
 
     const handleAddType = () => {
-        handleClose();
+        const url = `${config.apiBaseUrl}dentalComplaintCases/createDentalComplaintMainType`;
+
+        axios.post(url, { mainTypeName: newType })
+            .then(response => {
+                console.log('Main Type Added:', response.data);
+                // Optionally, you might want to update the local list of main types or clear the newType state
+                setMainTypes(prevTypes => [...prevTypes, newType]); // Update the local state with the new type
+                setMainType(newType);
+                setNewType(''); // Clear the input after successful addition
+                handleClose(); // Close the dialog
+            })
+            .catch(error => {
+                console.error('Error adding main type:', error);
+            });
     };
+
 
     return (
         <div className="basic-case-details">
@@ -135,14 +190,16 @@ const BasicCaseDetails = () => {
                                             className="upload-input"
                                             id="upload-thumbnail"
                                             type="file"
-                                            onChange={(e) => handleDrop(e.target.files)}
+                                            onChange={handleFileChange} // Updated to use the correct handler
                                             hidden
                                         />
+
                                         <label htmlFor="upload-thumbnail">
-                                            <Button component="span" startIcon={<CloudUploadIcon/>}>
+                                            <Button component="span" startIcon={<CloudUploadIcon />}>
                                                 Browse Files
                                             </Button>
                                         </label>
+
 
                                     </div>
                                 </Grid>
@@ -158,9 +215,9 @@ const BasicCaseDetails = () => {
                                                 label="Select the Main type"
                                                 onChange={handleMainTypeChange}
                                             >
-                                                <MenuItem value="pain-teeth">Pain Teeth</MenuItem>
-                                                <MenuItem value="pain-teeth">Pain Teeth</MenuItem>
-                                                <MenuItem value="pain-teeth">Pain Teeth</MenuItem>
+                                                {mainTypes.map((type, index) => (
+                                                    <MenuItem key={index} value={type.trim()}>{type}</MenuItem>
+                                                ))}
                                                 <MenuItem value="add-new">
                                                     <Button startIcon={<AddCircleOutlineIcon/>}
                                                             onClick={handleClickOpen}>
@@ -188,6 +245,10 @@ const BasicCaseDetails = () => {
                                             onChange={handleCaseScenarioChange}
                                         />
                                     </div>
+                                    <Button onClick={handleSubmit} variant="contained" color="primary">
+                                        Create Case
+                                    </Button>
+
                                 </Grid>
                             </Grid>
                 </Grid>
