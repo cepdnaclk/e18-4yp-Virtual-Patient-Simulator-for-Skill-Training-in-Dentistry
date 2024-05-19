@@ -1,0 +1,128 @@
+{
+    "caseId": "caseId_0001",
+    "Teeth": [
+        {
+            "Name": "Tooth1",
+            "IsPresent": true,
+            "cracked": "no",
+            "cavity": "cavity_shape_1",
+            "inlayFilling": "no",
+            "amalgamFilling": "no",
+            "whiteFilling": "no"
+        },
+        {
+            "Name": "Tooth2",
+            "IsPresent": false,
+            "cracked": "no",
+            "cavity": "no",
+            "inlayFilling": "no",
+            "amalgamFilling": "no",
+            "whiteFilling": "no"
+        },
+        {
+            "Name": "Tooth3",
+            "IsPresent": true,
+            "cracked": "cracked",
+            "cavity": "no",
+            "inlayFilling": "no",
+            "amalgamFilling": "no",
+            "whiteFilling": "no"
+        },
+        {
+            "Name": "Tooth4",
+            "IsPresent": true,
+            "cavity": "no",
+            "inlayFilling": "no",
+            "amalgamFilling": "amalgamFilling1",
+            "whiteFilling": "no"
+        },
+        {
+            "Name": "Tooth5",
+            "IsPresent": true,
+            "cavity": "cavity2",
+            "inlayFilling": "no",
+            "amalgamFilling": "no",
+            "whiteFilling": "whiteFilling1"
+        },
+        {
+            "Name": "Tooth6",
+            "IsPresent": true,
+            "cavity": "no",
+            "inlayFilling": "no",
+            "amalgamFilling": "amalgamFilling1",
+            "whiteFilling": "no"
+        },
+        {
+            "Name": "Tooth7",
+            "IsPresent": true,
+            "cavity": "cavity2",
+            "inlayFilling": "no",
+            "amalgamFilling": "no",
+            "whiteFilling": "whiteFilling1"
+        },
+        {
+            "Name": "Tooth8",
+            "IsPresent": true,
+            "cavity": "no",
+            "inlayFilling": "no",
+            "amalgamFilling": "amalgamFilling1",
+            "whiteFilling": "no"
+        },
+        {
+            "Name": "Tooth9",
+            "IsPresent": true,
+            "cavity": "cavity2",
+            "inlayFilling": "no",
+            "amalgamFilling": "no",
+            "whiteFilling": "whiteFilling1"
+        },
+        {
+            "Name": "Tooth10",
+            "IsPresent": true,
+            "cavity": "no",
+            "inlayFilling": "no",
+            "amalgamFilling": "amalgamFilling1",
+            "whiteFilling": "no"
+        },
+        {
+            "Name": "Tooth11",
+            "IsPresent": true,
+            "cavity": "cavity2",
+            "inlayFilling": "no",
+            "amalgamFilling": "no",
+            "whiteFilling": "whiteFilling1"
+        },
+        {
+            "Name": "Tooth12",
+            "IsPresent": true,
+            "cavity": "no",
+            "inlayFilling": "no",
+            "amalgamFilling": "amalgamFilling1",
+            "whiteFilling": "no"
+        },
+        {
+            "Name": "Tooth13",
+            "IsPresent": true,
+            "cavity": "cavity2",
+            "inlayFilling": "no",
+            "amalgamFilling": "no",
+            "whiteFilling": "whiteFilling1"
+        },
+        {
+            "Name": "Tooth14",
+            "IsPresent": true,
+            "cavity": "no",
+            "inlayFilling": "no",
+            "amalgamFilling": "amalgamFilling1",
+            "whiteFilling": "no"
+        },
+        {
+            "Name": "Tooth15",
+            "IsPresent": true,
+            "cavity": "cavity2",
+            "inlayFilling": "no",
+            "amalgamFilling": "no",
+            "whiteFilling": "whiteFilling1"
+        }
+    ]
+}
