@@ -70,16 +70,19 @@ const HistoryQuestions = () => {
         });
 
         const dataToSend = {
-            caseId: "case_18",  // This should be dynamically set based on your application's state or props
+            caseID: "case_1",
+            mainTypeName: "Pain",
+            complaintTypeName: "Toothache",
             historyTakingQuestions
         };
 
-        sendToAPI(dataToSend);
+        await sendToAPI(dataToSend);
     };
 
     const sendToAPI = async (data) => {
+        console.log(data)
         try {
-            const response = await axios.post('API_ENDPOINT_HERE', data);
+            const response = await axios.put('http://127.0.0.1:5001/virtual-patient-simulator-2024/us-central1/app/api/dentalComplaintCases/updateHistoryTakingQuestions', data);
             console.log('Questions submitted successfully:', response.data);
             // Handle further actions after successful submission
         } catch (error) {
@@ -188,6 +191,9 @@ const HistoryQuestions = () => {
                         </Accordion>
                         </div>
                     ))}
+                    <Button variant="outlined" onClick={() => handleSubmitQuestions()}>
+                        Submit
+                    </Button>
                 </Grid>
             </Grid>
             <AddHistoryQuestionDialog
