@@ -32,7 +32,7 @@ const App = () => {
             children: [
                 {
                     path: "/createCase",
-                    element: <StepperComponent />,
+                    element: <BasicCaseDetails />,
                 },
                 {
                     path: "/historyQuestions",

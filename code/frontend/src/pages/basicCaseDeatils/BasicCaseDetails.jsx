@@ -1,4 +1,4 @@
-import {useEffect, useRef, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {
     Typography,
     TextField,
@@ -16,6 +16,7 @@ import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import './BasicCaseDetails.scss';
 import axios from "axios";
 import config from "../../config.js";
+import StepperComponent from "../../layout/stepper/StepperComponent.jsx";
 
 const BasicCaseDetails = () => {
     const [image, setImage] = useState(null);
@@ -164,6 +165,7 @@ const BasicCaseDetails = () => {
 
     return (
         <div className="basic-case-details">
+            <StepperComponent selectedStep={"Basic Details"}></StepperComponent>
             <Grid container justifyContent="center">
                 <Grid item xs={12} sm={10}>
                             <Grid container spacing={2}>

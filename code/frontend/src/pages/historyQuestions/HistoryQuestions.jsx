@@ -15,6 +15,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { AddAnswerDialog, AddHistoryQuestionDialog } from '../../components/Components.jsx';
 import './historyQuestions.scss';
 import axios from "axios";
+import StepperComponent from "../../layout/stepper/StepperComponent.jsx";
 
 const HistoryQuestions = () => {
     const initialSections = {
@@ -158,8 +159,9 @@ const HistoryQuestions = () => {
 
     return (
         <div className="history-questions">
+            <StepperComponent selectedStep={"History Questions"}></StepperComponent>
             <Grid container justifyContent="center">
-                <Grid item xs={12} sm={12}>
+                <Grid item xs={11} sm={11}>
                     {Object.entries(sections).map(([sectionTitle, questions], sectionIndex) => (
                         <div key={sectionIndex} className="section">
                         <Accordion key={sectionIndex} className="accordion-section">
