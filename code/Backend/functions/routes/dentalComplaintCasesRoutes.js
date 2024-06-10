@@ -176,4 +176,34 @@ router.post(
   }
 );
 
+// UPDATE CASE DETAILS
+// PUT
+// ROUTE : /api/dentalComplaintCases/updateHistoryTakingQuestions
+router.put('/updateHistoryTakingQuestions', async (req, res) => {
+  const mainTypeName = req.body.mainTypeName;
+  const complaintTypeName = req.body.complaintTypeName;
+  const cID = req.body.caseID;
+  const historyTakingQuestionsArray = req.body.historyTakingQuestions;
+  
+  try {
+    const documentRef = db.collection(COLLECTION_NAME).doc(mainTypeName).collection(complaintTypeName).doc(cID);
+
+    const documentSnapshot = await documentRef.get();
+    const documentData = documentSnapshot.data();
+
+    if(!documentData){
+      return res.status(404).json({ status: "Failed", message: "Case details document is not in the database" });
+    }
+
+    const updatedDoc = await documentRef.update({historyTakingQuestions: historyTakingQuestionsArray})
+    console.log(updatedDoc)
+    return res.status(200).send({ status: "Success", message: "Document Updated Successfully"});
+
+  } catch (error) {
+    console.error('Error updating the document:', error);
+    res.status(500).json({error:'Failed to update document'});
+  }
+});
+
+
 module.exports = router;
