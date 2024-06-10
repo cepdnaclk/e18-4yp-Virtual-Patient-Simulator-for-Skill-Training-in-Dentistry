@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Dialog, DialogContent, DialogActions, DialogTitle, TextField, FormControl, FormLabel, Button, Radio, RadioGroup, FormControlLabel } from '@mui/material';
 
-const AddAnswerDialog = ({ open, handleClose, question, answer: initialAnswer, status: initialStatus, handleSaveStatus }) => {
+const AddAnswerDialog = ({ open, handleClose, question, answer: initialAnswer, status: initialStatus, selectedSection, handleSaveStatus }) => {
     const [answer, setAnswer] = useState('');
     const [status, setStatus] = useState('');
 
@@ -22,7 +22,7 @@ const AddAnswerDialog = ({ open, handleClose, question, answer: initialAnswer, s
 
     const handleSave = () => {
         // Pass the answer and status back to the parent component
-        handleSaveStatus(question, answer, status);
+        handleSaveStatus(question, answer, status, selectedSection);
         handleClose();
     };
 

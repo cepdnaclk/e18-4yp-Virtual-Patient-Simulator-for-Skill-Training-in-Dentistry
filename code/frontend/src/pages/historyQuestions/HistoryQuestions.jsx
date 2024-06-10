@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import {
     Button,
     Accordion,
@@ -14,30 +14,15 @@ import {
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { AddAnswerDialog, AddHistoryQuestionDialog } from '../../components/Components.jsx';
 import './historyQuestions.scss';
+import axios from "axios";
 
 const HistoryQuestions = () => {
     const initialSections = {
-        'General Questions': [
-            "Can you point to the tooth you have the problem?",
-            "How many days have you had pain on the tooth?",
-            "Does the pain radiate?"
-        ],
-        'Medical history': [
-            "Have you been diagnosed with any medical conditions?",
-            "Are you currently taking any medication?"
-        ],
-        'Smoking and drinking habits': [
-            "Do you smoke or have you ever smoked?",
-            "How often do you consume alcohol?"
-        ],
-        'Dietary history': [
-            "Do you have any dietary restrictions?",
-            "How would you describe your daily diet?"
-        ],
-        'Others': [
-            "Do you have any allergies?",
-            "Is there anything else we should know about your health?"
-        ]
+        'General Questions': [],
+        'Medical History': [],
+        'Smoking and drinking habits': [],
+        'Dietary history': [],
+        'Others': []
     };
 
     const [sections, setSections] = useState(initialSections);
@@ -46,8 +31,66 @@ const HistoryQuestions = () => {
     const [questionsData, setQuestionsData] = useState({});
     const [addQuestionDialogOpen, setAddQuestionDialogOpen] = useState(false);
     const [selectedSection, setSelectedSection] = useState('');
+    const [selectedQuestions, setSelectedQuestions] = useState([]);
 
-    const handleQuestionClick = (question) => {
+    useEffect(() => {
+        axios.get('http://127.0.0.1:5001/virtual-patient-simulator-2024/us-central1/app/api/historyTakingQestionBank/getAll')
+            .then(response => {
+                const fetchedQuestions = response.data.questions;
+                const updatedSections = { ...initialSections };
+
+                fetchedQuestions.forEach(question => {
+                    updatedSections[question.questionType] = [
+                        ...(updatedSections[question.questionType] || []),
+                        question.questionText
+                    ];
+                });
+
+                setSections(updatedSections);
+            })
+            .catch(error => {
+                console.error('Failed to fetch questions:', error);
+            });
+    }, []);
+
+    const handleSubmitQuestions = async () => {
+        const historyTakingQuestions = [];
+        Object.entries(sections).forEach(([questionType, questions]) => {
+            questions.forEach(question => {
+                const details = questionsData[question];
+                if (details) { // Ensure only questions with details are submitted
+                    historyTakingQuestions.push({
+                        questionType: questionType,
+                        questionText: question,
+                        answer: details.answer,
+                        required: details.status === 'required'
+                    });
+                }
+            });
+        });
+
+        const dataToSend = {
+            caseId: "case_18",  // This should be dynamically set based on your application's state or props
+            historyTakingQuestions
+        };
+
+        sendToAPI(dataToSend);
+    };
+
+    const sendToAPI = async (data) => {
+        try {
+            const response = await axios.post('API_ENDPOINT_HERE', data);
+            console.log('Questions submitted successfully:', response.data);
+            // Handle further actions after successful submission
+        } catch (error) {
+            console.error('Failed to submit questions:', error);
+            // Handle errors appropriately
+        }
+    };
+
+
+    const handleQuestionClick = (question,sectionTitle) => {
+        setSelectedSection(sectionTitle);
         setCurrentQuestion(question);
         setDialogOpen(true);
     };
@@ -75,7 +118,7 @@ const HistoryQuestions = () => {
         setDialogOpen(false);
     };
 
-    const handleSaveStatus = (question, answer, status) => {
+    const handleSaveStatus = (question, answer, status, selectedSection) => {
         if (answer === '' && status === '') {
             setQuestionsData(prevData => {
                 const newData = { ...prevData };
@@ -88,6 +131,26 @@ const HistoryQuestions = () => {
                 [question]: { answer, status }
             }));
         }
+        handleSaveQuestionDetails(question, answer, status==="required"?true:false,selectedSection);
+    };
+
+    // Save or update question details
+    const handleSaveQuestionDetails = (question, answer, required, selectedSection) => {
+        const existingIndex = selectedQuestions.findIndex(q => q.questionText === question);
+        const newQuestion = {
+            questionType: selectedSection,
+            questionText: question,
+            answer: answer,
+            required: required
+        };
+        const updatedSelectedQuestions = [...selectedQuestions];
+        if (existingIndex > -1) {
+            updatedSelectedQuestions[existingIndex] = newQuestion;
+        } else {
+            updatedSelectedQuestions.push(newQuestion);
+        }
+        setSelectedQuestions(updatedSelectedQuestions);
+        console.log(selectedQuestions);
     };
 
     return (
@@ -111,7 +174,7 @@ const HistoryQuestions = () => {
                                             <ListItem
                                                 key={index}
                                                 className={`question-item ${statusClass}`}
-                                                onClick={() => handleQuestionClick(question)}
+                                                onClick={() => handleQuestionClick(question,sectionTitle)}
                                             >
                                                 <Typography>{`${index + 1}. ${question}`}</Typography>
                                             </ListItem>
@@ -139,6 +202,7 @@ const HistoryQuestions = () => {
                 question={currentQuestion}
                 answer={questionsData[currentQuestion]?.answer || ''}
                 status={questionsData[currentQuestion]?.status || ''}
+                selectedSection={selectedSection}
                 handleSaveStatus={handleSaveStatus}
             />
         </div>
