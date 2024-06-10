@@ -8,3 +8,4 @@ export {default as DisplayQuestions} from "./displayQuestions/DisplayQuestions.j
 //Student Components//
 export {default as ChatBot} from "./chatBot/ChatBot.jsx";
 export {default as Messages} from "./messages/Messages.jsx";
+export {default as ThreeDModel} from "./threeDModel/ThreeD.jsx";

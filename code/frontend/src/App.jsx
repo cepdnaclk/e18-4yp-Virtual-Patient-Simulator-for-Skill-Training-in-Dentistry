@@ -5,7 +5,7 @@ import {
     BasicCaseDetails,
     HistoryQuestions,
     PeriodontalScreeningQuestions,
-    StudentLogin, ShowCases, HistoryTaking, ExaminationGuideline
+    StudentLogin, ShowCases, HistoryTaking, ExaminationGuideline, Examination
 } from "./pages/Pages.jsx";
 import MainLayout from "./layout/MainLayout.jsx";
 import "./styles/global.scss";
@@ -54,7 +54,12 @@ const App = () => {
                 {
                     path: "/examinationGuideline",
                     element: <ExaminationGuideline/>,
+                },
+                {
+                    path: "/examination",
+                    element: <Examination/>,
                 }
+
             ],
         },
 

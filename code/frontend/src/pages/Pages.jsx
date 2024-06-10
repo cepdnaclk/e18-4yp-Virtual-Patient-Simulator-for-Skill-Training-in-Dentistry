@@ -19,3 +19,4 @@ export {default as StudentLogin} from "./student/login/StudentLogin.jsx";
 export {default as ShowCases} from "./student/ShowCases/ShowCases.jsx";
 export {default as HistoryTaking} from "./student/historyTaking/HistoryTaking.jsx";
 export {default as ExaminationGuideline} from "./student/examinationGuideline/ExaminationGuideline.jsx";
+export {default as Examination} from "./examination/Examination.jsx";
