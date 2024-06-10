@@ -26,7 +26,8 @@ router.get("/get", async (req, res) => {
 router.post("/store", async (req, res) => {
   try {
     const teethData = req.body;
-    const caseId = req.body.caseId;
+    // const caseId = req.body.caseId;
+    const caseId = "case1Hiiiii";
 
     // Store the extracted JSON data in Firestore with the document ID as caseId
     await db.collection("caseToothDetails").doc(caseId).set(teethData);
