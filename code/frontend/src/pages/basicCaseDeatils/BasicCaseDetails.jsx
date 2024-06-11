@@ -7,7 +7,7 @@ import {
     MenuItem,
     FormControl,
     InputLabel,
-    Grid, Box, Snackbar, Alert
+    Grid, Box, Snackbar, Alert, CircularProgress
 } from '@mui/material';
 
 import {AddMainType} from "../../components/Components.jsx";
@@ -31,6 +31,7 @@ const BasicCaseDetails = () => {
     const fileInputRef = useRef(null);
     const [mainTypes, setMainTypes] = useState([]);
     const navigate = useNavigate();
+    const [isLoading, setIsLoading] = useState(false);
 
     const [openSnackbar, setOpenSnackbar] = useState(false);
     const [snackbarMessage, setSnackbarMessage] = useState('');
@@ -104,6 +105,7 @@ const BasicCaseDetails = () => {
     };
 
     const handleSubmit = async (event) => {
+        setIsLoading(true);
         event.preventDefault();
 
         let missingFields = [];
@@ -113,6 +115,7 @@ const BasicCaseDetails = () => {
         if (!selectedFile) missingFields.push("Image");
 
         if (missingFields.length > 0) {
+            setIsLoading(false);
             setSnackbarMessage(`Please complete all required fields: ${missingFields.join(', ')}`);
             setSeverity('error');
             setOpenSnackbar(true);
@@ -139,10 +142,12 @@ const BasicCaseDetails = () => {
             navigate('/historyQuestions');
         } catch (error) {
             console.error('Error creating case:', error);
+            setIsLoading(false);
             setSnackbarMessage(`Something went wrong. Please try again.`);
             setSeverity('error');
         } finally {
             setOpenSnackbar(true);
+            setIsLoading(false);
         }
     };
 
@@ -177,6 +182,13 @@ const BasicCaseDetails = () => {
     return (
         <div className="basic-case-details">
             <StepperComponent selectedStep={"Basic Details"}></StepperComponent>
+            <Box position="relative" minHeight="100vh">
+                {isLoading && (
+                    <Box position="absolute" top="20%" left="50%" style={{ transform: 'translate(-50%, -50%)' }}>
+                        <CircularProgress />
+                    </Box>
+                )}
+                {!isLoading && (
             <Grid container justifyContent="center" >
                 <Grid item xs={12} sm={11} sx={{ boxShadow: 3, padding: 2, borderRadius: 1}}>
                             <Grid container spacing={2}>
@@ -278,6 +290,8 @@ const BasicCaseDetails = () => {
                             </Grid>
                 </Grid>
             </Grid>
+                )}
+            </Box>
             <AddMainType
                 open={openDialog}
                 onClose={() => setOpenDialog(false)}
