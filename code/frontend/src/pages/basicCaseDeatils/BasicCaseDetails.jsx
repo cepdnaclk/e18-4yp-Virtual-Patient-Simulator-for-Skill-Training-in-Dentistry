@@ -7,7 +7,7 @@ import {
     MenuItem,
     FormControl,
     InputLabel,
-    Grid
+    Grid, Box, Snackbar, Alert
 } from '@mui/material';
 
 import {AddMainType} from "../../components/Components.jsx";
@@ -17,6 +17,7 @@ import './BasicCaseDetails.scss';
 import axios from "axios";
 import config from "../../config.js";
 import StepperComponent from "../../layout/stepper/StepperComponent.jsx";
+import {useNavigate} from "react-router-dom";
 
 const BasicCaseDetails = () => {
     const [image, setImage] = useState(null);
@@ -29,6 +30,11 @@ const BasicCaseDetails = () => {
     const [selectedFile, setSelectedFile] = useState(null);
     const fileInputRef = useRef(null);
     const [mainTypes, setMainTypes] = useState([]);
+    const navigate = useNavigate();
+
+    const [openSnackbar, setOpenSnackbar] = useState(false);
+    const [snackbarMessage, setSnackbarMessage] = useState('');
+    const [severity, setSeverity] = useState('info');
 
     useEffect(() => {
         const url = `${config.apiBaseUrl}dentalComplaintCases/getAllDentalComplaintMainTypes`;
@@ -93,35 +99,34 @@ const BasicCaseDetails = () => {
         setCaseScenario(event.target.value);
     };
 
+    const handleSnackbarClose = () => {
+        setOpenSnackbar(false);
+    };
+
     const handleSubmit = async (event) => {
-        event.preventDefault(); // Prevent the default form submission behavior
+        event.preventDefault();
 
-        // List to hold missing field names
         let missingFields = [];
-
-        // Check for each required field and add the name of the field if it's missing
         if (!mainType) missingFields.push("Main Type");
         if (!complaintType) missingFields.push("Complaint Type");
         if (!caseScenario) missingFields.push("Case Scenario");
         if (!selectedFile) missingFields.push("Image");
 
-        // If there are any missing fields, show an alert and return
         if (missingFields.length > 0) {
-            alert(`Please complete all required fields: ${missingFields.join(', ')}.`);
+            setSnackbarMessage(`Please complete all required fields: ${missingFields.join(', ')}`);
+            setSeverity('error');
+            setOpenSnackbar(true);
             return;
         }
 
-        // Create a FormData object to build up the data to send
         const formData = new FormData();
         formData.append('mainTypeName', mainType);
         formData.append('complaintTypeName', complaintType);
         formData.append('caseScenario', caseScenario);
         formData.append('file', selectedFile);
 
-        // Construct the API URL
         const url = `${config.apiBaseUrl}dentalComplaintCases/createCase`;
 
-        // Use axios to send a POST request
         try {
             const response = await axios.post(url, formData, {
                 headers: {
@@ -129,9 +134,15 @@ const BasicCaseDetails = () => {
                 }
             });
             console.log('Case created successfully:', response.data);
-            // Handle further actions here, such as clearing the form or redirecting the user
+            setSnackbarMessage(`Basic details added successfully`);
+            setSeverity('success');
+            navigate('/historyQuestions');
         } catch (error) {
-            console.error('Error creating case:', error.response ? error.response.data : error);
+            console.error('Error creating case:', error);
+            setSnackbarMessage(`Something went wrong. Please try again.`);
+            setSeverity('error');
+        } finally {
+            setOpenSnackbar(true);
         }
     };
 
@@ -166,8 +177,8 @@ const BasicCaseDetails = () => {
     return (
         <div className="basic-case-details">
             <StepperComponent selectedStep={"Basic Details"}></StepperComponent>
-            <Grid container justifyContent="center">
-                <Grid item xs={12} sm={10}>
+            <Grid container justifyContent="center" >
+                <Grid item xs={12} sm={11} sx={{ boxShadow: 3, padding: 2, borderRadius: 1}}>
                             <Grid container spacing={2}>
                                 <Grid item xs={12} md={6} className="image-upload-container">
                                     <div className="upload-section">
@@ -177,7 +188,7 @@ const BasicCaseDetails = () => {
                                             handleDrop(e.dataTransfer.files);
                                         }} onDragOver={(e) => e.preventDefault()}>
                                             <CloudUploadIcon fontSize="large" />
-                                            <Typography>Drag and drop files here</Typography>
+                                            <Typography>Drag and Drop the Case Thumbnail Image</Typography>
                                             {image && (
                                                 <div className="file-status">
                                                     <span className="file-name">screenshot.png</span>
@@ -247,9 +258,21 @@ const BasicCaseDetails = () => {
                                             onChange={handleCaseScenarioChange}
                                         />
                                     </div>
-                                    <Button onClick={handleSubmit} variant="contained" color="primary">
-                                        Create Case
-                                    </Button>
+                                    <Box display="flex" justifyContent="flex-end" mt={2}>
+                                        <Button onClick={handleSubmit} variant="contained" color="primary">
+                                            Next
+                                        </Button>
+                                        <Snackbar
+                                            open={openSnackbar}
+                                            autoHideDuration={6000}
+                                            onClose={handleSnackbarClose}
+                                            anchorOrigin={{ vertical: 'top', horizontal: 'center' }}  // Positions the Snackbar at the top center
+                                        >
+                                            <Alert onClose={handleSnackbarClose} severity={severity} sx={{ width: '100%' }}>
+                                                {snackbarMessage}
+                                            </Alert>
+                                        </Snackbar>
+                                    </Box>
 
                                 </Grid>
                             </Grid>
