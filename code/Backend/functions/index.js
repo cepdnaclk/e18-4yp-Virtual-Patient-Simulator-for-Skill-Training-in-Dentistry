@@ -30,4 +30,7 @@ app.use("/api/dentalComplaintCases", dentalComplaintCasesRoutes);
 const teethDetailsRoutes = require("./routes/teethDetails");
 app.use("/api/teethDetails", teethDetailsRoutes);
 
+const examintionQuestionsRoutes = require("./routes/examinationQuestionsRoutes");
+app.use("/api/examintionQuestions", examintionQuestionsRoutes);
+
 exports.app = functions.https.onRequest(app);

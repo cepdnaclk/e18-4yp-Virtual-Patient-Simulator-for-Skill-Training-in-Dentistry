@@ -1,0 +1,16 @@
+{
+    "mainTypeName": "Pain",
+    "complaintTypeName": "PainFulTooth",
+    "caseId": "case_1",
+    "sectionName": "periodontalScreeningQuestions",
+    "Question": {
+        "questionType": "trueOrFalseType",
+        "question": "Check for signs of gum disease.",
+        "correctAnswer": true
+    },
+    "QuestionImage": null,
+    "A": null,
+    "B": null,
+    "C": null,
+    "D": null
+}
