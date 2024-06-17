@@ -6,9 +6,10 @@
     "Question": {
         "questionType": "trueOrFalseType",
         "question": "Check for signs of gum disease.",
-        "correctAnswer": true
+        "correctAnswer": true,
+        "choices": null,
+        "questionImageUrl": null
     },
-    "QuestionImage": null,
     "A": null,
     "B": null,
     "C": null,
