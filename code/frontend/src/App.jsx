@@ -5,7 +5,19 @@ import {
     BasicCaseDetails,
     HistoryQuestions,
     PeriodontalScreeningQuestions,
-    StudentLogin, ShowCases, HistoryTaking, ExaminationGuideline, Examination
+    StudentLogin,
+    ShowCases,
+    HistoryTaking,
+    ExaminationGuideline,
+    Examination,
+    SoftTissueAssessment,
+    HardTissueAssessment,
+    DentalChart,
+    Diagnosis,
+    HematologicalRecordings,
+    SensibilityRecordings,
+    Radiographs,
+    RecordPlaqueScore
 } from "./pages/Pages.jsx";
 import MainLayout from "./layout/MainLayout.jsx";
 import "./styles/global.scss";
@@ -32,7 +44,7 @@ const App = () => {
             children: [
                 {
                     path: "/createCase",
-                    element: <StepperComponent />,
+                    element: <BasicCaseDetails />,
                 },
                 {
                     path: "/historyQuestions",
@@ -42,23 +54,42 @@ const App = () => {
                     path: "/periodontalScreeningQuestions",
                     element: <PeriodontalScreeningQuestions />,
                 },
-                    //student pages//
+                {
+                    path: "/softTissueAssessment",
+                    element: <SoftTissueAssessment />,
+                },
+                {
+                    path: "/hardTissueAssessment",
+                    element: <HardTissueAssessment />,
+                },
+                {
+                    path: "/dentalChart",
+                    element: <DentalChart />,
+                },
+                {
+                    path: "/recordPlaqueScore",
+                    element: <RecordPlaqueScore />,
+                },
+                {
+                    path: "/radiographs",
+                    element: <Radiographs />,
+                },
+                {
+                    path: "/sensibilityRecordings",
+                    element: <SensibilityRecordings />,
+                },
+                {
+                    path: "/hematologicalRecordings",
+                    element: <HematologicalRecordings />,
+                },
+                {
+                    path: "/diagnosis",
+                    element: <Diagnosis />,
+                },
                 {
                     path: "/showCases",
                     element: <ShowCases/>,
                 },
-                {
-                    path: "/historyTaking",
-                    element: <HistoryTaking/>,
-                },
-                {
-                    path: "/examinationGuideline",
-                    element: <ExaminationGuideline/>,
-                },
-                {
-                    path: "/examination",
-                    element: <Examination/>,
-                }
 
             ],
         },

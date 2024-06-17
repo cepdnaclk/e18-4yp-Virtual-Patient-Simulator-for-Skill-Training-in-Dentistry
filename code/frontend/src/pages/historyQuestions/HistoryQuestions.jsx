@@ -9,12 +9,14 @@ import {
     ListItem,
     Container,
     Grid,
-    Card, CardContent
+    Card, CardContent, Snackbar, Alert, Box, CircularProgress
 } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { AddAnswerDialog, AddHistoryQuestionDialog } from '../../components/Components.jsx';
 import './historyQuestions.scss';
 import axios from "axios";
+import StepperComponent from "../../layout/stepper/StepperComponent.jsx";
+import {useNavigate} from "react-router-dom";
 
 const HistoryQuestions = () => {
     const initialSections = {
@@ -32,6 +34,13 @@ const HistoryQuestions = () => {
     const [addQuestionDialogOpen, setAddQuestionDialogOpen] = useState(false);
     const [selectedSection, setSelectedSection] = useState('');
     const [selectedQuestions, setSelectedQuestions] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
+    const navigate = useNavigate();
+
+    const [openSnackbar, setOpenSnackbar] = useState(false);
+    const [snackbarMessage, setSnackbarMessage] = useState('');
+    const [severity, setSeverity] = useState('info');
+
 
     useEffect(() => {
         axios.get('http://127.0.0.1:5001/virtual-patient-simulator-2024/us-central1/app/api/historyTakingQestionBank/getAll')
@@ -53,6 +62,10 @@ const HistoryQuestions = () => {
             });
     }, []);
 
+    const handleSnackbarClose = () => {
+        setOpenSnackbar(false);
+    };
+
     const handleSubmitQuestions = async () => {
         const historyTakingQuestions = [];
         Object.entries(sections).forEach(([questionType, questions]) => {
@@ -70,21 +83,26 @@ const HistoryQuestions = () => {
         });
 
         const dataToSend = {
-            caseId: "case_18",  // This should be dynamically set based on your application's state or props
+            caseID: "case_1",
+            mainTypeName: "Pain",
+            complaintTypeName: "Toothache",
             historyTakingQuestions
         };
 
-        sendToAPI(dataToSend);
+        await sendToAPI(dataToSend);
     };
 
     const sendToAPI = async (data) => {
+        setIsLoading(true);
         try {
-            const response = await axios.post('API_ENDPOINT_HERE', data);
+            const response = await axios.put('http://127.0.0.1:5001/virtual-patient-simulator-2024/us-central1/app/api/dentalComplaintCases/updateHistoryTakingQuestions', data);
             console.log('Questions submitted successfully:', response.data);
-            // Handle further actions after successful submission
+            navigate('/periodontalScreeningQuestions');
         } catch (error) {
+            setIsLoading(false);
             console.error('Failed to submit questions:', error);
-            // Handle errors appropriately
+        }finally {
+            setIsLoading(false);
         }
     };
 
@@ -155,8 +173,16 @@ const HistoryQuestions = () => {
 
     return (
         <div className="history-questions">
+            <StepperComponent selectedStep={"History Questions"}></StepperComponent>
+            <Box position="relative" minHeight="100vh">
+                {isLoading && (
+                    <Box position="absolute" top="20%" left="50%" style={{ transform: 'translate(-50%, -50%)' }}>
+                        <CircularProgress />
+                    </Box>
+                )}
+                {!isLoading && (
             <Grid container justifyContent="center">
-                <Grid item xs={12} sm={12}>
+                <Grid item xs={12} sm={11} sx={{ boxShadow: 3, padding: 2, borderRadius: 1}}>
                     {Object.entries(sections).map(([sectionTitle, questions], sectionIndex) => (
                         <div key={sectionIndex} className="section">
                         <Accordion key={sectionIndex} className="accordion-section">
@@ -188,8 +214,25 @@ const HistoryQuestions = () => {
                         </Accordion>
                         </div>
                     ))}
+                    <Box display="flex" justifyContent="flex-end" mt={2}>
+                        <Button onClick={() => handleSubmitQuestions()} variant="contained" color="primary">
+                            Next
+                        </Button>
+                        <Snackbar
+                            open={openSnackbar}
+                            autoHideDuration={6000}
+                            onClose={handleSnackbarClose}
+                            anchorOrigin={{ vertical: 'top', horizontal: 'center' }}  // Positions the Snackbar at the top center
+                        >
+                            <Alert onClose={handleSnackbarClose} severity={severity} sx={{ width: '100%' }}>
+                                {snackbarMessage}
+                            </Alert>
+                        </Snackbar>
+                    </Box>
                 </Grid>
             </Grid>
+                )}
+            </Box>
             <AddHistoryQuestionDialog
                 open={addQuestionDialogOpen}
                 handleClose={handleCloseAddQuestionDialog}
