@@ -57,6 +57,7 @@ router.post(
               question: jsonQuestion.question,
               correctAnswer: jsonQuestion.correctAnswer,
               questionImageUrl: null,
+              choices: null,
             },
           });
 
@@ -111,6 +112,7 @@ router.post(
               question: jsonQuestion.question,
               correctAnswer: jsonQuestion.correctAnswer,
               questionImageUrl: downloadURL,
+              choices: null,
             },
           });
 
