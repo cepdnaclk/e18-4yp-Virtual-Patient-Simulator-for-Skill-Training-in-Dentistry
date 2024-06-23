@@ -5,11 +5,7 @@ import {
     BasicCaseDetails,
     HistoryQuestions,
     PeriodontalScreeningQuestions,
-    StudentLogin,
     ShowCases,
-    HistoryTaking,
-    ExaminationGuideline,
-    Examination,
     SoftTissueAssessment,
     HardTissueAssessment,
     DentalChart,
@@ -17,11 +13,10 @@ import {
     HematologicalRecordings,
     SensibilityRecordings,
     Radiographs,
-    RecordPlaqueScore
+    RecordPlaqueScore, TeacherSignup
 } from "./pages/Pages.jsx";
 import MainLayout from "./layout/MainLayout.jsx";
 import "./styles/global.scss";
-import StepperComponent from "./layout/stepper/StepperComponent.jsx";
 
 const App = () => {
     const router = createBrowserRouter([
@@ -32,10 +27,6 @@ const App = () => {
         {
             path: "/teacherLogin",
             element: <TeacherLogin />,
-        },
-        {
-            path: "/studentLogin",
-            element: <StudentLogin />,
         },
 
         {
@@ -89,6 +80,10 @@ const App = () => {
                 {
                     path: "/showCases",
                     element: <ShowCases/>,
+                },
+                {
+                    path: "/teacherSignup",
+                    element: <TeacherSignup />,
                 },
 
             ],

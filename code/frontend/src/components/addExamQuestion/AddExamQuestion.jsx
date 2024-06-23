@@ -16,6 +16,7 @@ import {
 import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
 import CancelIcon from '@mui/icons-material/Cancel';
 import './addExamQuestion.scss';
+import axios from "axios";
 
 const AddExamQuestion = ({ open, handleClose, onAddQuestion }) => {
     const initialQuestionState = { text: '', image: null };
@@ -85,7 +86,8 @@ const AddExamQuestion = ({ open, handleClose, onAddQuestion }) => {
         }
     };
 
-    const handleSaveQuestion = () => {
+    const handleSaveQuestion = async () => {
+
         const questionData = {
             type: answerType,
             text: question.text,
@@ -99,9 +101,42 @@ const AddExamQuestion = ({ open, handleClose, onAddQuestion }) => {
 
         console.log(JSON.stringify(questionData, null, 2));
 
-        onAddQuestion(questionData);
 
-        handleClose();
+
+        const formData = new FormData();
+
+        // Append general information
+        formData.append('mainTypeName', 'Pain');
+        formData.append('complaintTypeName', 'PainFulTooth');
+        formData.append('caseId', 'case_1');
+        formData.append('sectionName', 'periodontalScreeningQuestions');
+
+        // Append question details as a JSON string
+        formData.append('Question', JSON.stringify({
+            questionType: "trueOrFalseType",
+            question: question.text,
+            correctAnswer: answers.some(answer => answer.isCorrect)  // Assuming single true/false
+        }));
+
+        // Append images directly if they exist; append a string 'null' if not
+        formData.append('QuestionImage', question.image ? question.image : 'null');
+        formData.append('A', answers.length > 0 && answers[0].image ? answers[0].image : 'null');
+        formData.append('B', answers.length > 1 && answers[1].image ? answers[1].image : 'null');
+        formData.append('C', answers.length > 2 && answers[2].image ? answers[2].image : 'null');
+        formData.append('D', answers.length > 3 && answers[3].image ? answers[3].image : 'null');
+
+        try {
+            const response = await axios.post('http://127.0.0.1:5001/virtual-patient-simulator-2024/us-central1/app/api/examintionQuestions/createExaminationQuestion', formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            });
+            console.log('Question added:', response.data);
+            onAddQuestion(questionData);
+            handleClose();
+        } catch (error) {
+            console.error('Failed to add question:', error);
+        }
     };
 
 

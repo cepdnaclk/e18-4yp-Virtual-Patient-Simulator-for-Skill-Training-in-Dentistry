@@ -1,4 +1,5 @@
 export {default as TeacherLogin} from "./login/TeacherLogin.jsx";
+export {default as TeacherSignup} from "./signup/TeacherSignup.jsx";
 export {default as Home} from "./home/Home.jsx";
 export {default as BasicCaseDetails} from "./basicCaseDeatils/BasicCaseDetails.jsx";
 export {default as HistoryQuestions} from "./historyQuestions/HistoryQuestions.jsx";
