@@ -14,7 +14,7 @@ import {AddExamQuestion, QuestionDisplay} from "../Components.jsx";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import {useNavigate} from "react-router-dom";
 
-const DisplayQuestions = ({questions, setQuestions, navigatePath, section}) => {
+const DisplayQuestions = ({questions, setQuestions, navigatePath}) => {
     const [addExamQuestionOpen, setAddExamQuestionOpen] = React.useState(false);
     const navigate = useNavigate();
     const [openSnackbar, setOpenSnackbar] = useState(false);

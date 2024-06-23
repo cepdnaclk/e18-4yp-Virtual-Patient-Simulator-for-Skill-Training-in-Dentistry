@@ -3,39 +3,28 @@ import { AppBar, Toolbar, Typography, Button, IconButton, Menu, MenuItem, Toolti
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import AddBox from '@mui/icons-material/AddBox';
 import Logout from '@mui/icons-material/Logout';
-import Login from '@mui/icons-material/Login';
 import { styled } from '@mui/material/styles';
+import { useNavigate } from 'react-router-dom';
+import {useUser} from "../../contexts/UserContext.jsx";
 
-const StyledAppBar = styled(AppBar)(({ theme }) => ({
+const StyledAppBar = styled(AppBar)({
     backgroundColor: '#ffffff',
     color: 'black',
     boxShadow: '0 4px 12px rgba(0, 0, 0, 0.05)',
     borderRadius: '20px',
-    position: 'relative',
-    [theme.breakpoints.up('sm')]: {
-        margin: '16px',
-        width: 'auto', // Set the width to auto or a specific value as needed
-    },
-    [theme.breakpoints.down('xs')]: {
-        margin: 0, // Full width on small screens
-        borderRadius: 0, // Remove border radius on small screens if desired
-    },
-}));
-
-// ... rest of the component
-
+    margin: '16px',
+    width: 'auto',
+});
 
 const StyledToolbar = styled(Toolbar)({
     justifyContent: 'space-between',
 });
 
-const NavbarButton = styled(Button)({
-    margin: '0 8px',
-});
-
-const Navbar = ({ username }) => {
+const Navbar = () => {
     const [anchorEl, setAnchorEl] = useState(null);
     const isMenuOpen = Boolean(anchorEl);
+    const { user, logout } = useUser();  // Use the user context
+    const navigate = useNavigate();
 
     const handleProfileMenuOpen = (event) => {
         setAnchorEl(event.currentTarget);
@@ -46,9 +35,9 @@ const Navbar = ({ username }) => {
     };
 
     const handleLogout = () => {
-        // Logout logic
+        logout();
         handleMenuClose();
-        console.log('User logged out');
+        navigate('/teacherLogin');  // Navigate to login after logout
     };
 
     const renderMenu = (
@@ -60,12 +49,14 @@ const Navbar = ({ username }) => {
             open={isMenuOpen}
             onClose={handleMenuClose}
         >
-            <MenuItem onClick={handleMenuClose}>
-                <ListItemIcon>
-                    <AccountCircle fontSize="small" />
-                </ListItemIcon>
-                {username}
-            </MenuItem>
+            {user && (
+                <MenuItem onClick={handleMenuClose}>
+                    <ListItemIcon>
+                        <AccountCircle fontSize="small" />
+                    </ListItemIcon>
+                    {user.userName}
+                </MenuItem>
+            )}
             <MenuItem onClick={handleLogout}>
                 <ListItemIcon>
                     <Logout fontSize="small" />
@@ -82,14 +73,11 @@ const Navbar = ({ username }) => {
                     Virtual Patient Simulator
                 </Typography>
                 <div>
-                    {username ? (
+                    {user ? (
                         <>
-                            <NavbarButton startIcon={<Login />} color="inherit" onClick={() => console.log('Sign Up')}>
-                                Sign Up
-                            </NavbarButton>
-                            <NavbarButton startIcon={<AddBox />} color="inherit" onClick={() => console.log('Create case')}>
+                            <Button startIcon={<AddBox />} color="inherit" onClick={() => navigate('/create-case')}>
                                 Create Case
-                            </NavbarButton>
+                            </Button>
                             <Tooltip title="Account settings">
                                 <IconButton
                                     edge="end"
@@ -104,11 +92,9 @@ const Navbar = ({ username }) => {
                             </Tooltip>
                         </>
                     ) : (
-                        <>
-                            <NavbarButton startIcon={<AccountCircle />} color="inherit" onClick={() => console.log('Log In')}>
-                                Log In
-                            </NavbarButton>
-                        </>
+                        <Button startIcon={<AccountCircle />} color="inherit" onClick={() => navigate('/teacherLogin')}>
+                            Log In
+                        </Button>
                     )}
                 </div>
             </StyledToolbar>

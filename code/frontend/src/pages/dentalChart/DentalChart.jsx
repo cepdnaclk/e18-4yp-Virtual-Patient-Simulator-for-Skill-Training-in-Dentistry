@@ -9,17 +9,20 @@ import {
     InputLabel,
     Select,
     MenuItem,
-    Icon
+    Icon, Snackbar, Alert, Box, Grid
 } from '@mui/material';
 
 import Shape1 from '../../assets/Shape1.png';
 import imagesArray from "../../data.js";
+import StepperComponent from "../../layout/stepper/StepperComponent.jsx";
+import {useNavigate} from "react-router-dom";
 
 function DentalChart() {
     const [toothPresent, setToothPresent] = useState('yes');
     const [currentStatus, setCurrentStatus] = useState('');
     const [selectedShape, setSelectedShape] = useState('');
     const [options, setOptions] = useState("default")
+    const navigate = useNavigate();
 
     const handleToothPresentChange = (event) => {
         setToothPresent(event.target.value);
@@ -55,8 +58,15 @@ function DentalChart() {
         setIsDialogOpen(false);
     }
 
+    function handleNext() {
+        navigate("/recordPlaqueScore");
+    }
+
     return (
         <div>
+            <StepperComponent selectedStep={"Dental Chart"}></StepperComponent>
+            <Grid container justifyContent="center">
+                <Grid item xs={12} sm={11} sx={{boxShadow: 3, padding: 2, borderRadius: 1}}>
             {/* Button to open the dialog */}
             <Button variant="contained" color="primary" onClick={handleOpenDialog}>
                 Update Tooth Status
@@ -128,6 +138,13 @@ function DentalChart() {
                     </Button>
                 </DialogActions>
             </Dialog>
+            <Box display="flex" justifyContent="flex-end" mt={2}>
+                <Button onClick={() => handleNext()} variant="contained" color="primary">
+                    Next
+                </Button>
+            </Box>
+                </Grid>
+            </Grid>
         </div>
     );
 }
