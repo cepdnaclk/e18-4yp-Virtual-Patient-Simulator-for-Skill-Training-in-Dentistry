@@ -1,152 +1,200 @@
-import React, { useState } from 'react';
-import {
-    Dialog,
-    DialogTitle,
-    DialogContent,
-    DialogActions,
-    Button,
-    FormControl,
-    InputLabel,
-    Select,
-    MenuItem,
-    Icon, Snackbar, Alert, Box, Grid
-} from '@mui/material';
-
-import Shape1 from '../../assets/Shape1.png';
-import imagesArray from "../../data.js";
+import "./dentalChart.scss";
+import {BackTooth, FrontTooth} from "../../components/Components.jsx";
+import {useState} from "react";
+import {Box, Button, Grid} from "@mui/material";
 import StepperComponent from "../../layout/stepper/StepperComponent.jsx";
-import {useNavigate} from "react-router-dom";
 
-function DentalChart() {
-    const [toothPresent, setToothPresent] = useState('yes');
-    const [currentStatus, setCurrentStatus] = useState('');
-    const [selectedShape, setSelectedShape] = useState('');
-    const [options, setOptions] = useState("default")
-    const navigate = useNavigate();
+// DentalChart component
+const DentalChart = () => {
+    const [teethDetails, setTeethDetails] = useState([]);
 
-    const handleToothPresentChange = (event) => {
-        setToothPresent(event.target.value);
-        if (event.target.value === 'no') {
-            setCurrentStatus('');
-        }
+    const handleToothUpdate = (toothDetail) => {
+        setTeethDetails((prevDetails) => {
+            const updatedDetails = prevDetails.filter(
+                (detail) => detail.toothId !== toothDetail.toothId
+            );
+            return [...updatedDetails, toothDetail];
+        });
     };
 
-    const handleCurrentStatusChange = (event) => {
-        setCurrentStatus(event.target.value);
-    };
+    const handleSendDetails = async () => {
+        const formattedDetails = teethDetails.map((detail) => ({
+            Name: detail.toothId,
+            IsPresent: detail.isPresent,
+            cracked: detail.status === "crack" ? detail.shape : "no",
+            cavity: detail.status === "cavity" ? detail.shape : "no",
+            inlayFilling: detail.status === "inlayFilling" ? detail.shape : "no",
+            amalgamFilling: detail.status === "amalgamFilling" ? detail.shape : "no",
+            whiteFilling: detail.status === "whiteFilling" ? detail.shape : "no",
+        }));
 
-    const [isDialogOpen, setIsDialogOpen] = useState(false);
+        const response = await fetch(
+            "http://127.0.0.1:5001/virtual-patient-simulator-2024/us-central1/app/api/teethDetails/store",
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({Teeth: formattedDetails}),
+            }
+        );
 
-    const handleOpenDialog = () => {
-        setIsDialogOpen(true);
-    };
-
-    const handleCloseDialog = () => {
-        setIsDialogOpen(false);
-    };
-
-    const handleImageSelect = (id) => {
-        setSelectedShape(id);
-    };
-
-    const handleUpdateTooth = () => {
-        if (toothPresent === 'yes') {
-            setOptions(currentStatus+selectedShape);
+        if (response.ok) {
+            console.log("Teeth details successfully sent!");
         } else {
-            setOptions("default");
+            console.error("Failed to send teeth details");
         }
-        setIsDialogOpen(false);
-    }
-
-    function handleNext() {
-        navigate("/recordPlaqueScore");
-    }
+    };
 
     return (
         <div>
             <StepperComponent selectedStep={"Dental Chart"}></StepperComponent>
             <Grid container justifyContent="center">
                 <Grid item xs={12} sm={11} sx={{boxShadow: 3, padding: 2, borderRadius: 1}}>
-            {/* Button to open the dialog */}
-            <Button variant="contained" color="primary" onClick={handleOpenDialog}>
-                Update Tooth Status
-            </Button>
-            <div>{options}</div>
-            <img src={Shape1} alt="Dental Chart" />
-
-            {/* Dialog for updating tooth status */}
-            <Dialog open={isDialogOpen} onClose={handleCloseDialog} maxWidth="sm" fullWidth >
-                <DialogTitle>Details for Tooth</DialogTitle>
-                <DialogContent>
-                    <FormControl fullWidth margin="normal">
-                        <InputLabel id="tooth-present-label">Tooth Present</InputLabel>
-                        <Select
-                            labelId="tooth-present-label"
-                            id="tooth-present-select"
-                            value={toothPresent}
-                            label="Tooth Present"
-                            onChange={handleToothPresentChange}
-                        >
-                            <MenuItem value="yes">Yes</MenuItem>
-                            <MenuItem value="no">No</MenuItem>
-                        </Select>
-                    </FormControl>
-                    {toothPresent === 'yes' && (
-                    <div>
-                    <FormControl fullWidth margin="normal">
-                        <InputLabel id="current-status-label">Current Status</InputLabel>
-                        <Select
-                            labelId="current-status-label"
-                            id="current-status-select"
-                            value={currentStatus}
-                            label="Current Status"
-                            onChange={handleCurrentStatusChange}
-                        >
-                            <MenuItem value="cavity">Cavity</MenuItem>
-                            <MenuItem value="inlayFilling">Inlay Filling</MenuItem>
-                            <MenuItem value="amalgamFilling">Amalgam Filling</MenuItem>
-                            <MenuItem value="whiteFilling">White Filling</MenuItem>
-                        </Select>
-                    </FormControl>
-                        <div style={{ marginTop: '20px' }}>
-                            <div>Please select the shape from the following:</div>
-                            <div style={{ display: 'flex', justifyContent: 'space-around', flexWrap: 'wrap', marginTop:'20px' }}>
-                                {imagesArray.map((image) => (
-                                    <img
-                                        key={image.id}
-                                        src={image.src}
-                                        alt={image.alt}
-                                        style={{
-                                            width: '50px', // Set your desired size
-                                            cursor: 'pointer',
-                                            border: selectedShape === image.id ? '2px solid blue' : 'none'
-                                        }}
-                                        onClick={() => handleImageSelect(image.id)}
-                                    />
-                                ))}
-                            </div>
+                    {/* Upper Row */}
+                    <div className="dental-chart">
+                        <div>
+                            <p>18</p>
+                            <BackTooth toothId="Tooth18" onUpdate={handleToothUpdate}/>
+                        </div>
+                        <div>
+                            <p>17</p>
+                            <BackTooth toothId="Tooth17" onUpdate={handleToothUpdate}/>
+                        </div>
+                        <div>
+                            <p>16</p>
+                            <BackTooth toothId="Tooth16" onUpdate={handleToothUpdate}/>
+                        </div>
+                        <div>
+                            <p>15</p>
+                            <BackTooth toothId="Tooth15" onUpdate={handleToothUpdate}/>
+                        </div>
+                        <div>
+                            <p>14</p>
+                            <BackTooth toothId="Tooth14" onUpdate={handleToothUpdate}/>
+                        </div>
+                        <div>
+                            <p>13</p>
+                            <FrontTooth toothId="Tooth13" onUpdate={handleToothUpdate}/>
+                        </div>
+                        <div>
+                            <p>12</p>
+                            <FrontTooth toothId="Tooth12" onUpdate={handleToothUpdate}/>
+                        </div>
+                        <div>
+                            <p>11</p>
+                            <FrontTooth toothId="Tooth11" onUpdate={handleToothUpdate}/>
+                        </div>
+                        <div>
+                            <p>21</p>
+                            <FrontTooth toothId="Tooth21" onUpdate={handleToothUpdate}/>
+                        </div>
+                        <div>
+                            <p>22</p>
+                            <FrontTooth toothId="Tooth22" onUpdate={handleToothUpdate}/>
+                        </div>
+                        <div>
+                            <p>23</p>
+                            <FrontTooth toothId="Tooth23" onUpdate={handleToothUpdate}/>
+                        </div>
+                        <div>
+                            <p>24</p>
+                            <BackTooth toothId="Tooth24" onUpdate={handleToothUpdate}/>
+                        </div>
+                        <div>
+                            <p>25</p>
+                            <BackTooth toothId="Tooth25" onUpdate={handleToothUpdate}/>
+                        </div>
+                        <div>
+                            <p>26</p>
+                            <BackTooth toothId="Tooth26" onUpdate={handleToothUpdate}/>
+                        </div>
+                        <div>
+                            <p>27</p>
+                            <BackTooth toothId="Tooth27" onUpdate={handleToothUpdate}/>
+                        </div>
+                        <div>
+                            <p>28</p>
+                            <BackTooth toothId="Tooth28" onUpdate={handleToothUpdate}/>
                         </div>
                     </div>
-                    )}
-                </DialogContent>
-                <DialogActions>
-                    <Button onClick={handleCloseDialog} color="primary">
-                        Cancel
-                    </Button>
-                    <Button onClick={handleUpdateTooth} color="primary">
-                        Update Tooth
-                    </Button>
-                </DialogActions>
-            </Dialog>
-            <Box display="flex" justifyContent="flex-end" mt={2}>
-                <Button onClick={() => handleNext()} variant="contained" color="primary">
-                    Next
-                </Button>
-            </Box>
+                    {/* Lower Row */}
+                    <div className="dental-chart">
+                        <div>
+                            <BackTooth toothId="Tooth48" onUpdate={handleToothUpdate}/>
+                            <p>48</p>
+                        </div>
+                        <div>
+                            <BackTooth toothId="Tooth47" onUpdate={handleToothUpdate}/>
+                            <p>47</p>
+                        </div>
+                        <div>
+                            <BackTooth toothId="Tooth46" onUpdate={handleToothUpdate}/>
+                            <p>46</p>
+                        </div>
+                        <div>
+                            <BackTooth toothId="Tooth45" onUpdate={handleToothUpdate}/>
+                            <p>45</p>
+                        </div>
+                        <div>
+                            <BackTooth toothId="Tooth44" onUpdate={handleToothUpdate}/>
+                            <p>44</p>
+                        </div>
+                        <div>
+                            <FrontTooth toothId="Tooth43" onUpdate={handleToothUpdate}/>
+                            <p>43</p>
+                        </div>
+                        <div>
+                            <FrontTooth toothId="Tooth42" onUpdate={handleToothUpdate}/>
+                            <p>42</p>
+                        </div>
+                        <div>
+                            <FrontTooth toothId="Tooth41" onUpdate={handleToothUpdate}/>
+                            <p>41</p>
+                        </div>
+                        <div>
+                            <FrontTooth toothId="Tooth31" onUpdate={handleToothUpdate}/>
+                            <p>31</p>
+                        </div>
+                        <div>
+                            <FrontTooth toothId="Tooth32" onUpdate={handleToothUpdate}/>
+                            <p>32</p>
+                        </div>
+                        <div>
+                            <FrontTooth toothId="Tooth33" onUpdate={handleToothUpdate}/>
+                            <p>33</p>
+                        </div>
+                        <div>
+                            <BackTooth toothId="Tooth34" onUpdate={handleToothUpdate}/>
+                            <p>34</p>
+                        </div>
+                        <div>
+                            <BackTooth toothId="Tooth35" onUpdate={handleToothUpdate}/>
+                            <p>35</p>
+                        </div>
+                        <div>
+                            <BackTooth toothId="Tooth36" onUpdate={handleToothUpdate}/>
+                            <p>36</p>
+                        </div>
+                        <div>
+                            <BackTooth toothId="Tooth37" onUpdate={handleToothUpdate}/>
+                            <p>37</p>
+                        </div>
+                        <div>
+                            <BackTooth toothId="Tooth38" onUpdate={handleToothUpdate}/>
+                            <p>38</p>
+                        </div>
+                    </div>
+                    <button onClick={handleSendDetails}>Send Details</button>
+                    <Box display="flex" justifyContent="flex-end" mt={2}>
+                        <Button onClick={() => handleSendDetails()} variant="contained" color="primary">
+                            Next
+                        </Button>
+                    </Box>
                 </Grid>
             </Grid>
         </div>
     );
-}
+};
 
 export default DentalChart;

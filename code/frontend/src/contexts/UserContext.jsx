@@ -1,20 +1,29 @@
-// src/contexts/UserContext.js
+import React, { createContext, useContext, useState, useEffect } from 'react';
 
-import React, { createContext, useContext, useState } from 'react';
+const UserContext = createContext(null);
 
-// Create a Context for the user data
-const UserContext = createContext();
-
-// This component will be used to wrap parts of the app where you need access to user data
 export const UserProvider = ({ children }) => {
-    const [user, setUser] = useState(null);
+    const [user, setUser] = useState(() => {
+        // Try to get data from localStorage when initializing
+        const savedUser = localStorage.getItem('user');
+        return savedUser ? JSON.parse(savedUser) : null;
+    });
+
+    useEffect(() => {
+        // Save user data to localStorage whenever it changes
+        if (user) {
+            localStorage.setItem('user', JSON.stringify(user));
+        } else {
+            localStorage.removeItem('user');
+        }
+    }, [user]);
 
     const login = (userData) => {
         setUser(userData);
     };
 
     const logout = () => {
-        setUser(null);
+        setUser(null);  // This will also trigger useEffect to remove user from localStorage
     };
 
     return (
@@ -24,5 +33,4 @@ export const UserProvider = ({ children }) => {
     );
 };
 
-// Custom hook to use the user context
 export const useUser = () => useContext(UserContext);

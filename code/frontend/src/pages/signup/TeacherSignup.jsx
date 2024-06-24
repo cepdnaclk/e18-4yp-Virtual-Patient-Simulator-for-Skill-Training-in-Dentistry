@@ -5,43 +5,34 @@ import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
-import {Box} from "@mui/material";
-import {useUser} from "../../contexts/UserContext.jsx";
-
-const defaultTheme = createTheme();
+import { Box } from "@mui/material";
 
 export default function TeacherSignup() {
     const navigate = useNavigate();
-
-    const { login } = useUser();
 
     const handleSubmit = async (event) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
 
-        /// need to comment
-        login({userName:"Abilash",});
-        navigate('/createCase');
+        // Prepare the user data for the API
+        const userData = {
+            email: data.get('email'),
+            password: data.get('password'),
+            userName: data.get('userName')
+        };
 
-        ////////////////////////
-
-        // try {
-        //     const response = await axios.post('https://api.yoursite.com/sign-in', {
-        //         email: data.get('email'),
-        //         password: data.get('password'),
-        //     });
-        //     console.log(response.data);
-        //
-        //     // Assuming response.data contains the user data
-        //     login(response.data); // Save user data in context
-        //
-        //     navigate('/createCase');
-        // } catch (error) {
-        //     console.error('Sign in error:', error.response ? error.response.data : 'API call failed');
-        // }
+        try {
+            // API request to sign up the user
+            const response = await axios.post('http://127.0.0.1:5001/virtual-patient-simulator-2024/us-central1/app/api/teacher/signup', userData);
+            console.log(response.data);
+            alert('Signup successful! You can now login.');
+            navigate('/teacherLogin');
+        } catch (error) {
+            console.error('Signup error:', error.response ? error.response.data : 'API call failed');
+            alert('Signup failed. Please try again.');
+        }
     };
 
     return (
@@ -65,11 +56,20 @@ export default function TeacherSignup() {
                         margin="normal"
                         required
                         fullWidth
+                        id="userName"
+                        label="Full Name"
+                        name="userName"
+                        autoComplete="name"
+                        autoFocus
+                    />
+                    <TextField
+                        margin="normal"
+                        required
+                        fullWidth
                         id="email"
                         label="Email Address"
                         name="email"
                         autoComplete="email"
-                        autoFocus
                     />
                     <TextField
                         margin="normal"

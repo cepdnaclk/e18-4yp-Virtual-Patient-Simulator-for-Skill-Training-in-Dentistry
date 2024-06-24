@@ -55,7 +55,6 @@ const AddAnswerDialog = ({ open, handleClose, question, answer: initialAnswer, s
                     <FormLabel component="legend">Status</FormLabel>
                     <RadioGroup row aria-label="status" name="status" value={status} onChange={(e) => setStatus(e.target.value)}>
                         <FormControlLabel value="required" control={<Radio />} label="Required" />
-                        <FormControlLabel value="notRequired" control={<Radio />} label="Not Required" />
                     </RadioGroup>
                 </FormControl>
             </DialogContent>

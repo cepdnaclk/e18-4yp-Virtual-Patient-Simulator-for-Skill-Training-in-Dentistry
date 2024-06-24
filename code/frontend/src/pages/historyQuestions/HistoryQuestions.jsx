@@ -17,6 +17,7 @@ import './historyQuestions.scss';
 import axios from "axios";
 import StepperComponent from "../../layout/stepper/StepperComponent.jsx";
 import {useNavigate} from "react-router-dom";
+import config from "../../config.js";
 
 const HistoryQuestions = () => {
     const initialSections = {
@@ -43,7 +44,7 @@ const HistoryQuestions = () => {
 
 
     useEffect(() => {
-        axios.get('http://127.0.0.1:5001/virtual-patient-simulator-2024/us-central1/app/api/historyTakingQestionBank/getAll')
+        axios.get(`${config.apiBaseUrl}historyTakingQestionBank/getAll`)
             .then(response => {
                 const fetchedQuestions = response.data.questions;
                 const updatedSections = { ...initialSections };
@@ -95,7 +96,7 @@ const HistoryQuestions = () => {
     const sendToAPI = async (data) => {
         setIsLoading(true);
         try {
-            const response = await axios.put('http://127.0.0.1:5001/virtual-patient-simulator-2024/us-central1/app/api/dentalComplaintCases/updateHistoryTakingQuestions', data);
+            const response = await axios.put(`${config.apiBaseUrl}dentalComplaintCases/updateHistoryTakingQuestions`, data);
             console.log('Questions submitted successfully:', response.data);
             navigate('/periodontalScreeningQuestions');
         } catch (error) {

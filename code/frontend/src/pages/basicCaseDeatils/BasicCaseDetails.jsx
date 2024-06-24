@@ -167,8 +167,7 @@ const BasicCaseDetails = () => {
         axios.post(url, { mainTypeName: newType })
             .then(response => {
                 console.log('Main Type Added:', response.data);
-                // Optionally, you might want to update the local list of main types or clear the newType state
-                setMainTypes(prevTypes => [...prevTypes, newType]); // Update the local state with the new type
+                setMainTypes(prevTypes => [...prevTypes, newType]);
                 setMainType(newType);
                 setNewType(''); // Clear the input after successful addition
                 handleClose(); // Close the dialog

@@ -17,6 +17,7 @@ import {
 } from "./pages/Pages.jsx";
 import MainLayout from "./layout/MainLayout.jsx";
 import "./styles/global.scss";
+import {PrivateRoute} from "./components/Components.jsx";
 
 const App = () => {
     const router = createBrowserRouter([
@@ -28,62 +29,65 @@ const App = () => {
             path: "/teacherLogin",
             element: <TeacherLogin />,
         },
-
+        {
+            path: "/dentalChartTest",
+            element: <DentalChart/>,
+        },
         {
             path: "/",
             element: <MainLayout />,
             children: [
                 {
                     path: "/createCase",
-                    element: <BasicCaseDetails />,
+                    element: <PrivateRoute><BasicCaseDetails /></PrivateRoute>,
                 },
                 {
                     path: "/historyQuestions",
-                    element: <HistoryQuestions />,
+                    element: <PrivateRoute><HistoryQuestions /></PrivateRoute>,
                 },
                 {
                     path: "/periodontalScreeningQuestions",
-                    element: <PeriodontalScreeningQuestions />,
+                    element: <PrivateRoute><PeriodontalScreeningQuestions /></PrivateRoute>,
                 },
                 {
                     path: "/softTissueAssessment",
-                    element: <SoftTissueAssessment />,
+                    element: <PrivateRoute><SoftTissueAssessment /></PrivateRoute>,
                 },
                 {
                     path: "/hardTissueAssessment",
-                    element: <HardTissueAssessment />,
+                    element: <PrivateRoute><HardTissueAssessment /></PrivateRoute>,
                 },
                 {
                     path: "/dentalChart",
-                    element: <DentalChart />,
+                    element: <PrivateRoute><DentalChart /></PrivateRoute>,
                 },
                 {
                     path: "/recordPlaqueScore",
-                    element: <RecordPlaqueScore />,
+                    element: <PrivateRoute><RecordPlaqueScore /></PrivateRoute>,
                 },
                 {
                     path: "/radiographs",
-                    element: <Radiographs />,
+                    element: <PrivateRoute><Radiographs /></PrivateRoute>,
                 },
                 {
                     path: "/sensibilityRecordings",
-                    element: <SensibilityRecordings />,
+                    element: <PrivateRoute><SensibilityRecordings /></PrivateRoute>,
                 },
                 {
                     path: "/hematologicalRecordings",
-                    element: <HematologicalRecordings />,
+                    element: <PrivateRoute><HematologicalRecordings /></PrivateRoute>,
                 },
                 {
                     path: "/diagnosis",
-                    element: <Diagnosis />,
+                    element: <PrivateRoute><Diagnosis /></PrivateRoute>,
                 },
                 {
                     path: "/showCases",
-                    element: <ShowCases/>,
+                    element: <PrivateRoute><ShowCases/></PrivateRoute>,
                 },
                 {
                     path: "/teacherSignup",
-                    element: <TeacherSignup />,
+                    element: <PrivateRoute><TeacherSignup /></PrivateRoute>,
                 },
 
             ],
