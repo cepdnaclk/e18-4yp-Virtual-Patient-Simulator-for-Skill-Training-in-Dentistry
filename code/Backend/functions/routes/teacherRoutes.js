@@ -52,7 +52,7 @@ router.post('/signin', async (req, res) => {
     
     try {
       const response = await axios.post(
-          "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key="+ process.env.API_KEY,
+          "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key="+ "AIzaSyBDIIqa_hFMjYjVK9eMd9ZyJQmNEzGISJo",
           {
             email,
             password,

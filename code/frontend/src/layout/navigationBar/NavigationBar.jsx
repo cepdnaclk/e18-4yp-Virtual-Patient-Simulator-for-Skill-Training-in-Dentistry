@@ -3,6 +3,7 @@ import { AppBar, Toolbar, Typography, Button, IconButton, Menu, MenuItem, Toolti
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import AddBox from '@mui/icons-material/AddBox';
 import Logout from '@mui/icons-material/Logout';
+import LoginIcon from '@mui/icons-material/Login';
 import { styled } from '@mui/material/styles';
 import { useNavigate } from 'react-router-dom';
 import {useUser} from "../../contexts/UserContext.jsx";
@@ -54,7 +55,7 @@ const Navbar = () => {
                     <ListItemIcon>
                         <AccountCircle fontSize="small" />
                     </ListItemIcon>
-                    {user.userName}
+                    {user.user.userName}
                 </MenuItem>
             )}
             <MenuItem onClick={handleLogout}>
@@ -75,8 +76,11 @@ const Navbar = () => {
                 <div>
                     {user ? (
                         <>
-                            <Button startIcon={<AddBox />} color="inherit" onClick={() => navigate('/create-case')}>
+                            <Button startIcon={<AddBox />} color="inherit" onClick={() => navigate('/createCase')}>
                                 Create Case
+                            </Button>
+                            <Button startIcon={<LoginIcon />} color="inherit" onClick={() => navigate('/teacherSignup')}>
+                                Sign Up
                             </Button>
                             <Tooltip title="Account settings">
                                 <IconButton

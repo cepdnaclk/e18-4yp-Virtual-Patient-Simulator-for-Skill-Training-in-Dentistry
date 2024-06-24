@@ -22,26 +22,20 @@ export default function SignIn() {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
 
-        /// need to comment
-        login({userName:"Abilash",});
-        navigate('/createCase');
+        try {
+            const response = await axios.post('http://127.0.0.1:5001/virtual-patient-simulator-2024/us-central1/app/api/teacher/signin', {
+                email: data.get('email'),
+                password: data.get('password'),
+            });
+            console.log(response.data);
 
-        ////////////////////////
+            // Assuming response.data contains the user data
+            login(response.data); // Save user data in context
 
-        // try {
-        //     const response = await axios.post('https://api.yoursite.com/sign-in', {
-        //         email: data.get('email'),
-        //         password: data.get('password'),
-        //     });
-        //     console.log(response.data);
-        //
-        //     // Assuming response.data contains the user data
-        //     login(response.data); // Save user data in context
-        //
-        //     navigate('/createCase');
-        // } catch (error) {
-        //     console.error('Sign in error:', error.response ? error.response.data : 'API call failed');
-        // }
+            navigate('/createCase');
+        } catch (error) {
+            console.error('Sign in error:', error.response ? error.response.data : 'API call failed');
+        }
     };
 
     return (
