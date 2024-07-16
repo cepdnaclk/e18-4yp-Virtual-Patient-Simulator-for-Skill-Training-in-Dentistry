@@ -1,4 +1,8 @@
 {
+    "mainTypeName": "Pain",
+    "complaintTypeName": "PainFulTooth",
+    "caseId": "case_1",
+    "sectionName": "toothDetails",
     "Teeth": [
         {
             "Name": "Tooth1",

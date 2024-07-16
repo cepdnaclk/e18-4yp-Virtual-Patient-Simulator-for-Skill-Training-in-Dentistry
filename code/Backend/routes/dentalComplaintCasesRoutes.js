@@ -3,11 +3,48 @@ const router = express.Router();
 const fileParser = require("express-multipart-file-parser");
 const bodyParser = require("body-parser");
 const { Readable } = require("stream");
-const moment = require('moment');
+const moment = require("moment");
 
-const COLLECTION_NAME = "dentalComplaintCases"
+const COLLECTION_NAME = "dentalComplaintCases";
 
 const { db, bucket } = require("../config/db");
+
+router.get("/getAllCases", async (req, res) => {
+  try {
+    const casesSnapshot = await db.collection("dentalComplaintCases").get();
+
+    if (casesSnapshot.empty) {
+      console.log("No matching documents.");
+      return res.status(404).json({ error: "No documents found" });
+    }
+
+    let casesArray = [];
+
+    // Iterate through each document in the main collection
+    for (const caseDoc of casesSnapshot.docs) {
+      const caseId = caseDoc.id;
+
+      // Fetch subcollections for each document
+      const subcollections = await db
+        .collection("dentalComplaintCases")
+        .doc(caseId)
+        .listCollections();
+
+      for (const subcollectionRef of subcollections) {
+        const subcollectionQuerySnapshot = await subcollectionRef.get();
+
+        subcollectionQuerySnapshot.forEach((doc) => {
+          casesArray.push(doc.data());
+        });
+      }
+    }
+
+    res.status(200).json(casesArray);
+  } catch (err) {
+    console.error("Error getting documents", err);
+    res.status(500).json({ error: "Error retrieving data" });
+  }
+});
 
 router.post("/createDentalComplaintMainType", async (req, res) => {
   try {
@@ -114,9 +151,11 @@ router.post(
       const fileStream = Readable.from(file.buffer);
 
       // Construct a unique file path with the current date and time
-      const currentDateTime = moment().format('YYYYMMDD_HHmmss');
+      const currentDateTime = moment().format("YYYYMMDD_HHmmss");
       // upload to firebase storage
-      const fileUpload = bucket.file(`Images/${currentDateTime}_${file.originalname}`);
+      const fileUpload = bucket.file(
+        `Images/${currentDateTime}_${file.originalname}`
+      );
 
       // create writestream with the contentType of the incoming file
       const writeStream = fileUpload.createWriteStream({
@@ -179,31 +218,92 @@ router.post(
 // UPDATE CASE DETAILS
 // PUT
 // ROUTE : /api/dentalComplaintCases/updateHistoryTakingQuestions
-router.put('/updateHistoryTakingQuestions', async (req, res) => {
+router.put("/updateHistoryTakingQuestions", async (req, res) => {
   const mainTypeName = req.body.mainTypeName;
   const complaintTypeName = req.body.complaintTypeName;
   const cID = req.body.caseID;
   const historyTakingQuestionsArray = req.body.historyTakingQuestions;
-  
+
   try {
-    const documentRef = db.collection(COLLECTION_NAME).doc(mainTypeName).collection(complaintTypeName).doc(cID);
+    const documentRef = db
+      .collection(COLLECTION_NAME)
+      .doc(mainTypeName)
+      .collection(complaintTypeName)
+      .doc(cID);
 
     const documentSnapshot = await documentRef.get();
     const documentData = documentSnapshot.data();
 
-    if(!documentData){
-      return res.status(404).json({ status: "Failed", message: "Case details document is not in the database" });
+    if (!documentData) {
+      return res.status(404).json({
+        status: "Failed",
+        message: "Case details document is not in the database",
+      });
     }
 
-    const updatedDoc = await documentRef.update({historyTakingQuestions: historyTakingQuestionsArray})
-    console.log(updatedDoc)
-    return res.status(200).send({ status: "Success", message: "Document Updated Successfully"});
-
+    const updatedDoc = await documentRef.update({
+      historyTakingQuestions: historyTakingQuestionsArray,
+    });
+    console.log(updatedDoc);
+    return res
+      .status(200)
+      .send({ status: "Success", message: "Document Updated Successfully" });
   } catch (error) {
-    console.error('Error updating the document:', error);
-    res.status(500).json({error:'Failed to update document'});
+    console.error("Error updating the document:", error);
+    res.status(500).json({ error: "Failed to update document" });
   }
 });
 
+// GET
+// GET HISTORY TAKING QUESTIONS FOR A PARTICULAR CASEID
+// ROUTE : /api/dentalComplaintCases/getCaseDetails
+router.post("/getCaseHistoryTakingQuestions", async (req, res) => {
+  const mainComplaintType = req.body.mainComplaintType;
+  const caseName = req.body.caseName;
+  const caseId = req.body.caseId;
 
+  try {
+    const documentRef = db
+      .collection(COLLECTION_NAME)
+      .doc(mainComplaintType)
+      .collection(caseName)
+      .doc(caseId);
+
+    const documentSnapshot = await documentRef.get();
+
+    if (!documentSnapshot.exists) {
+      return res.status(404).json({
+        status: "Failed",
+        message: "Case details document not found",
+      });
+    }
+
+    const documentData = documentSnapshot.data();
+
+    // Extract all questions from documentData
+    const historyTakingQuestions = documentData.historyTakingQuestions || [];
+
+    // Group questions by questionType
+    const questionsByType = {};
+
+    historyTakingQuestions.forEach((question) => {
+      const questionType = question.questionType;
+
+      if (!questionsByType[questionType]) {
+        questionsByType[questionType] = [];
+      }
+
+      questionsByType[questionType].push({
+        questionText: question.questionText,
+        answer: question.answer,
+        required: question.required,
+      });
+    });
+
+    return res.status(200).json(questionsByType);
+  } catch (error) {
+    console.error("Error getting the document:", error);
+    res.status(500).json({ error: "Failed to get document" });
+  }
+});
 module.exports = router;

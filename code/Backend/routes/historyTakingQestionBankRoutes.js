@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const { db } = require("../config/db");
-const { log } = require('firebase-functions/logger');
 
 const COLLECTION_NAME = "historyTakingQuestionBank"
 const ID_PREFIX = "HTQB_"
