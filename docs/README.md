@@ -38,6 +38,8 @@ title:
 5. [Our Solution](#our-solution)
 6. [Methodology](#methodology)
    - [System Architecture](#system-architecture)
+   - [Data Flow and Synchronization](#data-flow-and-synchronization)
+   - [Key Features of the System Architecture](#key-features-of-the-system-architecture)
 7. [Technologies Used](#technologies-used)
 8. [System Evaluation](#system-evaluation)
    - [Participants](#participants)
@@ -73,24 +75,26 @@ By automating the generation of 3D models based on case data, the system offers 
 
 ## Background
 ---
-
-### Limitations in Traditional Teaching Methods:
+### Limitations in Traditional Teaching Methods
 - Traditional dental education methods require significant tutor guidance at each step, which can limit student independence.
 - Direct patient interaction in a learning environment raises ethical concerns, especially with invasive procedures, and there is always the risk of mistakes affecting real patients.
 - Traditional methods may not expose students to a wide variety of clinical scenarios, particularly rare or complex cases.
 
 To address these limitations, previous batches from the University of Peradeniya (UOP) developed a Virtual Patient Simulator (VPS).
 
-### Overview of the VPS:
+<br>
+
+### Overview of the VPS
 The VPS provides a web-based simulation environment, designed with four main phases:
+1. History Taking
+2. Examination and Investigation
+3. Diagnosis
+4. Feedback
 
-1. **History Taking**
-2. **Examination and Investigation**
-3. **Diagnosis**
-4. **Feedback**
+<br>
 
-### Features of the VPS:
-- **Interactive 3D model** with the following capabilities:
+### Features of the VPS
+- Interactive 3D model with the following capabilities:
   - Extraoral and Intraoral views
   - Full dental room simulation
   - Dental instrument selection
@@ -142,6 +146,8 @@ This research builds upon these foundations by addressing the limitations of exi
 | **Evaluating VPS’s Impact in Dental Training** | Gathering feedback from students and tutors to assess system effectiveness and group-based VR assessments.                      | "Evaluating Medical Student…"     |
 
 
+<br>
+
 
 ## Our Solution
 ---
@@ -160,7 +166,8 @@ To overcome the limitations of previous simulators, we propose:
 The existing web-based virtual patient simulator system was initially designed for a single user: Student, who interacted with the simulator through the student's view front end of the application. To enhance the simulator with custom patient case creation, a separate portal was developed for tutors. With this enhancement, the system now supports two main user roles: Student and Tutor. Usability tests were conducted with participants from both groups to evaluate the system’s overall effectiveness, ease of use, and user satisfaction.
 
 
-### **System Architecture**
+### System Architecture
+---
 
 The overall architecture of the VPS is designed to ensure seamless interaction between the tutor and student interfaces, while efficiently managing the backend processes that support the system. The VPS system is composed of three main components: the Tutor Interface, Student Interface, and Backend Infrastructure.
 
@@ -294,7 +301,7 @@ The 3D model of the patient dynamically updates based on the selected case’s d
 
 ---
 
-### **Data Flow and Synchronization**
+### Data Flow and Synchronization
 
 The system architecture ensures that data flows smoothly between the tutor and student interfaces, and that all interactions are synchronized in real-time. Key components of this flow include:
 1. **Tutor Case Creation**: Tutors input case details via the React-based tutor interface. This data is sent to the backend, where it is processed and stored in the Firestore database.
@@ -303,7 +310,7 @@ The system architecture ensures that data flows smoothly between the tutor and s
 
 ---
 
-### **Key Features of the System Architecture**
+### Key Features of the System Architecture
 - **Real-Time Data Synchronization**: Any updates made by tutors are instantly available to students, ensuring that both interfaces remain up-to-date without delays.
 - **Scalability**: The use of Firebase ensures that the system can scale efficiently to handle multiple users (students and tutors) simultaneously, while managing data across a cloud-based infrastructure.
 - **Cross-Platform Accessibility**: The Unity WebGL integration allows students to access the 3D simulation from any modern web browser, without requiring specialized hardware or plugins.
