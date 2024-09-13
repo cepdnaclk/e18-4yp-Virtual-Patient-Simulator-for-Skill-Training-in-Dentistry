@@ -150,7 +150,7 @@ To overcome the limitations of previous simulators, we propose:
 
 ## Methodology
 
-The existing web-based virtual patient simulator system was initially designed for a single user: **Student**, who interacted with the simulator through the student's view front end of the application. To enhance the simulator with **custom patient case creation**, a separate portal was developed for tutors. With this enhancement, the system now supports two main user roles: **Student** and **Tutor**. 
+The existing web-based virtual patient simulator system was initially designed for a single user: **Student**, who interacted with the simulator through the student's view front end of the application. To enhance the simulator with **custom patient case creation**, a separate portal was developed for tutors. With this enhancement, the system now supports two main user roles: **Student** and **Tutor**. Usability tests were conducted with participants from both groups to evaluate the system’s overall effectiveness, ease of use, and user satisfaction.
 
 ---
 
@@ -256,39 +256,45 @@ The evaluation of the system was conducted in two phases: one focusing on the **
 
 Informed consent was obtained from all participants before taking part in the study.
 
+
 ### Data Collection
 
 #### Students
-For students, data was collected through pre- and post-questionnaires. The **pre-questionnaire** focused on their familiarity with dental simulators, their prior experience with online educational tools, and their proficiency with computers. After completing the pre-questionnaire, the students were asked to log into the VPS student portal, explore the interface, and attempt a clinical case. 
-
-During the session, the research team observed the students' interactions with the system, noting any challenges they faced. After completing the task, a **post-questionnaire** was provided to assess their satisfaction with the system, perceived ease of use, and the impact of the VPS on their learning experience.
+- **Pre-questionnaire**: Focused on gathering students' familiarity with dental simulators, experience with online educational tools, and computer proficiency.
+- **VPS Interaction**: Students logged into the VPS portal, explored the interface, and worked through a clinical case.
+- **Observations**: The research team monitored student interactions, noting any challenges or difficulties they faced.
+- **Post-questionnaire**: After completing the task, students provided feedback on their satisfaction with the VPS, ease of use, and how the system impacted their learning experience.
 
 #### Tutors
-For tutors, data was also collected through pre- and post-questionnaires. The **pre-questionnaire** gathered demographic data, familiarity with computers, and experience in creating digital patient cases. Tutors were then given access to the VPS tutor portal, where they created a custom patient case. Observations were made on any difficulties they encountered while using the system.
-
-Once the tutors completed their task, a **post-questionnaire** was used to gather their feedback on the system’s usability, intuitiveness, and overall satisfaction with the patient case creation process.
-
-### Data Analysis
-Quantitative data from both the students' and tutors' pre- and post-questionnaires was analyzed using statistical methods to compare the user performance before and after interacting with the VPS. Interaction logs were also reviewed to gain insights into user behavior and engagement with the system.
-
-In addition to the quantitative data, qualitative feedback from the observation notes and open-ended questionnaire responses was thematically analyzed. This helped identify common issues, usability challenges, and areas where the system could be improved.
-
+- **Pre-questionnaire**: Collected demographic information, familiarity with computers, and experience with creating digital patient cases.
+- **VPS Interaction**: Tutors were guided through creating a custom patient case using the VPS tutor portal.
+- **Observations**: The research team observed any issues or challenges tutors experienced while interacting with the system.
+- **Post-questionnaire**: Tutors gave feedback on the system’s usability, intuitiveness, and overall satisfaction with the patient case creation process.
 
 ---
+
+### Data Analysis
+- **Quantitative Analysis**: Pre- and post-questionnaire data were analyzed statistically to compare user performance before and after interacting with the VPS.
+- **Interaction Logs**: Reviewed to identify patterns in user behavior and engagement with the system.
+- **Qualitative Analysis**: Feedback from observation notes and open-ended questionnaire responses was thematically analyzed to highlight common challenges, usability issues, and areas for improvement.
+
+
 
 ## Results & Discussion
 
 ### Student Evaluation Results
 
 #### Pre-Questionnaire Results
-A total of 10 students (5 females and 5 males) participated in the study. The pre-questionnaire results provided insights into their demographics, computer proficiency, and prior experience with virtual patient simulators. While 3 students had prior exposure to the Virtual Patient Simulator (VPS), the majority (7 students) had not used it before, nor had any of them used other online simulators for educational purposes.
 
-- **Computer Proficiency**: On a 5-point Likert scale, students rated their computer proficiency at an average of 3.5, indicating a moderate to high level of comfort with computers.
-- **Frequency of Using Web-Based Learning**: An average score of 3.8 showed that students frequently use web-based platforms for learning, suggesting familiarity with digital tools.
-- **Familiarity with Web Navigation**: An average rating of 3.3 highlighted a moderate familiarity with web navigation, indicating some room for improvement in user experience design.
+A total of 10 students (5 females and 5 males) participated in the study. The pre-questionnaire responses provided information on their demographics, proficiency with computers, and previous experience using virtual patient simulators. Out of the 10 students, only 3 had prior exposure to the Virtual Patient Simulator (VPS), while the remaining 7 had never used it before. Additionally, none of the participants had experience with other online simulators for educational purposes.
+
+- **Computer Proficiency**: The students rated their proficiency with computers at an average of 3.5 on a 5-point Likert scale, indicating a moderate to high level of comfort with using technology.
+- **Frequency of Using Web-Based Learning**: The average score of 3.8 suggests that students regularly engage with web-based platforms for learning, highlighting their familiarity with digital learning tools.
+- **Familiarity with Web Navigation**: An average rating of 3.3 points to a moderate level of familiarity with navigating web-based interfaces, leaving room for improvements in user experience design.
 
 #### Post-Questionnaire Results
-After interacting with the VPS, all students completed a post-questionnaire that assessed the system's usability. The average ratings on a 5-point Likert scale (1 = Poor, 5 = Excellent) were as follows:
+
+Following their interaction with the VPS, all students completed a post-questionnaire to assess the system's usability. The results, averaged on a 5-point Likert scale (1 = Poor, 5 = Excellent), are as follows:
 
 - **Ease of Screen Navigation**: 3.6 (Moderate to high)
 - **Clarity of Instructions**: 4.3 (High)
@@ -296,23 +302,23 @@ After interacting with the VPS, all students completed a post-questionnaire that
 - **User-Friendliness of Controls**: 3.4 (Moderate)
 - **Overall User-Friendliness of the Interface**: 3.6 (Moderate to high)
 
-The results indicated that while students generally found the system easy to use and the instructions clear, there were some challenges in navigating the interface and interacting with the 3D model. The high rating for graphical quality suggests that the visuals were well-received, but the user-friendliness of the controls and interface could be improved.
-
-![Student Average Ratings Of The Post-Questionnaire](./images/avgRatings.png)
+These results indicate that while students generally found the system straightforward and the instructions clear, there were some difficulties in navigating the interface and using the 3D model. The high rating for graphical quality suggests that the visuals were well-received, although the interface and controls could benefit from further refinement to improve user-friendliness.
 
 ---
 
 ### Tutor Evaluation Results
 
 #### Pre-Questionnaire Results
-Eight tutors (5 females and 3 males) participated in the study. The pre-questionnaire gathered information about their experience with digital tools and case creation. Only 2 tutors had previously used online tools for creating case-based scenarios, and 3 had used online tools for digital dental charting.
 
-- **Computer Proficiency**: Tutors rated their computer proficiency at an average of 3.25, indicating moderate familiarity with digital tools.
-- **Usage of Digital Tools for Teaching**: The average rating was 3.25, suggesting moderate comfort with using digital tools for educational activities.
-- **Frequency of Creating Online Dental Teaching Material**: The average score was 2.25, showing that most tutors rarely created online teaching materials and relied more on traditional methods.
+Eight tutors (5 females and 3 males) participated in the study. The pre-questionnaire gathered details on their experience with digital tools and creating case-based scenarios. Out of the 8 tutors, only 2 had previously used online tools for case creation, and 3 had prior experience with digital dental charting tools.
+
+- **Computer Proficiency**: Tutors rated their computer proficiency at an average of 3.25, indicating a moderate familiarity with digital tools.
+- **Usage of Digital Tools for Teaching**: An average rating of 3.25 suggests that tutors were reasonably comfortable using digital tools for educational activities, although there was room for further improvement.
+- **Frequency of Creating Online Dental Teaching Materials**: The average score of 2.25 indicates that most tutors infrequently created online teaching materials, relying more on traditional teaching methods.
 
 #### Post-Questionnaire Results
-After using the VPS tutor portal, tutors provided feedback on its usability:
+
+After using the VPS tutor portal, the tutors provided feedback on the system's usability. The average scores on a 5-point Likert scale were as follows:
 
 - **Ease of Screen Navigation**: 4.375 (High)
 - **Intuitiveness of Interface Layout**: 4.125 (High)
@@ -320,23 +326,42 @@ After using the VPS tutor portal, tutors provided feedback on its usability:
 - **System Workflow Satisfaction**: 4.25 (High)
 - **Overall Tutor Portal Experience**: 4.25 (High)
 
-![Tutor Average Ratings Of The Post-Questionnaire](./images/avgRating_tutor.png)
-
-The high ratings across the board suggest that tutors found the VPS tutor portal easy to use and effective for creating patient cases. However, given the small sample size, further evaluation with more participants would provide more comprehensive insights.
+These high ratings indicate that tutors found the VPS tutor portal easy to navigate and effective for creating patient cases. However, with a small sample size, further studies with more participants would provide a more comprehensive understanding of its usability.
 
 ---
 
 ### Comparative Results
-A Kruskal-Wallis test was conducted to compare whether factors like gender, computer proficiency, or academic semester affected the time students took to complete the learning task in the VPS. The results indicated no significant difference in completion time based on these factors.
 
-| Factor                    | P-Value | Significant Difference (Threshold = 0.05)                   |
-|---------------------------|---------|-------------------------------------------------------------|
-| Proficiency Level (1-5)    | 0.307   | No significant difference in completion time with proficiency level. |
-| Gender (Male, Female)      | 0.208   | No significant difference in completion time with gender.    |
-| Academic Semester (5th-9th)| 0.417   | No significant difference in completion time with academic semester. |
-| Web Navigation Familiarity | 0.795   | No significant difference in completion time with navigation familiarity. |
+#### Student Results
+A Kruskal-Wallis test was conducted to analyze whether various factors such as proficiency, gender, academic semester, and web navigation familiarity had any impact on the time students took to complete tasks within the VPS system. The test results showed no significant differences based on any of these factors, indicating that these variables did not substantially influence task completion times.
+
+| Factor                         | P-Value | Significant Difference (Threshold = 0.05)                            |
+|---------------------------------|---------|----------------------------------------------------------------------|
+| **Proficiency Level (1-5)**     | 0.142   | No significant difference in completion time based on proficiency.    |
+| **Gender (Male, Female)**       | 0.462   | No significant difference in completion time based on gender.         |
+| **Academic Semester (5th-9th)** | 0.421   | No significant difference in completion time based on academic level. |
+| **Web Navigation Familiarity (1-5)** | 0.097   | No significant difference in completion time based on web navigation familiarity. |
+
+#### Tutor Results
+Two statistical tests were used to evaluate the tutor results: the **Mann–Whitney U Test** and the **Kruskal-Wallis Test**. These tests were applied to determine whether factors such as previous experience with digital tools and teaching activities had an impact on tutors’ overall satisfaction and usability ratings of the VPS tutor interface.
+
+The **Mann–Whitney U Test** compared the previous experience of tutors with digital tools and their ratings of the system's usability. The results indicated no significant difference in user satisfaction based on prior experience with digital dental charting or online case-based scenario creation.
+
+| Factor 1                                         | Factor 2                                                             | P-Value | Significant Difference (Threshold = 0.05)           |
+|--------------------------------------------------|----------------------------------------------------------------------|---------|-----------------------------------------------------|
+| **Experience with digital dental charting (Yes, No)** | **User-friendliness of tutor interface digital dental chart (1-5)**     | 0.617   | No significant difference                           |
+| **Experience with case-based scenario creation (Yes, No)** | **Overall satisfaction with custom case creation (1-5)**                | 0.508   | No significant difference                           |
+
+The **Kruskal-Wallis Test** further analyzed whether factors such as years of experience in the dental field, computer proficiency, and familiarity with digital teaching tools influenced the tutors’ overall satisfaction with the VPS system. Similar to the results from the student evaluations, no significant differences were found, meaning that these factors did not heavily impact overall satisfaction.
+
+| Factor                                                | P-Value | Significant Difference (Threshold = 0.05)                                  |
+|-------------------------------------------------------|---------|----------------------------------------------------------------------------|
+| **Experience in the dental field** (Less than 1 year, 1-5 years, 5-10 years, 10+ years) | 0.097   | No significant difference based on years of experience in dentistry.        |
+| **Proficiency in using computers** (1-Poor to 5-Excellent)                      | 0.378   | No significant difference based on computer proficiency.                    |
+| **Familiarity with digital tools for teaching** (1-Poor to 5-Excellent)          | 0.143   | No significant difference based on familiarity with digital teaching tools. |
 
 ---
+
 
 ## Discussion
 
