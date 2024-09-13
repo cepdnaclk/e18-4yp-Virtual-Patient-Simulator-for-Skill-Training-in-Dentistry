@@ -24,18 +24,49 @@ title:
 - Dr. D Leuke Bandara, [email](mailto:dhanulb@dental.pdn.ac.lk)
 - Dr. Dilrukshi Gamage, [email](mailto:dgs@ucsc.cmb.ac.lk)
 
-#### Table of content
+<details>
+  <summary><strong>Table of Contents</strong></summary>
 
-<!--
-1. [Abstract](#abstract)
-2. [Related works](#related-works)
-3. [Methodology](#methodology)
-4. [Experiment Setup and Implementation](#experiment-setup-and-implementation)
-5. [Results and Analysis](#results-and-analysis)
-6. [Conclusion](#conclusion)
-7. [Publications](#publications)
-8. [Links](#links)
--->
+  1. [Project Summary](#project-summary)<br>
+  2. [Background](#background)
+     - [Limitations in Traditional Teaching Methods](#limitations-in-traditional-teaching-methods)<br>
+     - [Overview of the Virtual Patient Simulator (VPS)](#overview-of-the-virtual-patient-simulator-vps)<br>
+  3. [Related Works](#related-works)<br>
+  4. [Summary of Literature Review](#summary-of-literature-review)<br>
+  5. [Our Solution](#our-solution)<br>
+  6. [Methodology](#methodology)<br>
+     - [System Architecture](#system-architecture)<br>
+       - [Tutor Interface](#tutor-interface)<br>
+       - [Backend Infrastructure](#backend-infrastructure)<br>
+       - [Student Interface](#student-interface)<br>
+       - [Data Flow and Synchronization](#data-flow-and-synchronization)<br>
+       - [Key Features of the System Architecture](#key-features-of-the-system-architecture)<br>
+  7. [Technologies Used](#technologies-used)<br>
+  8. [System Evaluation](#system-evaluation)<br>
+     - [Participants](#participants)<br>
+     - [Data Collection](#data-collection)<br>
+       - [Students](#students)<br>
+       - [Tutors](#tutors)<br>
+     - [Data Analysis](#data-analysis)<br>
+  9. [Results & Discussion](#results--discussion)<br>
+     - [Student Evaluation Results](#student-evaluation-results)<br>
+       - [Pre-Questionnaire Results](#pre-questionnaire-results)<br>
+       - [Post-Questionnaire Results](#post-questionnaire-results)<br>
+     - [Tutor Evaluation Results](#tutor-evaluation-results)<br>
+       - [Pre-Questionnaire Results](#pre-questionnaire-results-1)<br>
+       - [Post-Questionnaire Results](#post-questionnaire-results-1)<br>
+     - [Comparative Results](#comparative-results)<br>
+  10. [Discussion](#discussion)<br>
+      - [Areas for Improvement](#areas-for-improvement)<br>
+      - [Implications of VPS](#implications-of-vps)<br>
+      - [Future Directions](#future-directions)<br>
+  11. [Conclusion](#conclusion)<br>
+  12. [Use of AI Tools](#use-of-ai-tools)<br>
+  13. [Publications](#publications)<br>
+  14. [Links](#links)<br>
+</details>
+
+
 
 1. [Project Summary](#project-summary)
 2. [Related works](#related-works)
@@ -348,6 +379,10 @@ The system architecture ensures that data flows smoothly between the tutor and s
 ## System Evaluation
 
 The evaluation of the system was conducted in two phases: one focusing on the **Students' View** usability test with dental students, and the other focusing on the **Tutors' View** usability test with dental tutors. To measure user engagement and satisfaction, we conducted a user study involving undergraduates and tutors from the **Faculty of Dental Sciences**, **University of Peradeniya**.
+
+<div style="text-align: center;">
+    <img src="./images/usability.png" alt="Usability Test" style="width: 60%; height: auto;">
+</div>
 
 ### Participants
 - **Students**: A total of 10 undergraduate dental students participated, including students from the 5th, 7th, and 9th semesters.
