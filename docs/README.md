@@ -167,6 +167,55 @@ The **Tutor Interface** is built using **React** and allows tutors to create cus
 
 When tutors create or update a case, the interface communicates with the backend to store the input data. This ensures that the information is readily available for student use. 
 
+<table>
+  <!-- First row: No Images-3, image width 300px each -->
+  <tr>
+    <td align="center">
+      <img src="./images//tutorInterface/signin.png" width="300px" alt="SignIn"/><br />
+      <b>SignIn</b><br />
+    </td>
+    <td align="center" colspan="2">
+      <img src="./images/tutorInterface/basic1.png" width="300px;" alt="Basic Case Details"/>
+      <img src="./images/tutorInterface/basic2.png" width="300px;" alt="Basic Case Details"/><br />
+      <b>Basic Case Details</b><br />
+    </td>
+  </tr>
+  
+  <!-- Second row: No Images-3, image width 300px each -->
+  <tr>
+    <td align="center" colspan="3">
+      <img src="./images/tutorInterface/history1.png" width="300px;" alt="History Taking 1"/>
+      <img src="./images/tutorInterface/history2.png" width="300px;" alt="History Taking 2"/>
+      <img src="./images/tutorInterface/history3.png" width="300px;" alt="History Taking 2"/><br />
+      <b>History Taking</b><br />
+    </td>
+  </tr>
+
+  <tr>
+    <td align="center" colspan="3">
+      <img src="./images/tutorInterface/exmination1.png" width="300px;" alt="Examination 1"/>
+      <img src="./images/tutorInterface/exmination2.png" width="300px;" alt="Examination 2"/>
+      <img src="./images/tutorInterface/exmination3.png" width="300px;" alt="Examination 2"/><br />
+      <b>Examination</b><br />
+    </td>
+  </tr>
+  
+  <!-- Third row: No Images-4, image width 225px each (900px total) -->
+  <tr>
+    <td align="center" colspan="2">
+      <img src="./images/tutorInterface/dentalchart1.png" width="225px;" alt="Dental Char"/>
+      <img src="./images/tutorInterface/dentalchart2.png" width="225px;" alt="Dental Char"/><br />
+      <b>Dental Chart</b><br />
+    </td>
+    <td align="center" colspan="2">
+      <img src="./images/tutorInterface/preview1.png" width="225px;" alt="Preview"/>
+      <img src="./images/tutorInterface/preview2.png" width="225px;" alt="Preview"/><br />
+      <b>Preview</b><br />
+    </td>
+  </tr>
+</table>
+
+
 Tutors can enter detailed dental conditions and case-specific information through form-based inputs, which are then stored in the **Firestore Database**. The backend processes this information and generates custom data that will later be displayed in the student’s interface.
 
 #### 2. **Backend Infrastructure**
@@ -183,51 +232,50 @@ The **Student Interface**, also built using **React**, allows students to:
 - Select a case to interact with.
 - Engage with the virtual 3D dental model, powered by **Unity** and **WebGL**.
 
-## System Features
 
 <table>
   <tr>
     <td align="center" width="25%">
-      <img src="./images/studentInterface/signin.png" width="200px;" alt="SignIn"/><br />
+      <img src="./images/studentInterface/signin.png" width="250px;" alt="SignIn"/><br />
       <b>SignIn</b><br />
     </td>
     <td align="center" width="25%">
-      <img src="./images/studentInterface/caseselection.png" width="200px;" alt="Case Selection"/><br />
+      <img src="./images/studentInterface/caseselection.png" width="250px;" alt="Case Selection"/><br />
       <b>Case Selection</b><br />
     </td>
     <td align="center" width="25%">
-      <img src="./images/studentInterface/historytaking.png" width="200px;" alt="History Taking"/><br />
+      <img src="./images/studentInterface/historytaking.png" width="250px;" alt="History Taking"/><br />
       <b>History Taking</b><br />
     </td>
     <td align="center" width="25%">
-      <img src="./images/studentInterface/instractions.png" width="200px;" alt="Instructions"/><br />
+      <img src="./images/studentInterface/instractions.png" width="250px;" alt="Instructions"/><br />
       <b>Instructions</b><br />
     </td>
   </tr>
   <tr>
     <td align="center" colspan="4">
-      <img src="./images/studentInterface/exmination1.png" width="200px;" alt="Examination 1"/>
-      <img src="./images/studentInterface/exmination3.png" width="200px;" alt="Examination 2"/>
-      <img src="./images/studentInterface/mirror.png" width="200px;" alt="Examination 3"/>
-      <img src="./images/studentInterface/examination5.png" width="200px;" alt="Examination 4"/><br />
+      <img src="./images/studentInterface/exmination1.png" width="250px;" alt="Examination 1"/>
+      <img src="./images/studentInterface/exmination3.png" width="250px;" alt="Examination 2"/>
+      <img src="./images/studentInterface/mirror.png" width="250px;" alt="Examination 3"/>
+      <img src="./images/studentInterface/examination5.png" width="250px;" alt="Examination 4"/><br />
       <b>Examinations</b><br />
     </td>
   </tr>
   <tr>
     <td align="center" width="25%">
-      <img src="./images/studentInterface/tooltray.png" width="200px;" alt="Tool Tray"/><br />
+      <img src="./images/studentInterface/tooltray.png" width="250px;" alt="Tool Tray"/><br />
       <b>Tool Tray</b><br />
     </td>
     <td align="center" width="25%">
-      <img src="./images/studentInterface/dental%20hart.png" width="200px;" alt="Dental Chart"/><br />
+      <img src="./images/studentInterface/dental%20hart.png" width="250px;" alt="Dental Chart"/><br />
       <b>Dental Chart</b><br />
     </td>
     <td align="center" width="25%">
-      <img src="./images/studentInterface/feedback.png" width="200px;" alt="Feedback"/><br />
+      <img src="./images/studentInterface/feedback.png" width="250px;" alt="Feedback"/><br />
       <b>Feedback</b><br />
     </td>
     <td align="center" width="25%">
-      <img src="./images/studentInterface/exmination4.png" width="200px;" alt="Dental Clinic"/><br />
+      <img src="./images/studentInterface/clinic.png" width="250px;" alt="Dental Clinic"/><br />
       <b>Dental Clinic</b><br />
     </td>
   </tr>
