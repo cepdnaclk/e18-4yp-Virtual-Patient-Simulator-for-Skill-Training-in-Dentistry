@@ -60,12 +60,63 @@ By automating the generation of 3D models based on case data, the system offers 
 
 ---
 
-## Objectives
-- Introduce a tutor portal for creating custom dental cases.
-- Automate 3D model generation based on patient case data.
-- Improve the usability and learning outcomes of virtual patient simulations.
+## Background
+
+### Limitations in Traditional Teaching Methods
+- Traditional dental education methods require **significant tutor guidance** at each step, which can limit student independence.
+- **Direct patient interaction** in a learning environment raises ethical concerns, especially with invasive procedures, and there is always the risk of mistakes affecting real patients.
+- Traditional methods may not expose students to a wide variety of clinical scenarios, particularly **rare or complex cases**.
+
+To address these limitations, previous batches from the **University of Peradeniya (UOP)** developed a **Virtual Patient Simulator (VPS)**.
 
 ---
+
+### Overview of the Virtual Patient Simulator (VPS)
+The **VPS** provides a web-based simulation environment, designed with four main phases:
+
+1. **History Taking**
+2. **Examination and Investigation**
+3. **Diagnosis**
+4. **Feedback**
+
+#### Features of the VPS:
+- **Interactive 3D model** with the following capabilities:
+  - Extraoral and Intraoral views
+  - Full dental room simulation
+  - Dental instrument selection
+
+However, the simulator also has certain limitations:
+- Only a **single patient case** is available, limiting scenario variety.
+- The **3D model** is directly tied to the single available patient case.
+- **Dental chart marking** is limited to a single tooth.
+- There is no **haptic device integration**, which limits the realism of tactile feedback during practice.
+
+---
+
+## Summary of Literature Review
+
+| Area                            | Key Insights                                                                                                                                   | References                        |
+|----------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------|
+| **Custom Case Creation**         | Development of an **interactive form-type interface** for teachers to create patient cases and the creation of a **question bank**.            | "Web-SP", "VOMC"                 |
+| **Haptic Integration in VPS**    | Control of tool movements and tactile feedback, providing a more realistic experience.                                                         | "Simodont Dental Trainer", "DentSim System" |
+| **Customizable 3D Oral Model**   | Customizing the **3D model** based on mapped dental case details to enhance scenario diversity.                                                | **Research Gap**                 |
+| **Dental Chart Annotation & Verification of Responses** | Creating a **markable dental chart** and verifying student responses with correct answers.                                  | **Research Gap**                 |
+| **Evaluating VPS’s Impact in Dental Training** | Gathering **feedback from students and tutors** to assess system effectiveness and group-based VR assessments.                      | "Evaluating Medical Student…"     |
+
+
+
+---
+
+### Our Solution
+
+To overcome the limitations of previous simulators, we propose:
+
+1. **Custom Patient Case Creation**: Developing a separate interface for tutors to create customized patient cases within the simulator.
+2. **Semi-Automation of the 3D Model**: Modifying the 3D model to adapt to each unique case created by the tutor.
+3. **Dental Chart Marking & Verification**: Developing a markable dental chart for students and checking their responses against the correct answers.
+4. **Usability Evaluation**: Assessing the system’s usability from both the students’ and tutors’ perspectives, ensuring it improves learning outcomes.
+
+
 
 ## Technologies Used
 
