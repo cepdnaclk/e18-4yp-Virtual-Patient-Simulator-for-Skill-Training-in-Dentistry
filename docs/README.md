@@ -11,6 +11,8 @@ title:
 
 # Enhancing Virtual Patient Simulation in Dentistry With Custom Case Creation and Evaluate The System Effectiveness
 
+---
+
 #### Team
 
 - E/18/013, R.Abilash, [email](mailto:e18013@eng.pdn.ac.lk)
@@ -29,7 +31,8 @@ title:
 1. [Project Summary](#project-summary)
 2. [Background](#background)
    - [Limitations in Traditional Teaching Methods](#limitations-in-traditional-teaching-methods)
-   - [Overview of the Virtual Patient Simulator (VPS)](#overview-of-the-virtual-patient-simulator-vps)
+   - [Overview of the VPS](#overview-of-the-vps)
+   - [Features of the VPS](#features-of-the-vps)
 3. [Related Works](#related-works)
 4. [Summary of Literature Review](#summary-of-literature-review)
 5. [Our Solution](#our-solution)
@@ -50,7 +53,7 @@ title:
 13. [Publications](#publications)
 14. [Links](#links)
 
----
+
 
 <!-- 
 DELETE THIS SAMPLE before publishing to GitHub Pages !!!
@@ -61,24 +64,24 @@ This is a sample image, to show how to add images to your page. To learn more op
 
 ## Project Summary
 
+---
+
 This project focuses on enhancing virtual patient simulations used in dental education by introducing a custom case creation feature. The main objective is to provide tutors with a user-friendly portal that allows them to design unique clinical cases, enabling students to interact with a diverse range of dental scenarios. The system combines ReactJS for the frontend, Firebase for data management, and Unity for 3D modeling, creating a seamless experience for both tutors and students.
 
 By automating the generation of 3D models based on case data, the system offers an interactive learning environment, improving critical skills such as history taking, diagnosis, and treatment planning. The project was evaluated through user testing involving both students and tutors, yielding positive feedback on usability and educational effectiveness. This innovation aims to bridge the gap in dental simulators by offering customizable and scalable solutions for teaching and learning complex dental scenarios.
 
----
 
 ## Background
+---
 
-### Limitations in Traditional Teaching Methods
+### Limitations in Traditional Teaching Methods:
 - Traditional dental education methods require significant tutor guidance at each step, which can limit student independence.
 - Direct patient interaction in a learning environment raises ethical concerns, especially with invasive procedures, and there is always the risk of mistakes affecting real patients.
 - Traditional methods may not expose students to a wide variety of clinical scenarios, particularly rare or complex cases.
 
 To address these limitations, previous batches from the University of Peradeniya (UOP) developed a Virtual Patient Simulator (VPS).
 
----
-
-### Overview of the VPS
+### Overview of the VPS:
 The VPS provides a web-based simulation environment, designed with four main phases:
 
 1. **History Taking**
@@ -86,7 +89,7 @@ The VPS provides a web-based simulation environment, designed with four main pha
 3. **Diagnosis**
 4. **Feedback**
 
-#### Features of the VPS:
+### Features of the VPS:
 - **Interactive 3D model** with the following capabilities:
   - Extraoral and Intraoral views
   - Full dental room simulation
@@ -98,9 +101,8 @@ However, the simulator also has certain limitations:
 - Dental chart marking is limited to a single tooth.
 - There is no haptic device integration, which limits the realism of tactile feedback during practice.
 
----
-
 ## Related Works
+---
 
 Several important works in the field of dental education have significantly influenced the development of this VPS:
 
@@ -129,6 +131,7 @@ This research builds upon these foundations by addressing the limitations of exi
 
 
 ## Summary of Literature Review
+---
 
 | Area                            | Key Insights                                                                                                                                   | References                        |
 |----------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------|
@@ -140,9 +143,8 @@ This research builds upon these foundations by addressing the limitations of exi
 
 
 
+## Our Solution
 ---
-
-### Our Solution
 
 To overcome the limitations of previous simulators, we propose:
 
@@ -152,14 +154,11 @@ To overcome the limitations of previous simulators, we propose:
 4. **Usability Evaluation**: Assessing the system’s usability from both the students’ and tutors’ perspectives, ensuring it improves learning outcomes.
 
 
-
-
-
 ## Methodology
+---
 
 The existing web-based virtual patient simulator system was initially designed for a single user: Student, who interacted with the simulator through the student's view front end of the application. To enhance the simulator with custom patient case creation, a separate portal was developed for tutors. With this enhancement, the system now supports two main user roles: Student and Tutor. Usability tests were conducted with participants from both groups to evaluate the system’s overall effectiveness, ease of use, and user satisfaction.
 
----
 
 ### **System Architecture**
 
