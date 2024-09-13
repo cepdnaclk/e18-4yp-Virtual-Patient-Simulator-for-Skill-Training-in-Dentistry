@@ -183,6 +183,21 @@ The **Student Interface**, also built using **React**, allows students to:
 - Select a case to interact with.
 - Engage with the virtual 3D dental model, powered by **Unity** and **WebGL**.
 
+## System Features
+
+| ![SignIn](./images//studentInterface/signin.png) | ![Case Selection](./images//studentInterface/caseselection.png) | ![History taking](./images//studentInterface/historytaking.png) | ![Instructions](./images//studentInterface/instractions.png) |
+|:-------------------------:|:-------------------------------:|:-------------------------------:|:------------------------------:|
+| **SignIn**              | **Case Selection**            | **History taking**            | **Instructions**             |
+
+| ![Examinations 1](./images//studentInterface/exmination1.png) | ![Examinations 2](./images//studentInterface/exmination3.png) | ![Examinations 3](./images//studentInterface/mirror.png) | ![Examinations 4](./images//studentInterface/exmination6.png) |
+|:-------------------------:|:-------------------------------:|:-------------------------------:|:------------------------------:|
+|      | **Examinations**              |              |            |
+
+| ![Tool Tray](./images//studentInterface/tooltray.png) | ![Dental Chart](./images//studentInterface/dental%20hart.png) | ![Feedback](./images//studentInterface/feedback.png) | ![Dental Clinic](./images//studentInterface/exmination4.png) |
+|:---------------------------:|:------------------------------:|:--------------------------:|:-------------------------------:|
+| **Tool Tray**             | **Dental Chart**              | **Feedback**              | **Dental Clinic**             |
+
+
 Once a student selects a dental case from the interface, the system fetches the case data (such as patient history, examination questions, and dental chart details) from the **Firestore Database** through the backend. This data is then displayed to the student in a structured format, guiding them through the **history taking**, **examination**, **investigation**, and **diagnosis** phases.
 
 The **3D model** of the patient dynamically updates based on the selected case’s details (e.g., tooth conditions, dental chart markings). Using **Unity WebGL**, the model is rendered directly within the student’s browser, offering real-time interaction and visualization of the dental conditions outlined by the tutor. Students can rotate, zoom, and interact with the 3D model using virtual dental tools, providing a hands-on learning experience.
