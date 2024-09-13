@@ -170,11 +170,11 @@ When tutors create or update a case, the interface communicates with the backend
 <table>
   <!-- First row: No Images-3, image width 300px each -->
   <tr>
-    <td align="center">
+    <td align="center" width="33%">
       <img src="./images//tutorInterface/signin.png" width="300px" alt="SignIn"/><br />
       <b>SignIn</b><br />
     </td>
-    <td align="center" colspan="2">
+    <td align="center" colspan="2" width="67%">
       <img src="./images/tutorInterface/basic1.png" width="300px;" alt="Basic Case Details"/>
       <img src="./images/tutorInterface/basic2.png" width="300px;" alt="Basic Case Details"/><br />
       <b>Basic Case Details</b><br />
@@ -202,12 +202,12 @@ When tutors create or update a case, the interface communicates with the backend
   
   <!-- Third row: No Images-4, image width 225px each (900px total) -->
   <tr>
-    <td align="center" colspan="2">
+    <td align="center" colspan="2" width="50%">
       <img src="./images/tutorInterface/dentalchart1.png" width="225px;" alt="Dental Char"/>
       <img src="./images/tutorInterface/dentalchart2.png" width="225px;" alt="Dental Char"/><br />
       <b>Dental Chart</b><br />
     </td>
-    <td align="center" colspan="2">
+    <td align="center" colspan="2" width="50%">
       <img src="./images/tutorInterface/preview1.png" width="225px;" alt="Preview"/>
       <img src="./images/tutorInterface/preview2.png" width="225px;" alt="Preview"/><br />
       <b>Preview</b><br />
