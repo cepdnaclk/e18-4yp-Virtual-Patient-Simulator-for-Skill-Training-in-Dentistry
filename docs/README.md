@@ -167,7 +167,6 @@ The existing web-based virtual patient simulator system was initially designed f
 
 
 ### System Architecture
----
 
 The overall architecture of the VPS is designed to ensure seamless interaction between the tutor and student interfaces, while efficiently managing the backend processes that support the system. The VPS system is composed of three main components: the Tutor Interface, Student Interface, and Backend Infrastructure.
 
@@ -299,7 +298,7 @@ Once a student selects a dental case from the interface, the system fetches the 
 
 The 3D model of the patient dynamically updates based on the selected case’s details (e.g., tooth conditions, dental chart markings). Using Unity WebGL, the model is rendered directly within the student’s browser, offering real-time interaction and visualization of the dental conditions outlined by the tutor. Students can rotate, zoom, and interact with the 3D model using virtual dental tools, providing a hands-on learning experience.
 
----
+<br>
 
 ### Data Flow and Synchronization
 
@@ -308,7 +307,7 @@ The system architecture ensures that data flows smoothly between the tutor and s
 2. **Backend Processing**: The backend handles all communication between the interfaces and the database. It processes tutor-created cases and ensures that case data is available for students in real-time.
 3. **Student Interaction**: Students access the system through the student interface, where they can select and interact with custom cases. The backend retrieves the case data and displays it to the student. The Unity-based 3D model is dynamically updated based on the case’s dental chart details, providing an immersive and interactive learning experience.
 
----
+<br>
 
 ### Key Features of the System Architecture
 - **Real-Time Data Synchronization**: Any updates made by tutors are instantly available to students, ensuring that both interfaces remain up-to-date without delays.
@@ -316,9 +315,11 @@ The system architecture ensures that data flows smoothly between the tutor and s
 - **Cross-Platform Accessibility**: The Unity WebGL integration allows students to access the 3D simulation from any modern web browser, without requiring specialized hardware or plugins.
 - **Immersive 3D Learning**: The use of Unity allows students to interact with a detailed 3D model, enabling hands-on learning experiences that closely mimic real-world clinical environments.
 
----
+<br>
 
 ### Technologies Used
+
+---
 
 <table>
   <tr>
