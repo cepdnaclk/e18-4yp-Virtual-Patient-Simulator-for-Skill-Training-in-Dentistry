@@ -551,8 +551,9 @@ These AI tools were used to support various research and development tasks, impr
 
 ### Slides
 ---
-1. [Semester 7 slides](https://docs.google.com/presentation/d/1TYdonSyNd2ezDAwQ_YaSkcrKgtWFNq1o/edit?usp=sharing&ouid=115971192923283924772&rtpof=true&sd=true)
-2. [Semester 8 slides](https://docs.google.com/presentation/d/1dZMc1u2n7EHOmE8TE5IMNI6cqE0p9DHo/edit?usp=sharing&ouid=115971192923283924772&rtpof=true&sd=true)
+1. [Semester 7 - Final Presentation](https://docs.google.com/presentation/d/1dZMc1u2n7EHOmE8TE5IMNI6cqE0p9DHo/edit?usp=sharing&ouid=118074731670477904971&rtpof=true&sd=true)
+2. [Semester 8 - Mid Presentation](https://docs.google.com/presentation/d/1ihNHIHyzlGlHhoJvRyQByU1_1oInsrbe/edit?usp=sharing&ouid=118074731670477904971&rtpof=true&sd=true)
+3. [Semester 8 - Final Presentation](https://docs.google.com/presentation/d/1TYdonSyNd2ezDAwQ_YaSkcrKgtWFNq1o/edit?usp=sharing&ouid=118074731670477904971&rtpof=true&sd=true)
 
 
 ## Links
