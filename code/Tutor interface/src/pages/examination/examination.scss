@@ -1,0 +1,50 @@
+// examination.scss
+
+.examination-container {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow: hidden;
+  position: relative;
+  border: 1px solid #ccc; // Border for the entire container if needed
+
+  .questions-container {
+    transition: width 0.3s ease-in-out;
+    overflow: hidden;
+    border-right: 1px solid #ccc; // Border between questions and image
+  }
+
+  .questions {
+    padding: 20px;
+    border: 1px solid #ddd; // Border for questions section
+    // Add more styles for your questions section here
+  }
+
+  .image-container {
+    width: 100%; // Full width when questions are hidden
+    transition: width 0.3s ease-in-out;
+    border: 1px solid #ddd; // Border for image section
+
+    .toggle-button {
+      position: absolute;
+      top: 16px; // Adjust as necessary
+      right: 16px; // Adjust as necessary
+      z-index: 10;
+      background: #fff; // Change as needed
+      // Additional styles for the toggle button
+    }
+
+    .image {
+      width: 100%;
+      height: auto; // Adjust based on your layout needs
+      // Adjust styles according to your image presentation
+    }
+  }
+  .toggle-questions-button {
+    position: absolute;
+    top: 16px; // Adjust as necessary
+    left: 16px; // Adjust to bring the button inside the image area when full screen
+    z-index: 10;
+    background: #000; // Change as needed
+    // Additional styles for the toggle questions button
+  }
+}

@@ -1,0 +1,135 @@
+.basic-case-details {
+  .details-card {
+    margin-bottom: 20px;
+  }
+
+  .image-upload-container,
+  .form-inputs-container {
+    padding: 20px;
+
+    .upload-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px; // Reduced from 200px which seems too large
+      border: 1px dashed #bbb; // Dashed border as per your image
+      border-radius: 4px; // Rounded corners
+      margin-top: 35px;
+      background-color: #f7f7f7; // Light background color for the drag area
+      transition: background-color 0.3s; // Smooth background color change on drag over
+      margin-left: 20px;
+
+      &:hover,
+      &:focus {
+        background-color: #e7e7e7; // Slightly darker on hover/focus
+      }
+      .drag-drop-area{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      // Icon and text for dragging files
+      .drag-drop-icon {
+        color: #909090; // Icon color
+        margin-bottom: 8px;
+      }
+
+      .drag-drop-text {
+        color: #909090; // Text color
+        margin-bottom: 8px;
+      }
+
+      .upload-input {
+        display: none; // Keep this as it hides the actual input element
+      }
+
+      .preview-image {
+        max-width: 100%;
+        height: auto;
+        margin-top: 20px;
+      }
+
+      .file-status {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 0; // Padding around the file status area
+
+        .file-name {
+          font-size: 0.9em; // Smaller text for the file name
+          color: #333; // Dark color for text
+          margin-right: 8px; // Space between the file name and the progress bar
+          white-space: nowrap; // Prevents the text from wrapping
+          overflow: hidden; // Hides the overflow
+          text-overflow: ellipsis; // Adds an ellipsis for overflowed text
+          max-width: 150px; // Maximum width of the file name text
+        }
+
+        .upload-progress {
+          flex-grow: 1; // Allows the progress bar to grow and fill space
+          background-color: #e0e0e0; // Light grey background for the progress bar
+          border-radius: 2px; // Rounded corners for the progress bar
+          position: relative; // For absolute positioning of the progress indicator
+
+          &:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            background-color: #4caf50; // Green color to indicate progress
+            width: 0%; // Initial width of the progress indicator
+            border-radius: 2px; // Rounded corners for the progress indicator
+            transition: width 0.3s ease; // Smooth transition for the indicator
+          }
+          &:hover {
+            cursor: not-allowed; // or 'pointer' if it's clickable
+          }
+        }
+
+        .cancel-upload {
+          border: none; // No border for the cancel button
+          background-color: transparent; // Transparent background
+          cursor: pointer; // Cursor to pointer on hover over the button
+          color: #666; // Grey color for the cancel button
+          padding: 0 8px; // Padding around the button for a larger clickable area
+
+          &:hover {
+            color: #d32f2f; // Red color on hover to indicate a destructive action
+          }
+        }
+
+      }
+    }
+
+    .form-section {
+      padding: 20px;
+    }
+
+    .submit-button {
+      margin-top: 20px;
+      width: 100%; // Full width button
+      height: 50px; // Specified height for the button
+      background-color: #1976d2; // Button color
+      color: white; // Text color for the button
+      border: none; // No border
+      border-radius: 4px; // Match border-radius with the upload section
+      cursor: pointer; // Cursor to pointer on hover over the button
+
+      &:hover {
+        background-color: #115293; // Darker color on hover
+      }
+    }
+
+    @media screen and (max-width: 960px) {
+      .upload-section {
+        padding: 20px; // Adjust padding for smaller screens
+        border-right: none;
+      }
+    }
+  }
+}

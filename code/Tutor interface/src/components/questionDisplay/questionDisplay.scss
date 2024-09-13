@@ -1,0 +1,60 @@
+.question-control {
+  width: 100%; // Ensure the control takes full width
+
+  .question-title {
+    margin-bottom: 16px;
+  }
+
+  .question-image-container {
+    margin-bottom: 16px;
+    text-align: center; // Center align if that's your design requirement
+
+    .question-image {
+      max-width: 300px; // Maximum width for question images
+      height: auto; // Maintain aspect ratio
+    }
+  }
+
+  .answers-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: start;
+  }
+
+  .answer-item {
+    // Styles for the individual answer items (Grid items)
+  }
+
+  .answer-paper {
+    padding: 10px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ddd;
+    transition: background-color 0.3s ease;
+
+    &.correct-answer {
+      background-color: #e8f5e9; // A light green background for correct answers
+      border-color: #4caf50; // A green border for correct answers
+    }
+  }
+
+  .answer-image-container {
+    width: 100%;
+    margin-bottom: 8px;
+
+    .answer-image {
+      max-width: 100px; // Maximum width for answer images
+      max-height: 75px; // Maximum height for answer images
+      display: block; // Ensure images are block level to avoid inline gaps
+      margin: auto; // Center images within their container
+    }
+  }
+
+  .answer-text {
+    // Styles for answer text
+  }
+}
