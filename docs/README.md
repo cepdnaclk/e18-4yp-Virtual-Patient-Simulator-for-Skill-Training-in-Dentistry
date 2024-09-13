@@ -24,49 +24,31 @@ title:
 - Dr. D Leuke Bandara, [email](mailto:dhanulb@dental.pdn.ac.lk)
 - Dr. Dilrukshi Gamage, [email](mailto:dgs@ucsc.cmb.ac.lk)
 
-<details>
-  <summary><strong>Table of Contents</strong></summary>
+#### Table of Content
 
-  1. [Project Summary](#project-summary)  
-  2. [Background](#background)  
-     - [Limitations in Traditional Teaching Methods](#limitations-in-traditional-teaching-methods)  
-     - [Overview of the Virtual Patient Simulator (VPS)](#overview-of-the-virtual-patient-simulator-vps)  
-  3. [Related Works](#related-works)  
-  4. [Summary of Literature Review](#summary-of-literature-review)  
-  5. [Our Solution](#our-solution)  
-  6. [Methodology](#methodology)  
-     - [System Architecture](#system-architecture)  
-       - [Tutor Interface](#tutor-interface)  
-       - [Backend Infrastructure](#backend-infrastructure)  
-       - [Student Interface](#student-interface)  
-       - [Data Flow and Synchronization](#data-flow-and-synchronization)  
-       - [Key Features of the System Architecture](#key-features-of-the-system-architecture)  
-  7. [Technologies Used](#technologies-used)  
-  8. [System Evaluation](#system-evaluation)  
-     - [Participants](#participants)  
-     - [Data Collection](#data-collection)  
-       - [Students](#students)  
-       - [Tutors](#tutors)  
-     - [Data Analysis](#data-analysis)  
-  9. [Results & Discussion](#results--discussion)  
-     - [Student Evaluation Results](#student-evaluation-results)  
-       - [Pre-Questionnaire Results](#pre-questionnaire-results)  
-       - [Post-Questionnaire Results](#post-questionnaire-results)  
-     - [Tutor Evaluation Results](#tutor-evaluation-results)  
-       - [Pre-Questionnaire Results](#pre-questionnaire-results-1)  
-       - [Post-Questionnaire Results](#post-questionnaire-results-1)  
-     - [Comparative Results](#comparative-results)  
-  10. [Discussion](#discussion)  
-      - [Areas for Improvement](#areas-for-improvement)  
-      - [Implications of VPS](#implications-of-vps)  
-      - [Future Directions](#future-directions)  
-  11. [Conclusion](#conclusion)  
-  12. [Use of AI Tools](#use-of-ai-tools)  
-  13. [Publications](#publications)  
-  14. [Links](#links)  
-
-</details>
-
+1. [Project Summary](#project-summary)
+2. [Background](#background)
+   - [Limitations in Traditional Teaching Methods](#limitations-in-traditional-teaching-methods)
+   - [Overview of the Virtual Patient Simulator (VPS)](#overview-of-the-virtual-patient-simulator-vps)
+3. [Related Works](#related-works)
+4. [Summary of Literature Review](#summary-of-literature-review)
+5. [Our Solution](#our-solution)
+6. [Methodology](#methodology)
+   - [System Architecture](#system-architecture)
+7. [Technologies Used](#technologies-used)
+8. [System Evaluation](#system-evaluation)
+   - [Participants](#participants)
+   - [Data Collection](#data-collection)
+   - [Data Analysis](#data-analysis)
+9. [Results & Discussion](#results--discussion)
+   - [Student Evaluation Results](#student-evaluation-results)
+   - [Tutor Evaluation Results](#tutor-evaluation-results)
+   - [Comparative Results](#comparative-results)
+10. [Discussion](#discussion)
+11. [Conclusion](#conclusion)
+12. [Use of AI Tools](#use-of-ai-tools)
+13. [Publications](#publications)
+14. [Links](#links)
 
 ---
 
@@ -88,16 +70,16 @@ By automating the generation of 3D models based on case data, the system offers 
 ## Background
 
 ### Limitations in Traditional Teaching Methods
-- Traditional dental education methods require **significant tutor guidance** at each step, which can limit student independence.
-- **Direct patient interaction** in a learning environment raises ethical concerns, especially with invasive procedures, and there is always the risk of mistakes affecting real patients.
-- Traditional methods may not expose students to a wide variety of clinical scenarios, particularly **rare or complex cases**.
+- Traditional dental education methods require significant tutor guidance at each step, which can limit student independence.
+- Direct patient interaction in a learning environment raises ethical concerns, especially with invasive procedures, and there is always the risk of mistakes affecting real patients.
+- Traditional methods may not expose students to a wide variety of clinical scenarios, particularly rare or complex cases.
 
-To address these limitations, previous batches from the **University of Peradeniya (UOP)** developed a **Virtual Patient Simulator (VPS)**.
+To address these limitations, previous batches from the University of Peradeniya (UOP) developed a Virtual Patient Simulator (VPS).
 
 ---
 
-### Overview of the Virtual Patient Simulator (VPS)
-The **VPS** provides a web-based simulation environment, designed with four main phases:
+### Overview of the VPS
+The VPS provides a web-based simulation environment, designed with four main phases:
 
 1. **History Taking**
 2. **Examination and Investigation**
@@ -111,37 +93,37 @@ The **VPS** provides a web-based simulation environment, designed with four main
   - Dental instrument selection
 
 However, the simulator also has certain limitations:
-- Only a **single patient case** is available, limiting scenario variety.
-- The **3D model** is directly tied to the single available patient case.
-- **Dental chart marking** is limited to a single tooth.
-- There is no **haptic device integration**, which limits the realism of tactile feedback during practice.
+- Only a single patient case is available, limiting scenario variety.
+- The 3D model is directly tied to the single available patient case.
+- Dental chart marking is limited to a single tooth.
+- There is no haptic device integration, which limits the realism of tactile feedback during practice.
 
 ---
 
 ## Related Works
 
-Several important works in the field of dental education have significantly influenced the development of this Virtual Patient Simulator (VPS):
+Several important works in the field of dental education have significantly influenced the development of this VPS:
 
 1. **Traditional Teaching in Dental Education**  
-   Traditional methods, including didactic lectures, textbooks, and mannequin-based training, have been limited by their passive nature and ethical concerns regarding live patient interactions. These methods fail to expose students to a broad spectrum of clinical scenarios, leading to the development of **Virtual Patient Simulators (VPS)** to bridge the gap between theoretical learning and practical experience.
+   Traditional methods, including didactic lectures, textbooks, and mannequin-based training, have been limited by their passive nature and ethical concerns regarding live patient interactions. These methods fail to expose students to a broad spectrum of clinical scenarios, leading to the development of VPS to bridge the gap between theoretical learning and practical experience.
 
 2. **Simulators for Dental Education**  
-   Various simulators, including **Haptic Feedback Simulators**, **VR Simulators**, and **AR Simulators**, have been introduced to enhance dental education.  
-   - **Haptic Feedback Simulators**, such as **PerioSim**, provide real-time tactile feedback, helping students improve their fine motor skills and manual dexterity.
-   - **VR Simulators** like **VirTeaSy Dental** immerse students in a fully digital environment for procedural training, though they lack tactile feedback.
-   - **AR Simulators** like **DentSim** offer hybrid approaches, combining real and virtual elements to provide contextual, real-time feedback during procedures.
+   Various simulators, including Haptic Feedback Simulators, VR Simulators, and AR Simulators, have been introduced to enhance dental education.  
+   - **Haptic Feedback Simulators**, such as PerioSim, provide real-time tactile feedback, helping students improve their fine motor skills and manual dexterity.
+   - **VR Simulators** like VirTeaSy Dental immerse students in a fully digital environment for procedural training, though they lack tactile feedback.
+   - **AR Simulators** like DentSim offer hybrid approaches, combining real and virtual elements to provide contextual, real-time feedback during procedures.
 
 3. **Custom Case Creation in VPS**  
-   Some simulators, such as the **Virtual Oral Medicine Clinic (VOMC)**, offer custom patient case creation capabilities. These simulators allow students to interact with virtual patients across various stages of patient assessment. However, they often lack immersive 3D models or haptic feedback.  
-   - **Web-SP** is another simulator that facilitates the creation of patient cases but lacks 3D interactive elements, focusing primarily on text and image-based learning.
+   Some simulators, such as the Virtual Oral Medicine Clinic (VOMC), offer custom patient case creation capabilities. These simulators allow students to interact with virtual patients across various stages of patient assessment. However, they often lack immersive 3D models or haptic feedback.  
+   - Web-SP is another simulator that facilitates the creation of patient cases but lacks 3D interactive elements, focusing primarily on text and image-based learning.
 
 4. **Technologies Used in Simulators**  
-   Simulators frequently leverage technologies such as **Unity** and **WebGL** for 3D model development and rendering.  
+   Simulators frequently leverage technologies such as Unity and WebGL for 3D model development and rendering.  
    - **Unity** is a powerful game engine that supports interactive, real-time 3D environments.  
    - **WebGL** allows for rendering 3D models directly within web browsers, making simulations more accessible.
 
 5. **Digital Dental Charting**  
-   Digital dental charting systems offer significant improvements over traditional paper-based methods, with user-friendly platforms that reduce examination time and minimize misunderstandings. Digital solutions also provide **real-time diagnostic data**, enhancing the educational value for dental students.
+   Digital dental charting systems offer significant improvements over traditional paper-based methods, with user-friendly platforms that reduce examination time and minimize misunderstandings. Digital solutions also provide real-time diagnostic data, enhancing the educational value for dental students.
 
 This research builds upon these foundations by addressing the limitations of existing simulators and incorporating custom case creation, semi-automated 3D models, and more immersive learning environments for dental students.
 
@@ -150,11 +132,11 @@ This research builds upon these foundations by addressing the limitations of exi
 
 | Area                            | Key Insights                                                                                                                                   | References                        |
 |----------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------|
-| **Custom Case Creation**         | Development of an **interactive form-type interface** for teachers to create patient cases and the creation of a **question bank**.            | "Web-SP", "VOMC"                 |
+| **Custom Case Creation**         | Development of an interactive form-type interface for teachers to create patient cases and the creation of a **question bank**.            | "Web-SP", "VOMC"                 |
 | **Haptic Integration in VPS**    | Control of tool movements and tactile feedback, providing a more realistic experience.                                                         | "Simodont Dental Trainer", "DentSim System" |
-| **Customizable 3D Oral Model**   | Customizing the **3D model** based on mapped dental case details to enhance scenario diversity.                                                | **Research Gap**                 |
-| **Dental Chart Annotation & Verification of Responses** | Creating a **markable dental chart** and verifying student responses with correct answers.                                  | **Research Gap**                 |
-| **Evaluating VPS’s Impact in Dental Training** | Gathering **feedback from students and tutors** to assess system effectiveness and group-based VR assessments.                      | "Evaluating Medical Student…"     |
+| **Customizable 3D Oral Model**   | Customizing the 3D model based on mapped dental case details to enhance scenario diversity.                                                | **Research Gap**                 |
+| **Dental Chart Annotation & Verification of Responses** | Creating a markable dental chart and verifying student responses with correct answers.                                  | **Research Gap**                 |
+| **Evaluating VPS’s Impact in Dental Training** | Gathering feedback from students and tutors to assess system effectiveness and group-based VR assessments.                      | "Evaluating Medical Student…"     |
 
 
 
@@ -175,16 +157,16 @@ To overcome the limitations of previous simulators, we propose:
 
 ## Methodology
 
-The existing web-based virtual patient simulator system was initially designed for a single user: **Student**, who interacted with the simulator through the student's view front end of the application. To enhance the simulator with **custom patient case creation**, a separate portal was developed for tutors. With this enhancement, the system now supports two main user roles: **Student** and **Tutor**. Usability tests were conducted with participants from both groups to evaluate the system’s overall effectiveness, ease of use, and user satisfaction.
+The existing web-based virtual patient simulator system was initially designed for a single user: Student, who interacted with the simulator through the student's view front end of the application. To enhance the simulator with custom patient case creation, a separate portal was developed for tutors. With this enhancement, the system now supports two main user roles: Student and Tutor. Usability tests were conducted with participants from both groups to evaluate the system’s overall effectiveness, ease of use, and user satisfaction.
 
 ---
 
 ### **System Architecture**
 
-The overall architecture of the Virtual Patient Simulator (VPS) is designed to ensure seamless interaction between the tutor and student interfaces, while efficiently managing the backend processes that support the system. The VPS system is composed of three main components: the **Tutor Interface**, **Student Interface**, and **Backend Infrastructure**.
+The overall architecture of the VPS is designed to ensure seamless interaction between the tutor and student interfaces, while efficiently managing the backend processes that support the system. The VPS system is composed of three main components: the Tutor Interface, Student Interface, and Backend Infrastructure.
 
 #### 1. **Tutor Interface**
-The **Tutor Interface** is built using **React** and allows tutors to create custom dental case scenarios, which include:
+The Tutor Interface is built using React and allows tutors to create custom dental case scenarios, which include:
 - **Patient history**
 - **Examination questions**
 - **Instructions**
@@ -241,21 +223,21 @@ When tutors create or update a case, the interface communicates with the backend
 </table>
 
 
-Tutors can enter detailed dental conditions and case-specific information through form-based inputs, which are then stored in the **Firestore Database**. The backend processes this information and generates custom data that will later be displayed in the student’s interface.
+Tutors can enter detailed dental conditions and case-specific information through form-based inputs, which are then stored in the Firestore Database. The backend processes this information and generates custom data that will later be displayed in the student’s interface.
 
 #### 2. **Backend Infrastructure**
-The **Backend Infrastructure** is the core of the VPS, powered by **Firebase Cloud Functions** and **Node.js**. It handles all data transactions, such as:
-- **Data storage**: Saves custom cases created by tutors in the **Cloud Firestore** database.
+The Backend Infrastructure is the core of the VPS, powered by Firebase Cloud Functions and Node.js. It handles all data transactions, such as:
+- **Data storage**: Saves custom cases created by tutors in the Cloud Firestore database.
 - **Data retrieval**: Fetches stored case data for students when they select a case.
 - **Real-time updates**: Ensures any modifications made by tutors (like adding a new case or updating existing cases) are reflected instantly for students.
 
-The backend facilitates smooth communication between the tutor and student interfaces. For instance, when a tutor creates or updates a case, the data is stored in **Cloud Firestore** and becomes available for students to access in real-time.
+The backend facilitates smooth communication between the tutor and student interfaces. For instance, when a tutor creates or updates a case, the data is stored in Cloud Firestore and becomes available for students to access in real-time.
 
 #### 3. **Student Interface**
-The **Student Interface**, also built using **React**, allows students to:
+The Student Interface, also built using React, allows students to:
 - View a list of available dental cases.
 - Select a case to interact with.
-- Engage with the virtual 3D dental model, powered by **Unity** and **WebGL**.
+- Engage with the virtual 3D dental model, powered by Unity and WebGL.
 
 
 <table>
@@ -307,9 +289,9 @@ The **Student Interface**, also built using **React**, allows students to:
 </table>
 
 
-Once a student selects a dental case from the interface, the system fetches the case data (such as patient history, examination questions, and dental chart details) from the **Firestore Database** through the backend. This data is then displayed to the student in a structured format, guiding them through the **history taking**, **examination**, **investigation**, and **diagnosis** phases.
+Once a student selects a dental case from the interface, the system fetches the case data (such as patient history, examination questions, and dental chart details) from the Firestore Database through the backend. This data is then displayed to the student in a structured format, guiding them through the history taking, examination, investigation, and diagnosis phases.
 
-The **3D model** of the patient dynamically updates based on the selected case’s details (e.g., tooth conditions, dental chart markings). Using **Unity WebGL**, the model is rendered directly within the student’s browser, offering real-time interaction and visualization of the dental conditions outlined by the tutor. Students can rotate, zoom, and interact with the 3D model using virtual dental tools, providing a hands-on learning experience.
+The 3D model of the patient dynamically updates based on the selected case’s details (e.g., tooth conditions, dental chart markings). Using Unity WebGL, the model is rendered directly within the student’s browser, offering real-time interaction and visualization of the dental conditions outlined by the tutor. Students can rotate, zoom, and interact with the 3D model using virtual dental tools, providing a hands-on learning experience.
 
 ---
 
@@ -324,9 +306,9 @@ The system architecture ensures that data flows smoothly between the tutor and s
 
 ### **Key Features of the System Architecture**
 - **Real-Time Data Synchronization**: Any updates made by tutors are instantly available to students, ensuring that both interfaces remain up-to-date without delays.
-- **Scalability**: The use of **Firebase** ensures that the system can scale efficiently to handle multiple users (students and tutors) simultaneously, while managing data across a cloud-based infrastructure.
+- **Scalability**: The use of Firebase ensures that the system can scale efficiently to handle multiple users (students and tutors) simultaneously, while managing data across a cloud-based infrastructure.
 - **Cross-Platform Accessibility**: The Unity WebGL integration allows students to access the 3D simulation from any modern web browser, without requiring specialized hardware or plugins.
-- **Immersive 3D Learning**: The use of **Unity** allows students to interact with a detailed 3D model, enabling hands-on learning experiences that closely mimic real-world clinical environments.
+- **Immersive 3D Learning**: The use of Unity allows students to interact with a detailed 3D model, enabling hands-on learning experiences that closely mimic real-world clinical environments.
 
 ---
 
@@ -372,10 +354,10 @@ The system architecture ensures that data flows smoothly between the tutor and s
 
 ## System Evaluation
 
-The evaluation of the system was conducted in two phases: one focusing on the **Students' View** usability test with dental students, and the other focusing on the **Tutors' View** usability test with dental tutors. To measure user engagement and satisfaction, we conducted a user study involving undergraduates and tutors from the **Faculty of Dental Sciences**, **University of Peradeniya**.
+The evaluation of the system was conducted in two phases: one focusing on the Students' View usability test with dental students, and the other focusing on the Tutors' View usability test with dental tutors. To measure user engagement and satisfaction, we conducted a user study involving undergraduates and tutors from the Faculty of Dental Sciences, University of Peradeniya.
 
 <div style="text-align: center;">
-    <img src="./images/usability.png" alt="Usability Test" width="60%">
+    <img src="./images/usability.png" alt="Usability Test" width= 60%>
 </div>
 
 ### Participants
@@ -414,7 +396,7 @@ Informed consent was obtained from all participants before taking part in the st
 
 #### Pre-Questionnaire Results
 
-A total of 10 students (5 females and 5 males) participated in the study. The pre-questionnaire responses provided information on their demographics, proficiency with computers, and previous experience using virtual patient simulators. Out of the 10 students, only 3 had prior exposure to the Virtual Patient Simulator (VPS), while the remaining 7 had never used it before. Additionally, none of the participants had experience with other online simulators for educational purposes.
+A total of 10 students (5 females and 5 males) participated in the study. The pre-questionnaire responses provided information on their demographics, proficiency with computers, and previous experience using virtual patient simulators. Out of the 10 students, only 3 had prior exposure to the VPS, while the remaining 7 had never used it before. Additionally, none of the participants had experience with other online simulators for educational purposes.
 
 - **Computer Proficiency**: The students rated their proficiency with computers at an average of 3.5 on a 5-point Likert scale, indicating a moderate to high level of comfort with using technology.
 - **Frequency of Using Web-Based Learning**: The average score of 3.8 suggests that students regularly engage with web-based platforms for learning, highlighting their familiarity with digital learning tools.
@@ -424,11 +406,9 @@ A total of 10 students (5 females and 5 males) participated in the study. The pr
 
 Following their interaction with the VPS, all students completed a post-questionnaire to assess the system's usability. The results, averaged on a 5-point Likert scale (1 = Poor, 5 = Excellent), are as follows:
 
-- **Ease of Screen Navigation**: 3.6 (Moderate to high)
-- **Clarity of Instructions**: 4.3 (High)
-- **Quality of Graphics**: 4.0 (High)
-- **User-Friendliness of Controls**: 3.4 (Moderate)
-- **Overall User-Friendliness of the Interface**: 3.6 (Moderate to high)
+<div style="text-align: center;">
+    <img src="./images/studentRatings.png" alt="Usability Test" width= 60%>
+</div>
 
 These results indicate that while students generally found the system straightforward and the instructions clear, there were some difficulties in navigating the interface and using the 3D model. The high rating for graphical quality suggests that the visuals were well-received, although the interface and controls could benefit from further refinement to improve user-friendliness.
 
@@ -448,11 +428,9 @@ Eight tutors (5 females and 3 males) participated in the study. The pre-question
 
 After using the VPS tutor portal, the tutors provided feedback on the system's usability. The average scores on a 5-point Likert scale were as follows:
 
-- **Ease of Screen Navigation**: 4.375 (High)
-- **Intuitiveness of Interface Layout**: 4.125 (High)
-- **User-Friendliness of the Digital Dental Charting**: 4.125 (High)
-- **System Workflow Satisfaction**: 4.25 (High)
-- **Overall Tutor Portal Experience**: 4.25 (High)
+<div style="text-align: center;">
+    <img src="./images/tutorRatings.png" alt="Usability Test" width= 60%>
+</div>
 
 These high ratings indicate that tutors found the VPS tutor portal easy to navigate and effective for creating patient cases. However, with a small sample size, further studies with more participants would provide a more comprehensive understanding of its usability.
 
@@ -493,7 +471,7 @@ The **Kruskal-Wallis Test** further analyzed whether factors such as years of ex
 
 ## Discussion
 
-The results from both student and tutor evaluations indicate that the **Virtual Patient Simulator (VPS)** is generally well-received, with high satisfaction ratings for usability and design. Both groups found the system intuitive and effective, though some students reported issues with screen navigation and controls.
+The results from both student and tutor evaluations indicate that the VPS is generally well-received, with high satisfaction ratings for usability and design. Both groups found the system intuitive and effective, though some students reported issues with screen navigation and controls.
 
 ### Areas for Improvement
 - **Scrolling**: Some students found excessive scrolling during the history-taking phase to be cumbersome. Redesigning the layout to minimize scrolling could improve the user experience.
@@ -513,7 +491,7 @@ Future versions of the VPS could benefit from the following enhancements:
 
 ## Conclusion
 
-This project presents a significant enhancement to an existing web-based Virtual Patient Simulator (VPS) by introducing the ability to create custom patient cases and automating the adaptation of 3D models based on each case. These improvements provide dental students with a more diverse set of clinical scenarios and a more immersive, interactive learning experience.
+This project presents a significant enhancement to an existing web-based VPS by introducing the ability to create custom patient cases and automating the adaptation of 3D models based on each case. These improvements provide dental students with a more diverse set of clinical scenarios and a more immersive, interactive learning experience.
 
 The evaluation of the system from both students' and tutors' perspectives highlighted its effectiveness in enhancing student learning and tutor engagement. The results also identified areas where the system could be further refined, particularly in user experience and interface design, offering valuable insights for future improvements.
 
