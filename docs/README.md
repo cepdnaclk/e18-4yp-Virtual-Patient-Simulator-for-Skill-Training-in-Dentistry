@@ -455,6 +455,7 @@ After using the VPS tutor portal, the tutors provided feedback on the system's u
 
 These high ratings indicate that tutors found the VPS tutor portal easy to navigate and effective for creating patient cases. However, with a small sample size, further studies with more participants would provide a more comprehensive understanding of its usability.
 
+<br><br>
 
 ### Comparative Results
 
