@@ -165,6 +165,7 @@ To overcome the limitations of previous simulators, we propose:
 
 The existing web-based virtual patient simulator system was initially designed for a single user: Student, who interacted with the simulator through the student's view front end of the application. To enhance the simulator with custom patient case creation, a separate portal was developed for tutors. With this enhancement, the system now supports two main user roles: Student and Tutor. Usability tests were conducted with participants from both groups to evaluate the system’s overall effectiveness, ease of use, and user satisfaction.
 
+<br>
 
 ### System Architecture
 
@@ -359,7 +360,11 @@ The system architecture ensures that data flows smoothly between the tutor and s
 </table>
 
 
+<br>
+
 ## System Evaluation
+
+---
 
 The evaluation of the system was conducted in two phases: one focusing on the Students' View usability test with dental students, and the other focusing on the Tutors' View usability test with dental tutors. To measure user engagement and satisfaction, we conducted a user study involving undergraduates and tutors from the Faculty of Dental Sciences, University of Peradeniya.
 
@@ -369,11 +374,14 @@ The evaluation of the system was conducted in two phases: one focusing on the St
 
 
 ### Participants
+
 - **Students**: A total of 10 undergraduate dental students participated, including students from the 5th, 7th, and 9th semesters.
 - **Tutors**: Eight dental tutors, actively engaged in the academic program, were involved in evaluating the tutor interface.
 
 Informed consent was obtained from all participants before taking part in the study.
 
+
+<br>
 
 ### Data Collection
 
@@ -389,16 +397,20 @@ Informed consent was obtained from all participants before taking part in the st
 - **Observations**: The research team observed any issues or challenges tutors experienced while interacting with the system.
 - **Post-questionnaire**: Tutors gave feedback on the system’s usability, intuitiveness, and overall satisfaction with the patient case creation process.
 
----
+<br>
 
 ### Data Analysis
 - **Quantitative Analysis**: Pre- and post-questionnaire data were analyzed statistically to compare user performance before and after interacting with the VPS.
 - **Interaction Logs**: Reviewed to identify patterns in user behavior and engagement with the system.
 - **Qualitative Analysis**: Feedback from observation notes and open-ended questionnaire responses was thematically analyzed to highlight common challenges, usability issues, and areas for improvement.
 
+<br>
+
 
 
 ## Results & Discussion
+
+---
 
 ### Student Evaluation Results
 
