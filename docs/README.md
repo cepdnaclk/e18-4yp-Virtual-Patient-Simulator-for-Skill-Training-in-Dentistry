@@ -360,15 +360,6 @@ The evaluation of the system was conducted in two phases: one focusing on the St
     <img src="./images/usability.png" alt="Usability Test" width= "60%">
 </p>
 
-<table>
-  <tr>
-    <td align="center">
-      <img src="./images/usability.png" alt="Usability Test" width="300px"/>
-      <br><b>SignIn</b>
-    </td>
-  </tr>
-</table>
-
 
 ### Participants
 - **Students**: A total of 10 undergraduate dental students participated, including students from the 5th, 7th, and 9th semesters.
@@ -416,9 +407,9 @@ A total of 10 students (5 females and 5 males) participated in the study. The pr
 
 Following their interaction with the VPS, all students completed a post-questionnaire to assess the system's usability. The results, averaged on a 5-point Likert scale (1 = Poor, 5 = Excellent), are as follows:
 
-<div style="text-align: center;">
-    <img src="./images/studentRatings.png" alt="Usability Test" width= 60%>
-</div>
+<p align="center">
+    <img src="./images/studentRatings.png" alt="Usability Test" width="60%">
+</p>
 
 These results indicate that while students generally found the system straightforward and the instructions clear, there were some difficulties in navigating the interface and using the 3D model. The high rating for graphical quality suggests that the visuals were well-received, although the interface and controls could benefit from further refinement to improve user-friendliness.
 
@@ -438,9 +429,9 @@ Eight tutors (5 females and 3 males) participated in the study. The pre-question
 
 After using the VPS tutor portal, the tutors provided feedback on the system's usability. The average scores on a 5-point Likert scale were as follows:
 
-<div style="text-align: center;">
-    <img src="./images/tutorRatings.png" alt="Usability Test" width= 60%>
-</div>
+<p align="center">
+    <img src="./images/tutorRatings.png" alt="Usability Test" width="60%">
+</p>
 
 These high ratings indicate that tutors found the VPS tutor portal easy to navigate and effective for creating patient cases. However, with a small sample size, further studies with more participants would provide a more comprehensive understanding of its usability.
 
