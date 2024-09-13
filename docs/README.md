@@ -357,8 +357,18 @@ The system architecture ensures that data flows smoothly between the tutor and s
 The evaluation of the system was conducted in two phases: one focusing on the Students' View usability test with dental students, and the other focusing on the Tutors' View usability test with dental tutors. To measure user engagement and satisfaction, we conducted a user study involving undergraduates and tutors from the Faculty of Dental Sciences, University of Peradeniya.
 
 <p align="center">
-    <img src="./images/usability.png" alt="Usability Test" width= 60%>
+    <img src="./images/usability.png" alt="Usability Test" width= "60%">
 </p>
+
+<table>
+  <tr>
+    <td align="center">
+      <img src="./images/usability.png" alt="Usability Test" width="300px"/>
+      <br><b>SignIn</b>
+    </td>
+  </tr>
+</table>
+
 
 ### Participants
 - **Students**: A total of 10 undergraduate dental students participated, including students from the 5th, 7th, and 9th semesters.
