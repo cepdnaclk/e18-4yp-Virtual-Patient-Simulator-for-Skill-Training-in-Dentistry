@@ -71,27 +71,37 @@ By automating the generation of 3D models based on case data, the system offers 
 
 <table>
   <tr>
-    <td align="center" width="50%">
-      <img src="./images/sample.png" width="100px;" alt="ReactJS Logo"/><br />
-      <b>ReactJS</b><br />
-      ReactJS was used to build the frontend, ensuring an interactive and dynamic user interface.
+    <td align="center" width="33%">
+      <img src="./images/Blender.png" width="100px;" alt="Blender Logo"/><br />
+      <b>Blender</b><br />
+      Crafting 3D Models with Blender.
+      <p>Blender was used to create detailed 3D models of teeth and dental environments for the simulation.</p>
     </td>
-    <td align="center" width="50%">
-      <img src="https://your-repo-url/images/redux-logo.png" width="100px;" alt="Redux Logo"/><br />
-      <b>Redux</b><br />
-      Redux was used for managing the global state across the application, especially for managing student and tutor data.
+    <td align="center" width="33%">
+      <img src="./images/unity.png" width="100px;" alt="Unity Logo"/><br />
+      <b>Unity Game Engine</b><br />
+      Simulator Development in Unity.
+      <p>Unity Game Engine was used to develop the virtual patient simulator with real-time interactions.</p>
+    </td>
+    <td align="center" width="33%">
+      <img src="./images/react.png" width="100px;" alt="React Logo"/><br />
+      <b>ReactJS</b><br />
+      Frontend Build with React JS.
+      <p>ReactJS was utilized to create a dynamic and interactive frontend for both students and tutors.</p>
     </td>
   </tr>
   <tr>
-    <td align="center" width="50%">
-      <img src="https://your-repo-url/images/firebase-logo.png" width="100px;" alt="Firebase Logo"/><br />
-      <b>Firebase</b><br />
-      Firebase services such as Firestore Database, Cloud Storage, and Authentication were used to handle data storage, user authentication, and media hosting.
+    <td align="center" width="33%">
+      <img src="./images/firebase.png" width="100px;" alt="Firebase Logo"/><br />
+      <b>Firebase & Firestore</b><br />
+      Database & Hosting on Firebase.
+      <p>Firestore was used for database management, real-time data syncing, and hosting the application.</p>
     </td>
-    <td align="center" width="50%">
-      <img src="https://your-repo-url/images/unity-logo.png" width="100px;" alt="Unity Game Engine Logo"/><br />
-      <b>Unity Game Engine</b><br />
-      Unity Game Engine was employed to build the 3D model of the virtual patient, offering a realistic environment for the dental simulation.
+    <td align="center" width="33%">
+      <img src="./images/node.png" width="100px;" alt="ExpressJS Logo"/><br />
+      <b>ExpressJS</b><br />
+      API Creation via Express JS.
+      <p>ExpressJS was used to handle API requests and manage communication between the frontend and backend.</p>
     </td>
   </tr>
 </table>
