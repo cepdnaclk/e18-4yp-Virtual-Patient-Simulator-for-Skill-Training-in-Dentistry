@@ -1,0 +1,66 @@
+.feedback-container {
+    margin: 20px;
+  }
+  
+  .feedback-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .feedback-table th, .feedback-table td {
+    border: 3px solid #dde4e5;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .feedback-table th {
+    background-color: #c2c1c1;
+  }
+  
+  .total-score {
+    margin-top: 20px;
+    font-size: 1.2em;
+  }
+  .dental-chart {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  .total-score {
+    background-color: #28a745; /* Green background */
+    color: white; /* White text color */
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 20px;
+    text-align: center; /* Center the text */
+    font-size: 1.2em; /* Larger font size */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add some shadow for depth */
+  }
+  
+  body {
+    background: linear-gradient(to right, #63d2eb, #0289ab); /* Blue gradient */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+  
+  .go-home-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #007bff; /* Example blue color */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+   
+  }
+  
+  .go-home-button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+  }
+  
+  .feedback-heading {
+    text-align: center;
+  }

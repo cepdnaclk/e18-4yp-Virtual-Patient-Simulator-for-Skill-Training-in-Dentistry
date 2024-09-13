@@ -1,0 +1,17 @@
+.background {
+  background-color: #000; /* Fallback color */
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+}
+
+.header {
+  color: black;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.authent {
+  text-align: center;
+  margin-top: 50px;
+}

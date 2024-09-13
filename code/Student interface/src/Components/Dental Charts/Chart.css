@@ -1,0 +1,18 @@
+/* DentalChart.css */
+
+/* Ensure dental chart remains fixed */
+.dental-chart {
+  display: flex;
+  justify-content: center; /* Center align items horizontally */
+  align-content: center;
+  max-width: 1200px; /* Set a maximum width for the dental chart */
+  margin: 30px auto; /* Center the dental chart horizontally */
+}
+
+/* Adjust tooth size for smaller viewports */
+@media (max-width: 600px) {
+  .tooth {
+    width: 30px;
+    height: 30px;
+  }
+}
