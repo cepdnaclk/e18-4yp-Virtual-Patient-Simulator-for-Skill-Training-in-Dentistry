@@ -521,11 +521,12 @@ These AI tools were used to support various research and development tasks, impr
 ## Publications
 [//]: # "Note: Uncomment each once you uploaded the files to the repository"
 
-<!-- 1. [Semester 7 report](./) -->
-<!-- 2. [Semester 7 slides](./) -->
-<!-- 3. [Semester 8 report](./) -->
-<!-- 4. [Semester 8 slides](./) -->
-<!-- 5. Author 1, Author 2 and Author 3 "Research paper title" (2021). [PDF](./). -->
+1. [Proceedings of Peradeniya University International Research Sessions (iPURSE) 2024, Sri Lanka](https://scholar.google.com/citations?view_op=view_citation&hl=en&user=9nBn4b0AAAAJ&sortby=pubdate&citation_for_view=9nBn4b0AAAAJ:pyW8ca7W8N0C)
+
+
+### Slides
+1. [Semester 7 slides](https://docs.google.com/presentation/d/1TYdonSyNd2ezDAwQ_YaSkcrKgtWFNq1o/edit?usp=sharing&ouid=115971192923283924772&rtpof=true&sd=true)
+2. [Semester 8 slides](https://docs.google.com/presentation/d/1dZMc1u2n7EHOmE8TE5IMNI6cqE0p9DHo/edit?usp=sharing&ouid=115971192923283924772&rtpof=true&sd=true)
 
 
 ## Links
