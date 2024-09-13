@@ -222,7 +222,7 @@ When tutors create or update a case, the interface communicates with the backend
   </tr>
 </table>
 
-
+<br />
 Tutors can enter detailed dental conditions and case-specific information through form-based inputs, which are then stored in the Firestore Database. The backend processes this information and generates custom data that will later be displayed in the student’s interface.
 
 #### 2. **Backend Infrastructure**
@@ -288,7 +288,7 @@ The Student Interface, also built using React, allows students to:
   </tr>
 </table>
 
-
+<br />
 Once a student selects a dental case from the interface, the system fetches the case data (such as patient history, examination questions, and dental chart details) from the Firestore Database through the backend. This data is then displayed to the student in a structured format, guiding them through the history taking, examination, investigation, and diagnosis phases.
 
 The 3D model of the patient dynamically updates based on the selected case’s details (e.g., tooth conditions, dental chart markings). Using Unity WebGL, the model is rendered directly within the student’s browser, offering real-time interaction and visualization of the dental conditions outlined by the tutor. Students can rotate, zoom, and interact with the 3D model using virtual dental tools, providing a hands-on learning experience.
@@ -356,9 +356,9 @@ The system architecture ensures that data flows smoothly between the tutor and s
 
 The evaluation of the system was conducted in two phases: one focusing on the Students' View usability test with dental students, and the other focusing on the Tutors' View usability test with dental tutors. To measure user engagement and satisfaction, we conducted a user study involving undergraduates and tutors from the Faculty of Dental Sciences, University of Peradeniya.
 
-<div style="text-align: center;">
+<p align="center">
     <img src="./images/usability.png" alt="Usability Test" width= 60%>
-</div>
+</p>
 
 ### Participants
 - **Students**: A total of 10 undergraduate dental students participated, including students from the 5th, 7th, and 9th semesters.
@@ -511,6 +511,8 @@ During the development and execution of this research project, several AI tools 
 | **GitHub Copilot**   | Provided coding assistance and debugging support during the development of the simulator.    |
 | **Grammarly & QuillBot** | Assisted with grammar and spelling checks to ensure clarity and accuracy in the final manuscript. |
 
+
+<br />
 These AI tools were used to support various research and development tasks, improving the overall quality of the project and streamlining the workflow.
 
 ---
