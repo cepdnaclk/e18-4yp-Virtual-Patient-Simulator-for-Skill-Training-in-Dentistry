@@ -385,7 +385,7 @@ Informed consent was obtained from all participants before taking part in the st
 
 ### Data Collection
 
-#### Students
+#### Student
 - **Pre-questionnaire**: Focused on gathering students' familiarity with dental simulators, experience with online educational tools, and computer proficiency.
 - **VPS Interaction**: Students logged into the VPS portal, explored the interface, and worked through a clinical case.
 - **Observations**: The research team monitored student interactions, noting any challenges or difficulties they faced.
@@ -422,6 +422,7 @@ A total of 10 students (5 females and 5 males) participated in the study. The pr
 - **Frequency of Using Web-Based Learning**: The average score of 3.8 suggests that students regularly engage with web-based platforms for learning, highlighting their familiarity with digital learning tools.
 - **Familiarity with Web Navigation**: An average rating of 3.3 points to a moderate level of familiarity with navigating web-based interfaces, leaving room for improvements in user experience design.
 
+
 #### Post-Questionnaire Results
 
 Following their interaction with the VPS, all students completed a post-questionnaire to assess the system's usability. The results, averaged on a 5-point Likert scale (1 = Poor, 5 = Excellent), are as follows:
@@ -432,7 +433,7 @@ Following their interaction with the VPS, all students completed a post-question
 
 These results indicate that while students generally found the system straightforward and the instructions clear, there were some difficulties in navigating the interface and using the 3D model. The high rating for graphical quality suggests that the visuals were well-received, although the interface and controls could benefit from further refinement to improve user-friendliness.
 
----
+<br>
 
 ### Tutor Evaluation Results
 
@@ -454,7 +455,6 @@ After using the VPS tutor portal, the tutors provided feedback on the system's u
 
 These high ratings indicate that tutors found the VPS tutor portal easy to navigate and effective for creating patient cases. However, with a small sample size, further studies with more participants would provide a more comprehensive understanding of its usability.
 
----
 
 ### Comparative Results
 
@@ -463,10 +463,12 @@ A Kruskal-Wallis test was conducted to analyze whether various factors such as p
 
 | Factor                         | P-Value | Significant Difference (Threshold = 0.05)                            |
 |---------------------------------|---------|----------------------------------------------------------------------|
-| **Proficiency Level (1-5)**     | 0.142   | No significant difference in completion time based on proficiency.    |
-| **Gender (Male, Female)**       | 0.462   | No significant difference in completion time based on gender.         |
-| **Academic Semester (5th-9th)** | 0.421   | No significant difference in completion time based on academic level. |
-| **Web Navigation Familiarity (1-5)** | 0.097   | No significant difference in completion time based on web navigation familiarity. |
+| Proficiency Level (1-5)         | 0.142   | No significant difference in completion time based on proficiency.    |
+| Gender (Male, Female)           | 0.462   | No significant difference in completion time based on gender.         |
+| Academic Semester (5th-9th)     | 0.421   | No significant difference in completion time based on academic level. |
+| Web Navigation Familiarity (1-5)| 0.097   | No significant difference in completion time based on web navigation familiarity. |
+
+<br>
 
 #### Tutor Results
 Two statistical tests were used to evaluate the tutor results: the **Mann–Whitney U Test** and the **Kruskal-Wallis Test**. These tests were applied to determine whether factors such as previous experience with digital tools and teaching activities had an impact on tutors’ overall satisfaction and usability ratings of the VPS tutor interface.
@@ -475,21 +477,24 @@ The **Mann–Whitney U Test** compared the previous experience of tutors with di
 
 | Factor 1                                         | Factor 2                                                             | P-Value | Significant Difference (Threshold = 0.05)           |
 |--------------------------------------------------|----------------------------------------------------------------------|---------|-----------------------------------------------------|
-| **Experience with digital dental charting (Yes, No)** | **User-friendliness of tutor interface digital dental chart (1-5)**     | 0.617   | No significant difference                           |
-| **Experience with case-based scenario creation (Yes, No)** | **Overall satisfaction with custom case creation (1-5)**                | 0.508   | No significant difference                           |
+| Experience with digital dental charting (Yes, No) | User-friendliness of tutor interface digital dental chart (1-5)    | 0.617   | No significant difference                           |
+| Experience with case-based scenario creation (Yes, No) | Overall satisfaction with custom case creation (1-5)                | 0.508   | No significant difference                           |
+
+<br>
 
 The **Kruskal-Wallis Test** further analyzed whether factors such as years of experience in the dental field, computer proficiency, and familiarity with digital teaching tools influenced the tutors’ overall satisfaction with the VPS system. Similar to the results from the student evaluations, no significant differences were found, meaning that these factors did not heavily impact overall satisfaction.
 
 | Factor                                                | P-Value | Significant Difference (Threshold = 0.05)                                  |
 |-------------------------------------------------------|---------|----------------------------------------------------------------------------|
-| **Experience in the dental field** (Less than 1 year, 1-5 years, 5-10 years, 10+ years) | 0.097   | No significant difference based on years of experience in dentistry.        |
-| **Proficiency in using computers** (1-Poor to 5-Excellent)                      | 0.378   | No significant difference based on computer proficiency.                    |
-| **Familiarity with digital tools for teaching** (1-Poor to 5-Excellent)          | 0.143   | No significant difference based on familiarity with digital teaching tools. |
+| Experience in the dental field (Less than 1 year, 1-5 years, 5-10 years, 10+ years) | 0.097   | No significant difference based on years of experience in dentistry. |
+| Proficiency in using computers (1-Poor to 5-Excellent)                      | 0.378   | No significant difference based on computer proficiency.                    |
+| Familiarity with digital tools for teaching (1-Poor to 5-Excellent)          | 0.143   | No significant difference based on familiarity with digital teaching tools. |
 
----
 
+<br>
 
 ## Discussion
+---
 
 The results from both student and tutor evaluations indicate that the VPS is generally well-received, with high satisfaction ratings for usability and design. Both groups found the system intuitive and effective, though some students reported issues with screen navigation and controls.
 
@@ -507,9 +512,9 @@ Future versions of the VPS could benefit from the following enhancements:
 - **VR Integration**: Developing a virtual reality component would offer a more immersive environment for students, allowing them to interact with a fully 3D dental clinic.
 - **AI-Powered Case Creation**: Automating parts of the case creation process through AI could reduce the burden on tutors and enable more dynamic patient scenarios.
 
----
 
 ## Conclusion
+---
 
 This project presents a significant enhancement to an existing web-based VPS by introducing the ability to create custom patient cases and automating the adaptation of 3D models based on each case. These improvements provide dental students with a more diverse set of clinical scenarios and a more immersive, interactive learning experience.
 
@@ -517,9 +522,9 @@ The evaluation of the system from both students' and tutors' perspectives highli
 
 By introducing customizable patient cases and enhancing the simulation environment, this project marks an important step toward advancing the role of virtual simulation tools in dental education. The findings from this study emphasize the need for continuous development in educational technology to better meet the evolving demands of both students and educators.
 
----
 
 ## Use of AI Tools
+---
 
 During the development and execution of this research project, several AI tools were utilized to enhance various aspects of the process. These tools played a significant role in content refinement, coding assistance, and discovery of related research.
 
@@ -535,21 +540,22 @@ During the development and execution of this research project, several AI tools 
 <br />
 These AI tools were used to support various research and development tasks, improving the overall quality of the project and streamlining the workflow.
 
----
 
 ## Publications
+---
 [//]: # "Note: Uncomment each once you uploaded the files to the repository"
 
 1. [Proceedings of Peradeniya University International Research Sessions (iPURSE) 2024, Sri Lanka](https://scholar.google.com/citations?view_op=view_citation&hl=en&user=9nBn4b0AAAAJ&sortby=pubdate&citation_for_view=9nBn4b0AAAAJ:pyW8ca7W8N0C)
 
 
 ### Slides
+---
 1. [Semester 7 slides](https://docs.google.com/presentation/d/1TYdonSyNd2ezDAwQ_YaSkcrKgtWFNq1o/edit?usp=sharing&ouid=115971192923283924772&rtpof=true&sd=true)
 2. [Semester 8 slides](https://docs.google.com/presentation/d/1dZMc1u2n7EHOmE8TE5IMNI6cqE0p9DHo/edit?usp=sharing&ouid=115971192923283924772&rtpof=true&sd=true)
 
 
 ## Links
-
+---
 - [Project Repository](https://github.com/cepdnaclk/e18-4yp-Virtual-Patient-Simulator-for-Skill-Training-in-Dentistry)
 - [Project Page](https://cepdnaclk.github.io/e18-4yp-Virtual-Patient-Simulator-for-Skill-Training-in-Dentistry)
 - [Department of Computer Engineering](http://www.ce.pdn.ac.lk/)
