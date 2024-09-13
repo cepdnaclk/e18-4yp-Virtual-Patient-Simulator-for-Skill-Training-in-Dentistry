@@ -185,17 +185,53 @@ The **Student Interface**, also built using **React**, allows students to:
 
 ## System Features
 
-| ![SignIn](./images//studentInterface/signin.png) | ![Case Selection](./images//studentInterface/caseselection.png) | ![History taking](./images//studentInterface/historytaking.png) | ![Instructions](./images//studentInterface/instractions.png) |
-|:-------------------------:|:-------------------------------:|:-------------------------------:|:------------------------------:|
-| **SignIn**              | **Case Selection**            | **History taking**            | **Instructions**             |
-
-| ![Examinations 1](./images//studentInterface/exmination1.png) | ![Examinations 2](./images//studentInterface/exmination3.png) | ![Examinations 3](./images//studentInterface/mirror.png) | ![Examinations 4](./images//studentInterface/exmination6.png) |
-|:-------------------------:|:-------------------------------:|:-------------------------------:|:------------------------------:|
-|      | **Examinations**              |              |            |
-
-| ![Tool Tray](./images//studentInterface/tooltray.png) | ![Dental Chart](./images//studentInterface/dental%20hart.png) | ![Feedback](./images//studentInterface/feedback.png) | ![Dental Clinic](./images//studentInterface/exmination4.png) |
-|:---------------------------:|:------------------------------:|:--------------------------:|:-------------------------------:|
-| **Tool Tray**             | **Dental Chart**              | **Feedback**              | **Dental Clinic**             |
+<table>
+  <tr>
+    <td align="center" width="25%">
+      <img src="./images/studentInterface/signin.png" width="200px;" alt="SignIn"/><br />
+      <b>SignIn</b><br />
+    </td>
+    <td align="center" width="25%">
+      <img src="./images/studentInterface/caseselection.png" width="200px;" alt="Case Selection"/><br />
+      <b>Case Selection</b><br />
+    </td>
+    <td align="center" width="25%">
+      <img src="./images/studentInterface/historytaking.png" width="200px;" alt="History Taking"/><br />
+      <b>History Taking</b><br />
+    </td>
+    <td align="center" width="25%">
+      <img src="./images/studentInterface/instractions.png" width="200px;" alt="Instructions"/><br />
+      <b>Instructions</b><br />
+    </td>
+  </tr>
+  <tr>
+    <td align="center" colspan="4">
+      <img src="./images/studentInterface/exmination1.png" width="200px;" alt="Examination 1"/>
+      <img src="./images/studentInterface/exmination3.png" width="200px;" alt="Examination 2"/>
+      <img src="./images/studentInterface/mirror.png" width="200px;" alt="Examination 3"/>
+      <img src="./images/studentInterface/examination5.png" width="200px;" alt="Examination 4"/><br />
+      <b>Examinations</b><br />
+    </td>
+  </tr>
+  <tr>
+    <td align="center" width="25%">
+      <img src="./images/studentInterface/tooltray.png" width="200px;" alt="Tool Tray"/><br />
+      <b>Tool Tray</b><br />
+    </td>
+    <td align="center" width="25%">
+      <img src="./images/studentInterface/dental%20hart.png" width="200px;" alt="Dental Chart"/><br />
+      <b>Dental Chart</b><br />
+    </td>
+    <td align="center" width="25%">
+      <img src="./images/studentInterface/feedback.png" width="200px;" alt="Feedback"/><br />
+      <b>Feedback</b><br />
+    </td>
+    <td align="center" width="25%">
+      <img src="./images/studentInterface/exmination4.png" width="200px;" alt="Dental Clinic"/><br />
+      <b>Dental Clinic</b><br />
+    </td>
+  </tr>
+</table>
 
 
 Once a student selects a dental case from the interface, the system fetches the case data (such as patient history, examination questions, and dental chart details) from the **Firestore Database** through the backend. This data is then displayed to the student in a structured format, guiding them through the **history taking**, **examination**, **investigation**, and **diagnosis** phases.
