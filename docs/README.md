@@ -27,52 +27,46 @@ title:
 <details>
   <summary><strong>Table of Contents</strong></summary>
 
-  1. [Project Summary](#project-summary)<br>
-  2. [Background](#background)
-     - [Limitations in Traditional Teaching Methods](#limitations-in-traditional-teaching-methods)<br>
-     - [Overview of the Virtual Patient Simulator (VPS)](#overview-of-the-virtual-patient-simulator-vps)<br>
-  3. [Related Works](#related-works)<br>
-  4. [Summary of Literature Review](#summary-of-literature-review)<br>
-  5. [Our Solution](#our-solution)<br>
-  6. [Methodology](#methodology)<br>
-     - [System Architecture](#system-architecture)<br>
-       - [Tutor Interface](#tutor-interface)<br>
-       - [Backend Infrastructure](#backend-infrastructure)<br>
-       - [Student Interface](#student-interface)<br>
-       - [Data Flow and Synchronization](#data-flow-and-synchronization)<br>
-       - [Key Features of the System Architecture](#key-features-of-the-system-architecture)<br>
-  7. [Technologies Used](#technologies-used)<br>
-  8. [System Evaluation](#system-evaluation)<br>
-     - [Participants](#participants)<br>
-     - [Data Collection](#data-collection)<br>
-       - [Students](#students)<br>
-       - [Tutors](#tutors)<br>
-     - [Data Analysis](#data-analysis)<br>
-  9. [Results & Discussion](#results--discussion)<br>
-     - [Student Evaluation Results](#student-evaluation-results)<br>
-       - [Pre-Questionnaire Results](#pre-questionnaire-results)<br>
-       - [Post-Questionnaire Results](#post-questionnaire-results)<br>
-     - [Tutor Evaluation Results](#tutor-evaluation-results)<br>
-       - [Pre-Questionnaire Results](#pre-questionnaire-results-1)<br>
-       - [Post-Questionnaire Results](#post-questionnaire-results-1)<br>
-     - [Comparative Results](#comparative-results)<br>
-  10. [Discussion](#discussion)<br>
-      - [Areas for Improvement](#areas-for-improvement)<br>
-      - [Implications of VPS](#implications-of-vps)<br>
-      - [Future Directions](#future-directions)<br>
-  11. [Conclusion](#conclusion)<br>
-  12. [Use of AI Tools](#use-of-ai-tools)<br>
-  13. [Publications](#publications)<br>
-  14. [Links](#links)<br>
+  1. [Project Summary](#project-summary)  
+  2. [Background](#background)  
+     - [Limitations in Traditional Teaching Methods](#limitations-in-traditional-teaching-methods)  
+     - [Overview of the Virtual Patient Simulator (VPS)](#overview-of-the-virtual-patient-simulator-vps)  
+  3. [Related Works](#related-works)  
+  4. [Summary of Literature Review](#summary-of-literature-review)  
+  5. [Our Solution](#our-solution)  
+  6. [Methodology](#methodology)  
+     - [System Architecture](#system-architecture)  
+       - [Tutor Interface](#tutor-interface)  
+       - [Backend Infrastructure](#backend-infrastructure)  
+       - [Student Interface](#student-interface)  
+       - [Data Flow and Synchronization](#data-flow-and-synchronization)  
+       - [Key Features of the System Architecture](#key-features-of-the-system-architecture)  
+  7. [Technologies Used](#technologies-used)  
+  8. [System Evaluation](#system-evaluation)  
+     - [Participants](#participants)  
+     - [Data Collection](#data-collection)  
+       - [Students](#students)  
+       - [Tutors](#tutors)  
+     - [Data Analysis](#data-analysis)  
+  9. [Results & Discussion](#results--discussion)  
+     - [Student Evaluation Results](#student-evaluation-results)  
+       - [Pre-Questionnaire Results](#pre-questionnaire-results)  
+       - [Post-Questionnaire Results](#post-questionnaire-results)  
+     - [Tutor Evaluation Results](#tutor-evaluation-results)  
+       - [Pre-Questionnaire Results](#pre-questionnaire-results-1)  
+       - [Post-Questionnaire Results](#post-questionnaire-results-1)  
+     - [Comparative Results](#comparative-results)  
+  10. [Discussion](#discussion)  
+      - [Areas for Improvement](#areas-for-improvement)  
+      - [Implications of VPS](#implications-of-vps)  
+      - [Future Directions](#future-directions)  
+  11. [Conclusion](#conclusion)  
+  12. [Use of AI Tools](#use-of-ai-tools)  
+  13. [Publications](#publications)  
+  14. [Links](#links)  
+
 </details>
 
-
-
-1. [Project Summary](#project-summary)
-2. [Related works](#related-works)
-3. [Conclusion](#conclusion)
-4. [Publications](#publications)
-5. [Links](#links)
 
 ---
 
@@ -285,10 +279,10 @@ The **Student Interface**, also built using **React**, allows students to:
   </tr>
   <tr>
     <td align="center" colspan="4">
-      <img src="./images/studentInterface/exmination1.png" width="250px;" alt="Examination 1"/>
-      <img src="./images/studentInterface/exmination3.png" width="250px;" alt="Examination 2"/>
-      <img src="./images/studentInterface/mirror.png" width="250px;" alt="Examination 3"/>
-      <img src="./images/studentInterface/examination5.png" width="250px;" alt="Examination 4"/><br />
+      <img src="./images/studentInterface/exmination1.png" width="225px;" alt="Examination 1"/>
+      <img src="./images/studentInterface/exmination3.png" width="225px;" alt="Examination 2"/>
+      <img src="./images/studentInterface/mirror.png" width="225px;" alt="Examination 3"/>
+      <img src="./images/studentInterface/examination5.png" width="225px;" alt="Examination 4"/><br />
       <b>Examinations</b><br />
     </td>
   </tr>
@@ -381,7 +375,7 @@ The system architecture ensures that data flows smoothly between the tutor and s
 The evaluation of the system was conducted in two phases: one focusing on the **Students' View** usability test with dental students, and the other focusing on the **Tutors' View** usability test with dental tutors. To measure user engagement and satisfaction, we conducted a user study involving undergraduates and tutors from the **Faculty of Dental Sciences**, **University of Peradeniya**.
 
 <div style="text-align: center;">
-    <img src="./images/usability.png" alt="Usability Test" style="width: 60%; height: auto;">
+    <img src="./images/usability.png" alt="Usability Test" width="60%">
 </div>
 
 ### Participants
