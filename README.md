@@ -25,7 +25,108 @@ For more Details Visit: [Project Page](https://cepdnaclk.github.io/e18-4yp-Virtu
 
 ---
 
-## How to Run the Code
+## Deployment Guideline
+
+### Backend (Firebase Cloud Functions)
+
+The backend is designed to be deployed as \textbf{Firebase Cloud Functions}, which ensures scalability, security, and seamless integration with Firebase services. Institutions can fork the repository and deploy the backend into their own Firebase project with minimal effort.
+
+\subsection*{1. Prerequisites}
+\begin{itemize}
+  \item Install \textbf{Node.js LTS} (v18 or later is recommended).  
+  \item Install the Firebase CLI:  
+\begin{verbatim}
+npm install -g firebase-tools
+\end{verbatim}
+  \item Create a Firebase project in the \href{https://console.firebase.google.com}{Firebase Console}.  
+  \item Enable the following services in Firebase:  
+    \begin{itemize}
+      \item Firestore Database  
+      \item Cloud Storage  
+      \item Authentication (configure allowed institutional email domains)  
+    \end{itemize}
+\end{itemize}
+
+\subsection*{2. Project Setup}
+\begin{enumerate}
+  \item Clone the backend repository:
+\begin{verbatim}
+git clone <your-backend-repo-url>
+cd Backend
+\end{verbatim}
+
+  \item Initialize Firebase in this folder:
+\begin{verbatim}
+firebase login
+firebase init
+\end{verbatim}
+  Choose \texttt{Functions} and \texttt{Firestore}, then select your Firebase project.  
+  Use \texttt{JavaScript} (not TypeScript), since the provided codebase is written in JS.
+\end{enumerate}
+
+\subsection*{3. Move Code into Functions}
+\begin{itemize}
+  \item Place your existing backend code inside the \texttt{functions/} directory, e.g.:  
+\begin{verbatim}
+functions/index.js
+functions/routes/dentalCases.js
+functions/config/db.js
+\end{verbatim}
+
+  \item Adapt Express for Firebase Functions in \texttt{functions/index.js}:
+\begin{verbatim}
+const functions = require("firebase-functions");
+const express = require("express");
+const app = express();
+
+// Import routes
+const dentalRoutes = require("./routes/dentalCases");
+app.use("/cases", dentalRoutes);
+
+// Export as a Firebase Function
+exports.api = functions.https.onRequest(app);
+\end{verbatim}
+
+  \item Install dependencies inside \texttt{functions/}:
+\begin{verbatim}
+cd functions
+npm install express firebase-admin
+\end{verbatim}
+\end{itemize}
+
+\subsection*{4. Service Account Setup}
+\begin{enumerate}
+  \item In Firebase Console, navigate to:  
+  \texttt{Project Settings > Service Accounts > Generate new private key}.  
+  \item Download the JSON key and save it as:  
+  \texttt{functions/serviceAccountKey.json}  
+  \item Update \texttt{functions/config/db.js} with your project bucket:
+\begin{verbatim}
+const admin = require("firebase-admin");
+const serviceAccount = require("./serviceAccountKey.json");
+
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
+  storageBucket: "gs://<your-project-id>.appspot.com",
+});
+
+const db = admin.firestore();
+const bucket = admin.storage().bucket();
+
+module.exports = { admin, db, bucket };
+\end{verbatim}
+\end{enumerate}
+
+\subsection*{5. Deploy Backend}
+\begin{verbatim}
+firebase deploy --only functions
+\end{verbatim}
+
+After deployment, Firebase provides a base URL like:  
+\texttt{https://<project-id>.cloudfunctions.net/api}  
+
+All backend endpoints (e.g., \texttt{/cases/get}, \texttt{/cases/store}) are now live.
+
 
 ### 1. Run Tutor Interface
 - Navigate to the `code/TutorInterface` directory:
