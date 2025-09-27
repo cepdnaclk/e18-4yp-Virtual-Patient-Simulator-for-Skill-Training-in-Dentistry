@@ -1,6 +1,6 @@
 {
   "projects": {
-    "default": "your-firebase-project-id"
+    "default": "vps-2k25-app"
   },
   "targets": {
     "your-firebase-project-id": {
