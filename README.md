@@ -25,107 +25,114 @@ For more Details Visit: [Project Page](https://cepdnaclk.github.io/e18-4yp-Virtu
 
 ---
 
-## Deployment Guideline
+# Deployment Guideline
 
-### Backend (Firebase Cloud Functions)
+## Backend (Firebase Cloud Functions)
 
-The backend is designed to be deployed as \textbf{Firebase Cloud Functions}, which ensures scalability, security, and seamless integration with Firebase services. Institutions can fork the repository and deploy the backend into their own Firebase project with minimal effort.
+The backend is designed to be deployed as **Firebase Cloud Functions**, which ensures scalability, security, and seamless integration with Firebase services. Institutions can fork the repository and deploy the backend into their own Firebase project with minimal effort.
 
-\subsection*{1. Prerequisites}
-\begin{itemize}
-  \item Install \textbf{Node.js LTS} (v18 or later is recommended).  
-  \item Install the Firebase CLI:  
-\begin{verbatim}
-npm install -g firebase-tools
-\end{verbatim}
-  \item Create a Firebase project in the \href{https://console.firebase.google.com}{Firebase Console}.  
-  \item Enable the following services in Firebase:  
-    \begin{itemize}
-      \item Firestore Database  
-      \item Cloud Storage  
-      \item Authentication (configure allowed institutional email domains)  
-    \end{itemize}
-\end{itemize}
+---
 
-\subsection*{2. Project Setup}
-\begin{enumerate}
-  \item Clone the backend repository:
-\begin{verbatim}
-git clone <your-backend-repo-url>
-cd code/Backend
-\end{verbatim}
+### 1. Prerequisites
+- Install **Node.js LTS** (v18 or later recommended).  
+- Install the Firebase CLI:  
+  ```bash
+  npm install -g firebase-tools
+  ```
+- Create a Firebase project in the [Firebase Console](https://console.firebase.google.com).  
+- Enable the following services in your Firebase project:
+  - Firestore Database  
+  - Cloud Storage  
+  - Authentication (configure allowed institutional email domains)  
 
-  \item Initialize Firebase in this folder:
-\begin{verbatim}
-firebase login
-firebase init
-\end{verbatim}
-  Choose \texttt{Functions} and \texttt{Firestore}, then select your Firebase project.  
-  Use \texttt{JavaScript} (not TypeScript), since the provided codebase is written in JS.
-\end{enumerate}
+---
 
-\subsection*{3. Move Code into Functions}
-\begin{itemize}
-  \item Place your existing backend code inside the \texttt{functions/} directory, e.g.:  
-\begin{verbatim}
-functions/index.js
-functions/routes/dentalCases.js
-functions/config/db.js
-\end{verbatim}
+### 2. Project Setup
+1. Clone the backend repository:
+   ```bash
+   git clone <your-backend-repo-url>
+   cd code/Backend
+   ```
 
-  \item Adapt Express for Firebase Functions in \texttt{functions/index.js}:
-\begin{verbatim}
-const functions = require("firebase-functions");
-const express = require("express");
-const app = express();
+2. Initialize Firebase in this folder:
+   ```bash
+   firebase login
+   firebase init
+   ```
+   - Choose **Functions** and **Firestore**.  
+   - Select your Firebase project.  
+   - Use **JavaScript** (not TypeScript), since the provided codebase is written in JS.  
 
-// Import routes
-const dentalRoutes = require("./routes/dentalCases");
-app.use("/cases", dentalRoutes);
+---
 
-// Export as a Firebase Function
-exports.api = functions.https.onRequest(app);
-\end{verbatim}
+### 3. Move Code into Functions
+- Place your backend code inside the `functions/` directory, for example:
+  ```
+  functions/index.js
+  functions/routes/dentalCases.js
+  functions/config/db.js
+  ```
 
-  \item Install dependencies inside \texttt{functions/}:
-\begin{verbatim}
-cd functions
-npm install express firebase-admin
-\end{verbatim}
-\end{itemize}
+- Adapt Express for Firebase Functions in `functions/index.js`:
+  ```js
+  const functions = require("firebase-functions");
+  const express = require("express");
+  const app = express();
 
-\subsection*{4. Service Account Setup}
-\begin{enumerate}
-  \item In Firebase Console, navigate to:  
-  \texttt{Project Settings > Service Accounts > Generate new private key}.  
-  \item Download the JSON key and save it as:  
-  \texttt{functions/serviceAccountKey.json}  
-  \item Update \texttt{functions/config/db.js} with your project bucket:
-\begin{verbatim}
-const admin = require("firebase-admin");
-const serviceAccount = require("./serviceAccountKey.json");
+  // Import routes
+  const dentalRoutes = require("./routes/dentalCases");
+  app.use("/cases", dentalRoutes);
 
-admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
-  storageBucket: "gs://<your-project-id>.appspot.com",
-});
+  // Export as a Firebase Function
+  exports.api = functions.https.onRequest(app);
+  ```
 
-const db = admin.firestore();
-const bucket = admin.storage().bucket();
+- Install dependencies inside `functions/`:
+  ```bash
+  cd functions
+  npm install express firebase-admin
+  ```
 
-module.exports = { admin, db, bucket };
-\end{verbatim}
-\end{enumerate}
+---
 
-\subsection*{5. Deploy Backend}
-\begin{verbatim}
+### 4. Service Account Setup
+1. In Firebase Console, navigate to:  
+   `Project Settings > Service Accounts > Generate new private key`.  
+2. Download the JSON key and save it as:  
+   ```
+   functions/serviceAccountKey.json
+   ```
+3. Update `functions/config/db.js` with your project bucket:
+   ```js
+   const admin = require("firebase-admin");
+   const serviceAccount = require("./serviceAccountKey.json");
+
+   admin.initializeApp({
+     credential: admin.credential.cert(serviceAccount),
+     storageBucket: "gs://<your-project-id>.appspot.com",
+   });
+
+   const db = admin.firestore();
+   const bucket = admin.storage().bucket();
+
+   module.exports = { admin, db, bucket };
+   ```
+
+---
+
+### 5. Deploy Backend
+Deploy with:
+```bash
 firebase deploy --only functions
-\end{verbatim}
+```
 
-After deployment, Firebase provides a base URL like:  
-\texttt{https://<project-id>.cloudfunctions.net/api}  
+After deployment, Firebase will provide a base URL like:
+```
+https://<project-id>.cloudfunctions.net/api
+```
 
-All backend endpoints (e.g., \texttt{/cases/get}, \texttt{/cases/store}) are now live.
+All backend endpoints (e.g., `/cases/get`, `/cases/store`) will now be live.
+
 
 \section{Student Interface -- Deployment Guide}
 
