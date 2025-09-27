@@ -1,4 +1,4 @@
-const { db, bucket } = require("../functions/config/db");
+const { db, bucket } = require("../config/db");
 const express = require("express");
 const router = express.Router();
 

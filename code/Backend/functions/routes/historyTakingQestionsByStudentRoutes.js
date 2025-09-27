@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { db } = require("../functions/config/db");
+const { db } = require("../config/db");
 
 const COLLECTION_NAME = "historyTakingQuestionsByStudent"
 const ID_PREFIX = "HTQBS_"

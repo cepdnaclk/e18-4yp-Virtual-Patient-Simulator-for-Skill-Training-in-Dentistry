@@ -7,7 +7,7 @@ const moment = require("moment");
 
 const COLLECTION_NAME = "dentalComplaintCases";
 
-const { admin, db, bucket } = require("../functions/config/db");
+const { admin, db, bucket } = require("../config/db");
 
 // Middleware and route for creating an examination question
 router.post(

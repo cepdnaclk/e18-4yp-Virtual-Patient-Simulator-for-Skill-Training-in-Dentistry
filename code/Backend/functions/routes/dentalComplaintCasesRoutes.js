@@ -7,7 +7,7 @@ const moment = require("moment");
 
 const COLLECTION_NAME = "dentalComplaintCases";
 
-const { db, bucket } = require("../functions/config/db");
+const { db, bucket } = require("../config/db");
 
 router.get("/getAllCases", async (req, res) => {
   try {
