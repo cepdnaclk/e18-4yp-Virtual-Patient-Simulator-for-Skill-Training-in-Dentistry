@@ -1,7 +1,9 @@
 {
   "functions": {
-    "source": "code/Backend/functions",
-    "runtime": "nodejs18"
+    "runtime": "nodejs22",
+    "region": "us-central1",
+    "gen": "2",
+    "source": "code/Backend/functions"
   },
   "hosting": [
     {
