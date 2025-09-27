@@ -52,7 +52,7 @@ npm install -g firebase-tools
   \item Clone the backend repository:
 \begin{verbatim}
 git clone <your-backend-repo-url>
-cd Backend
+cd code/Backend
 \end{verbatim}
 
   \item Initialize Firebase in this folder:
@@ -126,6 +126,117 @@ After deployment, Firebase provides a base URL like:
 \texttt{https://<project-id>.cloudfunctions.net/api}  
 
 All backend endpoints (e.g., \texttt{/cases/get}, \texttt{/cases/store}) are now live.
+
+\section{Student Interface -- Deployment Guide}
+
+This section explains how to deploy the \textbf{Student Interface} of the Virtual Patient Simulator using Firebase Hosting and GitHub Actions.
+
+\subsection{Prerequisites}
+Before deployment, ensure you have:
+\begin{itemize}
+    \item A Firebase Project created in the \href{https://console.firebase.google.com/}{Firebase Console}.
+    \item A forked GitHub repository of this project.
+    \item A Firebase Service Account key (JSON file) downloaded.
+    \item Node.js (v18 or later) installed for optional local testing.
+    \item The Firebase CLI installed globally:
+\begin{verbatim}
+npm install -g firebase-tools
+\end{verbatim}
+\end{itemize}
+
+\subsection{Firebase Setup}
+\begin{enumerate}
+    \item Go to \textbf{Firebase Console $\rightarrow$ Project Settings $\rightarrow$ Service Accounts}.
+    \item Click \textbf{Generate new private key}.
+    \item Copy the JSON content.
+    \item In your GitHub repository, go to \textbf{Settings $\rightarrow$ Secrets and variables $\rightarrow$ Actions}.
+    \item Add a new secret:
+    \begin{itemize}
+        \item Name: \texttt{FIREBASE\_SERVICE\_ACCOUNT}
+        \item Value: Paste the full JSON content.
+    \end{itemize}
+    \item In the repository root, edit the \texttt{.firebaserc} file to include your Firebase project ID:
+\begin{verbatim}
+{
+  "projects": {
+    "default": "your-project-id"
+  }
+}
+\end{verbatim}
+Replace \texttt{your-project-id} with the Firebase project ID from your console.
+\end{enumerate}
+
+\subsection{Configuration Files}
+At the \textbf{repository root}, the following files are included:
+\begin{itemize}
+    \item \textbf{firebase.json} -- Defines Firebase Hosting targets for both Tutor and Student interfaces.
+    \item \textbf{.firebaserc} -- Stores the Firebase project ID.
+\end{itemize}
+
+The Student interface is linked to the hosting target \texttt{student}, pointing to:
+\begin{verbatim}
+"public": "code/Student interface/build"
+\end{verbatim}
+
+\subsection{GitHub Actions Workflow}
+Deployment is automated via GitHub Actions. The workflow file is located at:
+\begin{verbatim}
+.github/workflows/deploy-student.yml
+\end{verbatim}
+
+Each push to the \texttt{main} branch will:
+\begin{enumerate}
+    \item Install dependencies inside \texttt{code/Student interface}.
+    \item Build the React app (\texttt{npm run build}).
+    \item Deploy the build output to Firebase Hosting.
+\end{enumerate}
+
+\subsection{Unity WebGL Integration}
+\begin{itemize}
+    \item Download the Unity WebGL build from 
+    \href{https://drive.google.com/drive/folders/1mfb-epyvyAzI5n1tKlxAJOfGY8D86R7B?usp=drive_link}{this link}.
+    \item Copy the downloaded folder into:
+\begin{verbatim}
+code/Student interface/public
+\end{verbatim}
+    \item Update the \texttt{useUnityContext} function in:
+\begin{verbatim}
+src/Components/UI/resources/ThreeD.js
+\end{verbatim}
+    to point to the correct Unity files location.
+\end{itemize}
+
+\subsection{Authentication Setup}
+\begin{itemize}
+    \item Update the Google Client ID in:
+\begin{verbatim}
+src/Components/SignIn/index.js
+\end{verbatim}
+    with the Client ID from your Firebase Project
+    (Authentication $\rightarrow$ Sign-in method $\rightarrow$ Google).
+    \item Restrict Firebase Authentication to your institutional email domain in the Firebase Console.
+\end{itemize}
+
+\subsection{Optional Local Deployment}
+For local testing before pushing:
+\begin{verbatim}
+cd code/Student\ interface
+npm install
+npm run build
+firebase deploy --only hosting:student
+\end{verbatim}
+Ensure the Firebase CLI is installed and you are logged in with:
+\begin{verbatim}
+firebase login
+\end{verbatim}
+
+\subsection{Accessing the Application}
+After deployment, Firebase will provide a hosting URL such as:
+\begin{verbatim}
+https://your-project-id.web.app
+\end{verbatim}
+Use this link to access the deployed Student Interface.
+
 
 
 ### 1. Run Tutor Interface
