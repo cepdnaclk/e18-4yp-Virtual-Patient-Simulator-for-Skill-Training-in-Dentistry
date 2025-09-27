@@ -35,3 +35,7 @@ jobs:
 
       - name: Deploy to Firebase Functions
         run: firebase deploy --only functions
+
+      - name: Set Artifact Registry Cleanup Policy
+        run: |
+          firebase functions:artifacts:setpolicy --project ${{ secrets.FIREBASE_PROJECT_ID }} --force
