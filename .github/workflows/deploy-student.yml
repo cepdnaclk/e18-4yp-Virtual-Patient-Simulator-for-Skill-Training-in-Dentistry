@@ -1,0 +1,31 @@
+name: Deploy Student Interface
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'code/Student interface/**'
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./code/Student interface
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build
+        run: npm run build
+
+      - name: Deploy to Firebase
+        uses: w9jds/firebase-action@v2.2.0
+        with:
+          args: deploy --only hosting:student
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
