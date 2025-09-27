@@ -1,9 +1,8 @@
 const admin = require("firebase-admin");
-const serviceAccount = require("./serviceAccountKey.json");
 
 admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
-  storageBucket: "gs://virtual-patient-simulator-2024.appspot.com",
+  credential: admin.credential.applicationDefault(),
+  storageBucket: process.env.FIREBASE_BUCKET || `${process.env.GCLOUD_PROJECT}.appspot.com`,
 });
 
 const db = admin.firestore();
