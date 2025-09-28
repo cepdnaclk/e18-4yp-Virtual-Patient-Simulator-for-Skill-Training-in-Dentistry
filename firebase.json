@@ -5,16 +5,18 @@
     "gen": "2",
     "source": "code/Backend/functions"
   },
-  "hosting": [
-    {
-      "target": "student",
-      "public": "code/Student interface/build",
-      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
-    },
-    {
-      "target": "tutor",
-      "public": "code/Tutor interface/build",
-      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
-    }
-  ]
+  "hosting": {
+    "public": "public",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
 }

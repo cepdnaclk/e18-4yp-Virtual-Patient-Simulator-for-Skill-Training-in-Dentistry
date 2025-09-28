@@ -5,8 +5,12 @@
   "targets": {
     "vps-2k25-app": {
       "hosting": {
-        "student": ["student-site"],
-        "tutor": ["tutor-site"]
+        "student": [
+          "student-site"
+        ],
+        "tutor": [
+          "tutor-site"
+        ]
       }
     }
   }
