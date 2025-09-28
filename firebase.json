@@ -15,7 +15,7 @@
     "rewrites": [
       {
         "source": "**",
-        "destination": "code/Tutor interface/public/index.html"
+        "destination": "code/Tutor interface/index.html"
       }
     ]
   }
