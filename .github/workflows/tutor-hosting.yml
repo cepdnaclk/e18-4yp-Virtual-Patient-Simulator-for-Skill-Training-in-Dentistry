@@ -24,3 +24,4 @@ jobs:
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_VPS_2K25_APP }}
           channelId: live
           projectId: vps-2k25-app
+          target: tutor
