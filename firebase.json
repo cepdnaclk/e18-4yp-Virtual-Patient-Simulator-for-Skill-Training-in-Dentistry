@@ -17,7 +17,7 @@
     },
     {
       "target": "student",
-      "public": "code/Student_interface/dist",
+      "public": "code/Student_interface/build",
       "ignore": [
         "firebase.json",
         "**/.*",
