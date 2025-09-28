@@ -75,7 +75,7 @@ Before deployment, update the Firebase configuration files in the repository:
 
 ### Configure the Backend
 
-1. Add the following environment variable:
+1. Add the following environment variable in .env under code/Backend/functions/config/.:
    ```env
    FIREBASE_WEB_API_KEY=your_copied_key_here
    ```
