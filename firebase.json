@@ -6,17 +6,11 @@
     "source": "code/Backend/functions"
   },
   "hosting": {
-    "public": "code/Tutor interface/public",
+    "public": "code/Tutor interface/build",
     "ignore": [
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
-    ],
-    "rewrites": [
-      {
-        "source": "**",
-        "destination": "code/Tutor interface/index.html"
-      }
     ]
   }
 }
