@@ -16,7 +16,7 @@ jobs:
         working-directory: ./code/Student_interface
     steps:
       - uses: actions/checkout@v4
-      - run: npm ci && npm run build
+      - run: npm install --legacy-peer-deps && npm run build
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
