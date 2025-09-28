@@ -64,8 +64,30 @@ Before deployment, update the Firebase configuration files in the repository:
 📌 Replace `your-firebase-project-id` with the **Project ID** from your Firebase Console (**Project Settings → General → Project ID**).
 
 ---
+## 3. Obtain the Web API Key
 
-## 3. Enable Required Services
+1. Open the [Firebase Console](https://console.firebase.google.com/).  
+2. Select your project (e.g., `vps-2k25-app`).  
+3. In the left sidebar, go to **Project Settings → General**.  
+4. Scroll down to the **Your apps** section.  
+5. Under your registered **Web App**, copy the value labeled **Web API Key**.  
+
+
+### Configure the Backend
+
+1. Add the following environment variable:
+   ```env
+   FIREBASE_WEB_API_KEY=your_copied_key_here
+   ```
+
+###  Summary
+- Get the **Web API Key** from Firebase Console.  
+- Add it to `.env` under `code/Backend/functions/config/`.  
+- Backend automatically injects it into the **Identity Toolkit API** requests for login.  
+
+---
+
+## 4. Enable Required Services
 
 Firebase runs on Google Cloud, so some services must be enabled before deployment.
 
@@ -85,7 +107,7 @@ Firebase runs on Google Cloud, so some services must be enabled before deploymen
 
 ---
 
-## 4. Service Account Setup
+## 5. Service Account Setup
 
 The backend uses a **service account** for authentication.  
 
@@ -101,7 +123,7 @@ The backend uses a **service account** for authentication.
 
 ---
 
-## 5. Assign IAM Roles
+## 6. Assign IAM Roles
 
 Still in Google Cloud Console:
 
@@ -118,7 +140,7 @@ These roles are the minimum required for deployment.
 
 ---
 
-## 6. Trigger Deployment
+## 7. Trigger Deployment
 
 The repository already contains a GitHub Actions workflow at:
 
@@ -140,7 +162,7 @@ The workflow will:
 
 ---
 
-## 7. After Deployment
+## 8. After Deployment
 
 - Firebase will generate a URL such as:  
 

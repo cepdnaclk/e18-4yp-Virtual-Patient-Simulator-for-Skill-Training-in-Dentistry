@@ -8,6 +8,8 @@ const axios = require("axios");
 // POST
 // ROUTE : /api/teacher/signup
 // Todo: Need to implement email verification part
+const FIREBASE_WEB_API_KEY = process.env.FIREBASE_WEB_API_KEY;
+
 router.post("/signup", async (req, res) => {
   const { email, password, userName } = req.body;
 
@@ -52,8 +54,7 @@ router.post("/signin", async (req, res) => {
 
   try {
     const response = await axios.post(
-      "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=" + 
-        "AIzaSyBDIIqa_hFMjYjVK9eMd9ZyJQmNEzGISJo",
+      `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${FIREBASE_WEB_API_KEY}`,
       {
         email,
         password,
