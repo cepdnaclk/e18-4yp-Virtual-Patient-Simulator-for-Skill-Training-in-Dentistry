@@ -6,10 +6,10 @@
     "vps-2k25-app": {
       "hosting": {
         "student": [
-          "student-site"
+          "vps-2k25-app-student"
         ],
         "tutor": [
-          "tutor-site"
+          "vps-2k25-app"
         ]
       }
     }
