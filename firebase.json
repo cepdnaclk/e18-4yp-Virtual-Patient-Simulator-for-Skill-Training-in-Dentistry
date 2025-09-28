@@ -6,7 +6,7 @@
     "source": "code/Backend/functions"
   },
   "hosting": {
-    "public": "code/Tutor interface/dist",
+    "public": "code/Tutor_interface/dist",
     "ignore": [
       "firebase.json",
       "**/.*",

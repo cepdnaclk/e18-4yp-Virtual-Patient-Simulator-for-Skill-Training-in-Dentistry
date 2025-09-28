@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - 'code/Student interface/**'
+      - 'code/Student_interface/**'
   workflow_dispatch:
 
 jobs:
@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ./code/Student interface
+        working-directory: ./code/Student_interface
     steps:
       - name: Checkout
         uses: actions/checkout@v3
