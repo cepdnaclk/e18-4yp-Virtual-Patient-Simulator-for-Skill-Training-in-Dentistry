@@ -13,7 +13,6 @@
     },
     {
       "target": "tutor",
-      "site": "tutor-site",
       "public": "code/Tutor interface/build",
       "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
     }
