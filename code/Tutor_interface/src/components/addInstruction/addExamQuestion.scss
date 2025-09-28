@@ -1,0 +1,56 @@
+.add-exam-question-dialog {
+  .question-container{
+    margin-top: 20px;
+    width: 96%;
+  }
+
+  .custom-select{
+    width: 170px;
+  }
+  
+  .MuiDialogContent-root {
+    .MuiGrid-container {
+      align-items: center;
+      margin-bottom: 16px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    .MuiTextField-root {
+      width: calc(100% - 48px);
+    }
+
+    .MuiIconButton-root {
+      margin-left: 8px;
+    }
+
+    .MuiFormControl-root {
+      min-width: 120px;
+    }
+
+    .MuiSelect-root {
+      margin-left: 8px;
+    }
+
+    .add-icon, .cancel-icon {
+      margin-left: 8px;
+    }
+  }
+
+  .MuiDialogActions-root {
+    justify-content: space-between;
+    padding: 16px;
+  }
+
+  .add-answer-btn {
+    margin-top: 16px;
+
+  }
+
+  .action-btn {
+    flex-grow: 0;
+    margin: 0 8px;
+  }
+}

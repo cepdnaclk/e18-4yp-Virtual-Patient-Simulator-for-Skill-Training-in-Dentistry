@@ -1,0 +1,45 @@
+.stepper-container {
+  .MuiStepper-root {
+    background-color: transparent; // Removes the default background color of the stepper
+    padding: 24px 0; // Adds some vertical padding for the stepper
+  }
+
+
+  .MuiButton-root {
+    margin-right: 8px; // Adds spacing between buttons
+  }
+
+  .content-card {
+    border: 1px solid #e0e0e0; // Sets the border color for the content area
+    border-radius: 4px; // Slightly rounds the corners of the content card
+    padding: 16px; // Padding inside the content card
+    margin-top: 16px; // Space between the stepper and the content card
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); // Subtle shadow for the content card
+  }
+
+  .step-actions {
+    display: flex;
+    justify-content: flex-end; // Aligns the action buttons to the right
+    padding-top: 16px; // Space above the action buttons
+
+    .MuiButton-root {
+      min-width: 90px; // Ensures a minimum width for buttons
+    }
+
+    .MuiButton-outlined {
+      border-color: #e0e0e0; // Sets the border color for the outlined button
+      &:hover {
+        border-color: #bdbdbd; // Darker border on hover for the outlined button
+      }
+    }
+  }
+  .button-skip {
+    background: none; // No background for the skip button
+    border: none; // No border for the skip button
+    color: #757575; // Text color for the skip button
+    box-shadow: none; // No shadow for the skip button
+    &:hover {
+      background-color: transparent; // Keeps the skip button transparent on hover
+    }
+  }
+}

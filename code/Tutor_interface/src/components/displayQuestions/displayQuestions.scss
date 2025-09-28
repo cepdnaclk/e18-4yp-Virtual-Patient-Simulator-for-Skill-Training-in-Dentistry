@@ -1,0 +1,53 @@
+.display-questions {
+  padding-top: 20px;
+  padding-bottom: 20px;
+
+  .MuiAccordion-root {
+    margin-bottom: 10px;
+    box-shadow: none; // Removes shadow for a flat design if desired
+    border-bottom: 1px solid #ccc; // Adds the underline
+
+    &:before {
+      display: none; // Removes the default MUI accordion line
+    }
+  }
+
+  .MuiAccordionSummary-root {
+    padding: 0px 10px;
+  }
+
+  .MuiAccordionDetails-root {
+    padding: 0px 16px 15px 16px;
+  }
+
+  .question-item {
+    border: 1px solid #ccc; // Default border
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+
+    &.required {
+      background-color: #dff0d8; // Green background for required questions
+    }
+
+    &.not-required {
+      background-color: #f2dede; // Red background for not required questions
+    }
+
+    // Style for the initial state (no background color)
+    &:not(.required):not(.not-required) {
+      background-color: transparent; // or whatever the initial background color should be
+    }
+  }
+
+  .add-new-question-btn {
+    margin-top: 40px;
+    display: block; // To make the button take the full width
+    width: 100%;
+    // If you have additional button styles from historyQuestions.scss, add them here
+  }
+
+  // Add any other styles you want to carry over from historyQuestions.scss
+}
+
+// If you have any additional or overriding styles specific to DisplayQuestions, add them here.
