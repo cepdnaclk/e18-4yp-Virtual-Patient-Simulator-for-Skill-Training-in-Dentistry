@@ -5,12 +5,24 @@
     "gen": "2",
     "source": "code/Backend/functions"
   },
-  "hosting": {
-    "public": "code/Tutor_interface/dist",
-    "ignore": [
-      "firebase.json",
-      "**/.*",
-      "**/node_modules/**"
-    ]
-  }
+  "hosting": [
+    {
+      "target": "tutor",
+      "public": "code/Tutor_interface/dist",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ]
+    },
+    {
+      "target": "student",
+      "public": "code/Student_interface/dist",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ]
+    }
+  ]
 }
