@@ -3,7 +3,7 @@
     "default": "vps-2k25-app"
   },
   "targets": {
-    "your-firebase-project-id": {
+    "vps-2k25-app": {
       "hosting": {
         "student": ["student-site"],
         "tutor": ["tutor-site"]
