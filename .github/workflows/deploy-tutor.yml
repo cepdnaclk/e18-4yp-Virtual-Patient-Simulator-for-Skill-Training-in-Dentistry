@@ -32,4 +32,4 @@ jobs:
       - name: Deploy to Firebase Hosting (tutor)
         run: |
           npm install -g firebase-tools
-          firebase deploy --only hosting:tutor 
+          firebase deploy --only hosting:tutor --project vps-2k25-app
