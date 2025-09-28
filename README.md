@@ -27,223 +27,131 @@ For more Details Visit: [Project Page](https://cepdnaclk.github.io/e18-4yp-Virtu
 
 # Deployment Guideline
 
-## Backend (Firebase Cloud Functions)
+# Backend Deployment Guide (Firebase Cloud Functions)
 
-The backend is designed to be deployed as **Firebase Cloud Functions**, which ensures scalability, security, and seamless integration with Firebase services. Institutions can fork the repository and deploy the backend into their own Firebase project with minimal effort.
-
----
-
-### 1. Prerequisites
-- Install **Node.js LTS** (v18 or later recommended).  
-- Install the Firebase CLI:  
-  ```bash
-  npm install -g firebase-tools
-  ```
-- Create a Firebase project in the [Firebase Console](https://console.firebase.google.com).  
-- Enable the following services in your Firebase project:
-  - Firestore Database  
-  - Cloud Storage  
-  - Authentication (configure allowed institutional email domains)  
+This guide explains how to deploy the **Backend** of the Virtual Patient Simulator into your own Firebase project.  
+Follow all steps in order — no prior Firebase or Google Cloud knowledge is needed.
 
 ---
 
-### 2. Project Setup
-1. Clone the backend repository:
-   ```bash
-   git clone <your-backend-repo-url>
-   cd code/Backend
-   ```
+## 1. Prerequisites
 
-2. Initialize Firebase in this folder:
-   ```bash
-   firebase login
-   firebase init
-   ```
-   - Choose **Functions** and **Firestore**.  
-   - Select your Firebase project.  
-   - Use **JavaScript** (not TypeScript), since the provided codebase is written in JS.  
+1. Create a Firebase project in the [Firebase Console](https://console.firebase.google.com/).  
+2. Link the project to a **Google Cloud Billing account**:
+   - Go to **Firebase Console → Project Settings → Billing**.  
+   - Upgrade to the **Blaze (Pay as you go)** plan.  
+   - Without this step, backend deployment will fail.  
+3. Fork this GitHub repository into your own organization.  
+4. Ensure Node.js (v18+) is installed if you want to test locally.  
 
 ---
 
-### 3. Move Code into Functions
-- Place your backend code inside the `functions/` directory, for example:
-  ```
-  functions/index.js
-  functions/routes/dentalCases.js
-  functions/config/db.js
-  ```
+## 2. Configure Firebase Project ID
 
-- Adapt Express for Firebase Functions in `functions/index.js`:
-  ```js
-  const functions = require("firebase-functions");
-  const express = require("express");
-  const app = express();
+Before deployment, update the Firebase configuration files in the repository:
 
-  // Import routes
-  const dentalRoutes = require("./routes/dentalCases");
-  app.use("/cases", dentalRoutes);
-
-  // Export as a Firebase Function
-  exports.api = functions.https.onRequest(app);
-  ```
-
-- Install dependencies inside `functions/`:
-  ```bash
-  cd functions
-  npm install express firebase-admin
-  ```
-
----
-
-### 4. Service Account Setup
-1. In Firebase Console, navigate to:  
-   `Project Settings > Service Accounts > Generate new private key`.  
-2. Download the JSON key and save it as:  
-   ```
-   functions/serviceAccountKey.json
-   ```
-3. Update `functions/config/db.js` with your project bucket:
-   ```js
-   const admin = require("firebase-admin");
-   const serviceAccount = require("./serviceAccountKey.json");
-
-   admin.initializeApp({
-     credential: admin.credential.cert(serviceAccount),
-     storageBucket: "gs://<your-project-id>.appspot.com",
-   });
-
-   const db = admin.firestore();
-   const bucket = admin.storage().bucket();
-
-   module.exports = { admin, db, bucket };
-   ```
-
----
-
-### 5. Deploy Backend
-Deploy with:
-```bash
-firebase deploy --only functions
-```
-
-After deployment, Firebase will provide a base URL like:
-```
-https://<project-id>.cloudfunctions.net/api
-```
-
-All backend endpoints (e.g., `/cases/get`, `/cases/store`) will now be live.
-
-
-\section{Student Interface -- Deployment Guide}
-
-This section explains how to deploy the \textbf{Student Interface} of the Virtual Patient Simulator using Firebase Hosting and GitHub Actions.
-
-\subsection{Prerequisites}
-Before deployment, ensure you have:
-\begin{itemize}
-    \item A Firebase Project created in the \href{https://console.firebase.google.com/}{Firebase Console}.
-    \item A forked GitHub repository of this project.
-    \item A Firebase Service Account key (JSON file) downloaded.
-    \item Node.js (v18 or later) installed for optional local testing.
-    \item The Firebase CLI installed globally:
-\begin{verbatim}
-npm install -g firebase-tools
-\end{verbatim}
-\end{itemize}
-
-\subsection{Firebase Setup}
-\begin{enumerate}
-    \item Go to \textbf{Firebase Console $\rightarrow$ Project Settings $\rightarrow$ Service Accounts}.
-    \item Click \textbf{Generate new private key}.
-    \item Copy the JSON content.
-    \item In your GitHub repository, go to \textbf{Settings $\rightarrow$ Secrets and variables $\rightarrow$ Actions}.
-    \item Add a new secret:
-    \begin{itemize}
-        \item Name: \texttt{FIREBASE\_SERVICE\_ACCOUNT}
-        \item Value: Paste the full JSON content.
-    \end{itemize}
-    \item In the repository root, edit the \texttt{.firebaserc} file to include your Firebase project ID:
-\begin{verbatim}
-{
-  "projects": {
-    "default": "your-project-id"
+- In `.firebaserc`:
+  ```json
+  {
+    "projects": {
+      "default": "your-firebase-project-id"
+    }
   }
-}
-\end{verbatim}
-Replace \texttt{your-project-id} with the Firebase project ID from your console.
-\end{enumerate}
+  ```
 
-\subsection{Configuration Files}
-At the \textbf{repository root}, the following files are included:
-\begin{itemize}
-    \item \textbf{firebase.json} -- Defines Firebase Hosting targets for both Tutor and Student interfaces.
-    \item \textbf{.firebaserc} -- Stores the Firebase project ID.
-\end{itemize}
+- In `firebase.json`, leave as-is (already prepared).  
 
-The Student interface is linked to the hosting target \texttt{student}, pointing to:
-\begin{verbatim}
-"public": "code/Student interface/build"
-\end{verbatim}
+📌 Replace `your-firebase-project-id` with the **Project ID** from your Firebase Console (**Project Settings → General → Project ID**).
 
-\subsection{GitHub Actions Workflow}
-Deployment is automated via GitHub Actions. The workflow file is located at:
-\begin{verbatim}
-.github/workflows/deploy-student.yml
-\end{verbatim}
+---
 
-Each push to the \texttt{main} branch will:
-\begin{enumerate}
-    \item Install dependencies inside \texttt{code/Student interface}.
-    \item Build the React app (\texttt{npm run build}).
-    \item Deploy the build output to Firebase Hosting.
-\end{enumerate}
+## 3. Enable Required Services
 
-\subsection{Unity WebGL Integration}
-\begin{itemize}
-    \item Download the Unity WebGL build from 
-    \href{https://drive.google.com/drive/folders/1mfb-epyvyAzI5n1tKlxAJOfGY8D86R7B?usp=drive_link}{this link}.
-    \item Copy the downloaded folder into:
-\begin{verbatim}
-code/Student interface/public
-\end{verbatim}
-    \item Update the \texttt{useUnityContext} function in:
-\begin{verbatim}
-src/Components/UI/resources/ThreeD.js
-\end{verbatim}
-    to point to the correct Unity files location.
-\end{itemize}
+Firebase runs on Google Cloud, so some services must be enabled before deployment.
 
-\subsection{Authentication Setup}
-\begin{itemize}
-    \item Update the Google Client ID in:
-\begin{verbatim}
-src/Components/SignIn/index.js
-\end{verbatim}
-    with the Client ID from your Firebase Project
-    (Authentication $\rightarrow$ Sign-in method $\rightarrow$ Google).
-    \item Restrict Firebase Authentication to your institutional email domain in the Firebase Console.
-\end{itemize}
+### How to enable
+1. Go to **Firebase Console → Project Settings → Service Accounts → Manage Service Accounts**.  
+   (This link takes you directly to Google Cloud Console for the same project.)  
+2. In the left sidebar, click **APIs & Services → Library**.  
+3. Enable the following APIs (search each one and click "Enable"):
 
-\subsection{Optional Local Deployment}
-For local testing before pushing:
-\begin{verbatim}
-cd code/Student\ interface
-npm install
-npm run build
-firebase deploy --only hosting:student
-\end{verbatim}
-Ensure the Firebase CLI is installed and you are logged in with:
-\begin{verbatim}
-firebase login
-\end{verbatim}
+- `cloudfunctions.googleapis.com`  
+- `cloudbuild.googleapis.com`  
+- `artifactregistry.googleapis.com`  
+- `firebaseextensions.googleapis.com`  
+- `eventarc.googleapis.com`  
+- `run.googleapis.com`  
+- `cloudbilling.googleapis.com` (already enabled when you link billing)
 
-\subsection{Accessing the Application}
-After deployment, Firebase will provide a hosting URL such as:
-\begin{verbatim}
-https://your-project-id.web.app
-\end{verbatim}
-Use this link to access the deployed Student Interface.
+---
 
+## 4. Service Account Setup
+
+The backend uses a **service account** for authentication.  
+
+1. Go to **Firebase Console → Project Settings → Service Accounts**.  
+2. Click **Generate new private key** → a JSON file will download.  
+3. Open the file in any text editor (e.g., Notepad).  
+4. Copy the **entire JSON content**.  
+5. In your forked GitHub repository:
+   - Go to **Settings → Secrets and variables → Actions → New Repository Secret**.  
+   - Add:
+     - **Name:** `FIREBASE_SERVICE_ACCOUNT`  
+     - **Value:** paste the JSON content.  
+
+---
+
+## 5. Assign IAM Roles
+
+Still in Google Cloud Console:
+
+1. Go to **IAM & Admin → IAM**.  
+2. Find the service account you just created.  
+3. Click **Edit principal → Add roles**.  
+4. Add the following roles:
+   - **Firebase Admin**  
+   - **Cloud Functions Admin**  
+   - **Service Account User**  
+   - **Artifact Registry Administrator**  
+
+These roles are the minimum required for deployment.
+
+---
+
+## 6. Trigger Deployment
+
+The repository already contains a GitHub Actions workflow at:
+
+```
+.github/workflows/deploy-backend.yml
+```
+
+Deployment runs automatically when you:
+
+- Push a change to any file under `code/Backend/` **OR**  
+- Trigger manually from **GitHub → Actions → Deploy Backend → Run workflow**
+
+The workflow will:
+
+1. Authenticate with Firebase using the service account.  
+2. Install dependencies in `code/Backend/functions`.  
+3. Set up an Artifact Registry cleanup policy.  
+4. Deploy your backend as Firebase Cloud Functions.  
+
+---
+
+## 7. After Deployment
+
+- Firebase will generate a URL such as:  
+
+```
+https://<your-project-id>.cloudfunctions.net/api
+```
+
+- All backend endpoints (e.g., `/api/teacher`, `/api/teethDetails`) will now be live.  
+- You can verify them in your browser or with Postman.  
+
+---
 
 
 ### 1. Run Tutor Interface
