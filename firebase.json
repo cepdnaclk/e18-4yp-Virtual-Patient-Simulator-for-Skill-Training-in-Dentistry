@@ -6,7 +6,7 @@
     "source": "code/Backend/functions"
   },
   "hosting": {
-    "public": "public",
+    "public": "code/Tutor interface/public",
     "ignore": [
       "firebase.json",
       "**/.*",
@@ -15,7 +15,7 @@
     "rewrites": [
       {
         "source": "**",
-        "destination": "/index.html"
+        "destination": "code/Tutor interface/public/index.html"
       }
     ]
   }
