@@ -6,6 +6,7 @@ on:
       - main
     paths:
       - 'code/Student interface/**'
+  workflow_dispatch:
 
 jobs:
   build-deploy:
