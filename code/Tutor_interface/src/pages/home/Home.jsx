@@ -44,9 +44,9 @@ const Home = () => {
                             <Button variant="contained" onClick={onNavigateTeacher} color="primary" sx={{ boxShadow: 'none', padding: '10px 30px', fontSize: 'x-large' }}>
                                 I'm a Teacher
                             </Button>
-                            <Button variant="outlined" onClick={onNavigateStudent} sx={{ ml: 2, boxShadow: 'none', padding: '10px 30px', fontSize: 'x-large' }}>
+                            {/* <Button variant="outlined" onClick={onNavigateStudent} sx={{ ml: 2, boxShadow: 'none', padding: '10px 30px', fontSize: 'x-large' }}>
                                 I'm a Student
-                            </Button>
+                            </Button> */}
                         </Box>
 
                     </Grid>
