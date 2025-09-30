@@ -176,55 +176,178 @@ https://<your-project-id>.cloudfunctions.net/api
 ---
 
 
-### 1. Run Tutor Interface
-- Navigate to the `code/TutorInterface` directory:
-  ```bash
-  cd code/TutorInterface
-  ```
-- Install dependencies:
-  ```bash
-  npm install
-  ```
-- Start the development server:
-  ```bash
-  npm run dev
-  ```
-- **Important:** Make sure to update the backend base URL in `src/config.js`.
+# Frontend Deployment Guide (Tutor & Student Interfaces)
 
-### 2. Run Backend
-- Navigate to the `code/backend` directory:
-  ```bash
-  cd code/backend
-  ```
-- Install dependencies:
-  ```bash
-  npm install
-  ```
-- Start the backend server:
-  ```bash
-  npm start
-  ```
-- **Important:** Make sure to update the `storageBucket` in `db.js`.
+This document provides **step-by-step deployment guidelines** for the **Tutor** and **Student** interfaces of the Virtual Patient Simulator project.  
+⚡ The GitHub workflows and Firebase configuration files are **already set up** — you just need to **update site IDs and secrets**.
 
-### 3. Run Student Interface
-- Download the Unity WebGL file from this [URL](https://drive.google.com/drive/folders/1mfb-epyvyAzI5n1tKlxAJOfGY8D86R7B?usp=drive_link).
-- Copy the downloaded folder and paste it into `student/public`.
-  
-Then, follow these steps:
-- Navigate to the `code/student` directory:
-  ```bash
-  cd code/student
-  ```
-- Install dependencies:
-  ```bash
-  npm install
-  ```
-- Start the development server:
-  ```bash
-  npm start
-  ```
-- **Important:** Update the `useUnityContext` function in `src/Components/UI/resources/ThreeD.js` according to the Unity files location.
-- **Important:** Update the Google client ID in `src/Components/SignIn/index.js`.
+---
+
+## 1. Firebase Hosting Setup
+
+You must create **two Hosting sites** inside your Firebase project (`vps-2k25-app`):
+
+- **Tutor Hosting Site** → `vps-2k25-app-tutor`  
+- **Student Hosting Site** → `vps-2k25-app-student`
+
+📌 Go to **Firebase Console → Hosting → Add Site** and create them with the above IDs.
+
+---
+
+## 2. Firebase Configuration File (`firebase.json`)
+
+The following `firebase.json` is already configured.  
+You only need to make sure the hosting **targets** match the site IDs created above:
+
+```json
+{
+  "functions": {
+    "runtime": "nodejs22",
+    "region": "us-central1",
+    "gen": "2",
+    "source": "code/Backend/functions"
+  },
+  "hosting": [
+    {
+      "target": "tutor",
+      "site": "vps-2k25-app-tutor",
+      "public": "code/Tutor_interface/dist",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ]
+    },
+    {
+      "target": "student",
+      "site": "vps-2k25-app-student",
+      "public": "code/Student_interface/build",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "headers": [
+        {
+          "source": "/unity/**",
+          "headers": [
+            {
+              "key": "Cross-Origin-Opener-Policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "Cross-Origin-Embedder-Policy",
+              "value": "require-corp"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+
+---
+
+## 3. GitHub Secrets (Required)
+
+In your repository settings (`Settings → Secrets and variables → Actions`), add:
+
+- `FIREBASE_SERVICE_ACCOUNT_VPS_2K25_APP` → JSON from Firebase service account  
+- `GITHUB_TOKEN` → Already provided automatically by GitHub  
+
+These are required for the workflows to authenticate and deploy.
+
+---
+
+## 4. Tutor Interface Deployment Workflow
+
+This workflow is already created under `.github/workflows/deploy-tutor.yml`:
+
+```yaml
+name: Deploy to Firebase Hosting on merge - Tutor
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'code/Tutor_interface/**'
+  workflow_dispatch:
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./code/Tutor_interface
+    steps:
+      - uses: actions/checkout@v4
+      - run: npm ci && npm run build
+      - uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: ${{ secrets.GITHUB_TOKEN }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_VPS_2K25_APP }}
+          channelId: live
+          projectId: vps-2k25-app
+          target: tutor
+```
+
+---
+
+## 5. Student Interface Deployment Workflow
+
+This workflow is already created under `.github/workflows/deploy-student.yml`:
+
+```yaml
+name: Deploy Student Interface
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'code/Student_interface/**'
+  workflow_dispatch:
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./code/Student_interface
+    steps:
+      - uses: actions/checkout@v4
+      - run: npm install --legacy-peer-deps && npm run build
+        env:
+          CI: false
+      - uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: ${{ secrets.GITHUB_TOKEN }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_VPS_2K25_APP }}
+          channelId: live
+          projectId: vps-2k25-app
+          target: student
+```
+
+---
+
+## 6. Student Interface – Additional Configuration
+
+
+1. **Google OAuth Client ID**  
+   Update the **Google Client ID** in:
+
+   ```
+   code/Student_interface/src/Components/SignIn/index.js
+   ```
+
+---
+
+## ✅ Summary for Outsiders
+
+- Create two hosting sites:  
+  `vps-2k25-app-tutor` and `vps-2k25-app-student`.  
+- Update the hosting `site` values in `firebase.json`.  
+- Add the Firebase service account key to GitHub secrets.  
+- Tutor and Student deployment workflows are already set up.  
+- Student interface requires Google Client ID update 
 
 ---
 
