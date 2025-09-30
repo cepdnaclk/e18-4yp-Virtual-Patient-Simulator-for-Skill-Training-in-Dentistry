@@ -1,0 +1,43 @@
+{
+  "functions": {
+    "runtime": "nodejs22",
+    "region": "us-central1",
+    "gen": "2",
+    "source": "code/Backend/functions"
+  },
+  "hosting": [
+    {
+      "target": "tutor",
+      "public": "code/Tutor_interface/dist",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ]
+    },
+    {
+      "target": "student",
+      "public": "code/Student_interface/build",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "headers": [
+        {
+          "source": "/unity/**",
+          "headers": [
+            {
+              "key": "Cross-Origin-Opener-Policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "Cross-Origin-Embedder-Policy",
+              "value": "require-corp"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

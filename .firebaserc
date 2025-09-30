@@ -1,0 +1,17 @@
+{
+  "projects": {
+    "default": "vps-2k25-app"
+  },
+  "targets": {
+    "vps-2k25-app": {
+      "hosting": {
+        "student": [
+          "vps-2k25-app-student"
+        ],
+        "tutor": [
+          "vps-2k25-app"
+        ]
+      }
+    }
+  }
+}
