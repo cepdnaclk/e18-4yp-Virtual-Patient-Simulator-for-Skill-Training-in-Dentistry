@@ -338,6 +338,16 @@ jobs:
    code/Student_interface/src/Components/SignIn/index.js
    ```
 
+2. Update Backend URL
+
+ Make sure to update the backend base URL which was generated from Backend deployment
+
+ ```
+ code/Student_interface/src/config.js.
+ ```
+
+
+
 ---
 
 ## ✅ Summary for Outsiders
