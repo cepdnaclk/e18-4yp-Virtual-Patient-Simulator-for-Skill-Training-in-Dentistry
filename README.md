@@ -400,6 +400,20 @@ jobs:
 
 ---
 
+# Deployed Applications
+
+**Student Platform:** [virtual-patient-simulator-2k23.web.app](https://virtual-patient-simulator-2k23.web.app/)  
+*(Gmail login supported)*
+
+**Tutor Platform:** [vps-2k23-app.web.app](https://vps-2k23-app.web.app/)  
+
+### Demo credentials:
+- **Email:** test@demo.com  
+- **Password:** Test1234  
+
+---
+
+
 
 ### Links
 
