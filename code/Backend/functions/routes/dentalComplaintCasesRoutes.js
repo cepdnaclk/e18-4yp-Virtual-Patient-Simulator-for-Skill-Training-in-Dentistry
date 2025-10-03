@@ -124,14 +124,17 @@ router.get("/getAllComplaintTypes/:mainTypeName", async (req, res) => {
   }
 });
 
-// Apply middleware only to the '/createCase' route
 router.post(
   "/createCase",
   fileParser,
   bodyParser.urlencoded({ extended: true }),
   async (req, res) => {
     try {
-      // Validate if required fields are provided
+      console.log("➡️ Incoming request to /createCase");
+      console.log("Request body:", req.body);
+      console.log("Request files:", req.files);
+
+      // 1. Validate input
       if (
         !req.body.mainTypeName ||
         !req.body.complaintTypeName ||
@@ -139,81 +142,93 @@ router.post(
         !req.files ||
         req.files.length === 0
       ) {
+        console.warn("⚠️ Missing required fields or file");
         return res
           .status(400)
           .json({ error: "Missing required fields or image." });
       }
 
       const file = req.files[0];
-      console.log(file); // you can see the file fields here, lots of good info from the parser
+      console.log("📂 File info:", {
+        originalname: file.originalname,
+        mimetype: file.mimetype,
+        size: file.size,
+      });
 
-      // convert the file buffer to a filestream
+      // 2. Prepare upload
       const fileStream = Readable.from(file.buffer);
-
-      // Construct a unique file path with the current date and time
       const currentDateTime = moment().format("YYYYMMDD_HHmmss");
-      // upload to firebase storage
-      const fileUpload = bucket.file(
-        `Images/${currentDateTime}_${file.originalname}`
-      );
+      const filePath = `Images/${currentDateTime}_${file.originalname}`;
+      const fileUpload = bucket.file(filePath);
 
-      // create writestream with the contentType of the incoming file
-      const writeStream = fileUpload.createWriteStream({
-        metadata: {
-          contentType: file.mimetype,
-        },
+      console.log("📝 Uploading file to:", filePath);
+
+      // 3. Upload file
+      await new Promise((resolve, reject) => {
+        fileStream
+          .pipe(
+            fileUpload.createWriteStream({
+              metadata: { contentType: file.mimetype },
+            })
+          )
+          .on("error", (error) => {
+            console.error("❌ File upload error:", error);
+            reject(error);
+          })
+          .on("finish", () => {
+            console.log("✅ File upload complete");
+            resolve();
+          });
       });
 
-      // pipe the filestream to be written to storage
-      fileStream
-        .pipe(writeStream)
-        .on("error", (error) => {
-          console.error("Error:", error);
-        })
-        .on("finish", () => {
-          console.log("File upload complete");
-        });
-
-      // Get the download URL of the uploaded image with no expiration
-      const downloadURL = await fileUpload.getSignedUrl({
+      // 4. Generate signed URL
+      console.log("🔗 Generating signed URL...");
+      const [downloadURL] = await fileUpload.getSignedUrl({
         action: "read",
-        expires: "12-31-9999", // Set to a far future date
+        expires: "12-31-9999",
       });
+      console.log("✅ Signed URL:", downloadURL);
 
-      // Extract case data from the request body
+      // 5. Firestore reference
       const { mainTypeName, complaintTypeName, caseScenario } = req.body;
+      console.log("🗂 Firestore path:", `${COLLECTION_NAME}/${mainTypeName}/${complaintTypeName}`);
 
       const complaintTypeRef = db
         .collection(COLLECTION_NAME)
         .doc(mainTypeName)
         .collection(complaintTypeName);
 
-      // Add a new document with generated caseId
-      const caseId =
-        "case_" + ((await complaintTypeRef.get()).size + 1).toString();
+      // 6. Generate caseId
+      const snapshot = await complaintTypeRef.get();
+      const caseId = "case_" + (snapshot.size + 1).toString();
+      console.log("🆔 Generated caseId:", caseId);
 
+      // 7. Write document
       await complaintTypeRef.doc(caseId).create({
-        caseId: caseId,
+        caseId,
         mainComplaintType: mainTypeName,
         caseName: complaintTypeName,
-        caseScenario: caseScenario,
-        thumbnailImageURL: downloadURL[0],
+        caseScenario,
+        thumbnailImageURL: downloadURL,
       });
+      console.log("✅ Firestore document created");
 
+      // 8. Response
       res.status(201).json({
         message: "Case created successfully.",
-        caseId: caseId,
+        caseId,
         mainComplaintType: mainTypeName,
         caseName: complaintTypeName,
-        caseScenario: caseScenario,
-        thumbnailImageURL: downloadURL[0],
+        caseScenario,
+        thumbnailImageURL: downloadURL,
       });
     } catch (error) {
-      console.error(error);
-      res.status(500).json({ error: "Internal Server Error" });
+      console.error("🔥 Error in /createCase:", error.message, error.stack);
+      res.status(500).json({ error: error.message || "Internal Server Error" });
     }
   }
 );
+ 
 
 // UPDATE CASE DETAILS
 // PUT
