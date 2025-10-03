@@ -381,7 +381,7 @@ jobs:
 
 ---
 
-## ✅ Summary for Outsiders
+## ✅ Summary 
 
 - Create two hosting sites:  
   `vps-2k25-app-tutor` and `vps-2k25-app-student`.  
@@ -389,6 +389,14 @@ jobs:
 - Add the Firebase service account key to GitHub secrets.  
 - Tutor and Student deployment workflows are already set up.  
 - Student interface requires Google Client ID update 
+
+
+---
+
+
+### Contacts
+
+- Contact : dilandds97@gmail.com for any concers reguarding deployments
 
 ---
 
@@ -400,5 +408,3 @@ jobs:
 - [Department of Computer Engineering](http://www.ce.pdn.ac.lk/)
 - [University of Peradeniya](https://eng.pdn.ac.lk/)
 
-
-test
