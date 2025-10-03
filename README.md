@@ -135,12 +135,43 @@ Still in Google Cloud Console:
    - **Cloud Functions Admin**  
    - **Service Account User**  
    - **Artifact Registry Administrator**  
+   - **Storage Admin**  
+   - **Service Account Token Creator** (needed for signed URLs in Storage)  
 
-These roles are the minimum required for deployment.
+These roles are the minimum required for deployment and database/file operations.
 
 ---
 
-## 7. Trigger Deployment
+## 7. Import Predefined Database Cases
+
+To initialize Firestore with predefined data:
+
+1. **Enable Firestore Database**
+   - Go to [Firebase Console → Firestore Database](https://console.firebase.google.com/).  
+   - Click **Create database** → choose `Start in production mode` → region `us-central1`.  
+
+2. **Enable Firebase Storage**
+   - Go to [Firebase Console → Storage](https://console.firebase.google.com/).  
+   - Click **Get started** to create a default storage bucket (e.g., `<project-id>.firebasestorage.app`).  
+
+3. **Install Firestore Import Tool**
+   ```bash
+   npm install -g firestore-export-import
+   ```
+
+4. **Import the predefined dataset**
+   - Dataset file is located in: `docs/data/backup.json`  
+   - Run:
+     ```bash
+     firestore-import --accountCredentials serviceAccountKey.json --backupFile docs/data/backup.json
+     ```
+   - Replace `serviceAccountKey.json` with your downloaded Firebase Admin SDK key.  
+
+After this step, Firestore will contain the sample cases for the simulator.
+
+---
+
+## 8. Trigger Deployment
 
 The repository already contains a GitHub Actions workflow at:
 
@@ -162,7 +193,7 @@ The workflow will:
 
 ---
 
-## 8. After Deployment
+## 9. After Deployment
 
 - Firebase will generate a URL such as:  
 
