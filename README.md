@@ -381,7 +381,7 @@ jobs:
 
 ---
 
-## ✅ Summary for Outsiders
+## ✅ Summary 
 
 - Create two hosting sites:  
   `vps-2k25-app-tutor` and `vps-2k25-app-student`.  
@@ -390,7 +390,35 @@ jobs:
 - Tutor and Student deployment workflows are already set up.  
 - Student interface requires Google Client ID update 
 
+
 ---
+
+## 🎥 Demo Video with presentation
+
+Watch the full demo here: [https://drive.google.com/file/d/1KERuwZmyZIRDja8qohDGEi9qL-XZRZzU/view?usp=sharing](https://drive.google.com/file/d/1KERuwZmyZIRDja8qohDGEi9qL-XZRZzU/view?usp=sharing)
+
+---
+
+
+### Contacts
+
+- Contact : dilandds97@gmail.com for any concers reguarding deployments
+
+---
+
+# Deployed Applications
+
+**Student Platform:** [virtual-patient-simulator-2k23.web.app](https://virtual-patient-simulator-2k23.web.app/)  
+*(Gmail login supported)*
+
+**Tutor Platform:** [vps-2k23-app.web.app](https://vps-2k23-app.web.app/)  
+
+### Demo credentials:
+- **Email:** test@demo.com  
+- **Password:** Test1234  
+
+---
+
 
 
 ### Links
@@ -400,5 +428,3 @@ jobs:
 - [Department of Computer Engineering](http://www.ce.pdn.ac.lk/)
 - [University of Peradeniya](https://eng.pdn.ac.lk/)
 
-
-test
