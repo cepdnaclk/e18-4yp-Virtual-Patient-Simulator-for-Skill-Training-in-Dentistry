@@ -408,14 +408,31 @@ Watch the full demo here: [https://drive.google.com/file/d/1KERuwZmyZIRDja8qohDG
 
 # Deployed Applications
 
-**Student Platform:** [virtual-patient-simulator-2k23.web.app](https://virtual-patient-simulator-2k23.web.app/)  
+When deployed, Firebase automatically generates hosting URLs for each application:
+
+**Student Platform:**  
+https://virtual-patient-simulator-2k23.web.app  
 *(Gmail login supported)*
 
-**Tutor Platform:** [vps-2k23-app.web.app](https://vps-2k23-app.web.app/)  
+**Tutor Platform:**  
+https://vps-2k23-app.web.app
 
-### Demo credentials:
+### Demo Credentials:
 - **Email:** test@demo.com  
 - **Password:** Test1234  
+
+---
+
+## Custom Domain Redirection (Optional)
+
+For our deployment, we redirected the Firebase-generated URLs to our institute's subdomains:
+
+- https://vpsim-tutor.pdn.ac.lk/ → https://virtual-patient-simulator-2k23.web.app/  
+- https://vpsim-student.pdn.ac.lk/ → https://vps-2k23-app.web.app/
+
+You may also configure your own institute or organization domain in the same way.  
+Simply add your custom subdomain in Firebase Hosting and update the DNS records accordingly and its completely free
+ 
 
 ---
 
